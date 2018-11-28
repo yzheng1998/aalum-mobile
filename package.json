@@ -16,7 +16,8 @@
     "eslint-plugin-prettier": "^3.0.0",
     "prettier": "^1.15.2",
     "react": "16.6.1",
-    "react-native": "0.57.6"
+    "react-native": "0.57.6",
+    "styled-components": "^4.1.1"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
