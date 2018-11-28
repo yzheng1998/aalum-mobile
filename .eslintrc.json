@@ -13,6 +13,7 @@
     "react/prefer-stateless-function": 0,
     "react/no-unused-state": 0,
     "import/prefer-default-export": 0,
+    "react/destructuring-assignment": 0,
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
