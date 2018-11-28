@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { Screen } from './styles'
+import Title from '../../components/Title'
 
-export default class Temp extends Component {
+export default class VerificationScreen extends Component {
   render() {
-    return <Screen />
+    return (
+      <Screen>
+        <Title text="Verify your email" />
+      </Screen>
+    )
   }
 }
