@@ -3,7 +3,6 @@ import { Text } from './styles'
 
 export default class Title extends Component {
   render() {
-    const { text } = this.props
-    return <Text>{text}</Text>
+    return <Text>{this.props.text}</Text>
   }
 }
