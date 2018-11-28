@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-import { Text } from 'react-native'
 import { Screen } from './styles'
+import PrimaryButton from '../../components/PrimaryButton'
 
 export default class Temp extends Component {
   render() {
     return (
       <Screen>
-        <Text>Sign In</Text>
+        <PrimaryButton
+          title="Sign In"
+          onPress={() => {
+            this.props.navigation.navigate('Verification')
+          }}
+        />
       </Screen>
     )
   }
