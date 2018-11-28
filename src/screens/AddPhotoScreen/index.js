@@ -1,4 +1,4 @@
-import React, { Component } from 'react-native'
+import React, { Component } from 'react'
 import { Screen } from './styles'
 
 export default class Temp extends Component {
