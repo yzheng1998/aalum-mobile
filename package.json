@@ -24,10 +24,12 @@
     "graphql": "^14.0.2",
     "prettier": "^1.15.2",
     "react": "16.6.1",
-    "react-native": "0.57.6",
-    "styled-components": "^4.1.1",
     "react-apollo": "^2.3.1",
     "react-dom": "^16.6.3",
+    "react-native": "0.57.6",
+    "react-native-gesture-handler": "^1.0.10",
+    "react-navigation": "^3.0.2",
+    "styled-components": "^4.1.1",
     "subscriptions-transport-ws": "^0.9.15"
   },
   "devDependencies": {
