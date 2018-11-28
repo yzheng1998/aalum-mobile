@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import theme from '../../../theme'
 
 export const Button = styled.TouchableOpacity`
-  background-color: ${theme.colors.gradientRight};
+  justify-content: center;
+  align-items: center;  
   height: 60px;
   margin-left: 32px;
   margin-right: 32px;
   border-radius: 30px;
-  justify-content: center;
-  align-items: center;
+  background-color: ${theme.colors.gradientRight};
 `
 
 export const ButtonText = styled.Text`
