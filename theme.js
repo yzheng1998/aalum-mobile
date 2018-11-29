@@ -5,7 +5,8 @@ const theme = {
     gradientRight: '#FF6534',
     grey: '#A8A8A8',
     charcoal: '#333333',
-    offWhite: '#F9F9F9'
+    offWhite: '#F9F9F9',
+    error: '#DA2752'
   },
   fonts: {
     heading: 'Montserrat-Bold',
