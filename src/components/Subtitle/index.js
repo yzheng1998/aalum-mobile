@@ -1,8 +1,13 @@
-import React, { Component } from 'react'
-import { Text } from './styles'
+import styled from 'styled-components'
+import theme from '../../../theme'
 
-export default class Subtitle extends Component {
-  render() {
-    return <Text>{this.props.text}</Text>
-  }
-}
+export const Subtitle = styled.Text`
+  align-self: center;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 16px;
+  margin-left: 32px;
+  margin-right: 32px;
+  font-family: ${theme.fonts.bodyText};
+  color: ${theme.colors.grey};
+`
