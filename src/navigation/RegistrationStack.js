@@ -16,7 +16,8 @@ const RegistrationStack = createStackNavigator(
     SignIn: {
       screen: SignInScreen,
       navigationOptions: () => ({
-        header: null
+        header: null,
+        gesturesEnabled: false
       })
     },
     Verification: {
@@ -28,7 +29,8 @@ const RegistrationStack = createStackNavigator(
     Password: {
       screen: CreatePasswordScreen,
       navigationOptions: () => ({
-        header: null
+        header: null,
+        gesturesEnabled: false
       })
     },
     IntroduceYourself: {
@@ -43,28 +45,30 @@ const RegistrationStack = createStackNavigator(
         header: null
       })
     },
-    SeekingGender: {
+    Seeking: {
       screen: SeekingGenderScreen,
       navigationOptions: () => ({
         header: null
       })
     },
-    AddPhoto: {
+    Photo: {
       screen: AddPhotoScreen,
       navigationOptions: () => ({
         header: null
       })
     },
-    EnableLocation: {
+    Location: {
       screen: EnableLocationScreen,
       navigationOptions: () => ({
-        header: null
+        header: null,
+        gesturesEnabled: false
       })
     },
-    EnableNotifications: {
+    Notifications: {
       screen: EnableNotificationsScreen,
       navigationOptions: () => ({
-        header: null
+        header: null,
+        gesturesEnabled: false
       })
     },
     ForgotPassword: {
