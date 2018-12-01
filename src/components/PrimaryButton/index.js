@@ -5,10 +5,10 @@ import theme from '../../../theme'
 
 export default class PrimaryButton extends Component {
   render() {
-    const { title, onPress, disabled } = this.props
+    const { title, ...rest } = this.props
     const { gradientLeft, gradientRight } = theme.colors
     return (
-      <Button onPress={onPress} disabled={disabled}>
+      <Button {...rest}>
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import {
   InputField,
-  FullView,
+  RoundContainer,
   Icon,
   MainContainer,
   Title,
@@ -15,11 +15,11 @@ class PrimaryInput extends Component {
     return (
       <MainContainer>
         {title ? <Title error={error}>{title}</Title> : <View />}
-        <FullView error={error}>
+        <RoundContainer error={error}>
           <InputField icon={icon} {...rest} />
           {icon ? <Icon>{icon}</Icon> : <View />}
-        </FullView>
-        {error ? <ErrorMessage>{error}</ErrorMessage> : <View />}
+        </RoundContainer>
+        <ErrorMessage>{error || ''}</ErrorMessage>
       </MainContainer>
     )
   }

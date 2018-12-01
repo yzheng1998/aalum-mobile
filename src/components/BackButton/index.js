@@ -6,7 +6,7 @@ export default class BackButton extends Component {
   render() {
     return (
       <IconWrapper onPress={this.props.onPress}>
-        <Icon name="arrow-back" color="black" size={30} />
+        <Icon name="arrow-back" color="#ADADAD" size={30} />
       </IconWrapper>
     )
   }
