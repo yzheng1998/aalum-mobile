@@ -11,7 +11,11 @@ export default class IntroduceYourselfScreen extends Component {
         showBack
         title="Introuce Yourself"
       >
-        <PrimaryInput title="Name" placeholder="Enter your first name" />
+        <PrimaryInput
+          title="Name"
+          placeholder="Enter your first name"
+          autoCapitalize="words"
+        />
         <PrimaryButton
           title="Continue"
           onPress={() => this.props.navigation.navigate('Gender')}
