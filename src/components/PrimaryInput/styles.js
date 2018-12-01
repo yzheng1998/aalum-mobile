@@ -4,6 +4,7 @@ import { themeGet } from 'styled-system'
 export const MainContainer = styled.View`
   margin-left: 32px;
   margin-right: 32px;
+  padding-top: 8px;
 `
 
 export const Title = styled.Text`
@@ -14,6 +15,7 @@ export const Title = styled.Text`
     error ? themeGet('colors.error') : themeGet('colors.charcoal')};
   font-size: 16px;
   line-height: 19px;
+  margin-top: 8px;
 `
 
 export const InputField = styled.TextInput`
@@ -44,10 +46,10 @@ export const Icon = styled.View`
 `
 
 export const ErrorMessage = styled.Text`
-  margin-top: 10px;
-  margin-left: 16px;
+  margin-top: 5px;
+  margin-left: 10px;
   color: ${themeGet('colors.error')};
   font-family: ${themeGet('fonts.title')};
   font-size: 13px;
-  line-height: 15px;
+  line-height: 18px;
 `

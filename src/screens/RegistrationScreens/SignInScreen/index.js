@@ -13,27 +13,30 @@ export default class SignUpScreen extends Component {
     passwordError: ''
   }
   render() {
-    const { passwordError, emailError, email, password } = this.state
+    const { passwordError, emailError } = this.state
     return (
       <RegistrationScreen>
         <PrimaryInput
           error={emailError}
-          placeholder={email || 'Email'}
+          placeholder="Email"
           icon={<Icon name="md-person" size={20} color="rgb(181, 171, 202)" />}
           autoCapitalize="none"
+          onChangeText={text => this.setState({ email: text })}
         />
         <PrimaryInput
           secureTextEntry
           error={passwordError}
-          placeholder={password || 'Password'}
+          placeholder="Password"
           icon={<Lock name="lock" size={20} color="rgb(181, 171, 202)" />}
           autoCapitalize="none"
+          onChangeText={text => this.setState({ password: text })}
         />
         <PrimaryButton
           title="Sign In"
           onPress={() => {
             this.props.navigation.navigate('Verification')
           }}
+          style={{ marginTop: 15 }}
         />
       </RegistrationScreen>
     )
