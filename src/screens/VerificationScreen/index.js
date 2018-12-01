@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { StatusBar } from 'react-native'
 import { Screen } from './styles'
 import { Title } from '../../components/Title'
 import { Subtitle } from '../../components/Subtitle'
@@ -8,7 +9,8 @@ export default class VerificationScreen extends Component {
   render() {
     return (
       <Screen>
-        <BackButton />
+        <StatusBar hidden />
+        <BackButton onPress={() => this.props.navigation.goBack()} />
         <Title> Verify your email </Title>
         <Subtitle>
           Enter the 4 digit code we sent you to verify your account
