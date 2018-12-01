@@ -24,7 +24,7 @@ export const InputField = styled.TextInput`
   color: ${themeGet('colors.charcoal')};
 `
 
-export const FullView = styled.View`
+export const RoundContainer = styled.View`
   border-width: ${({ error }) => (error ? '2px' : '1.5px')};
   height: 45px;
   border-radius: 30px;
