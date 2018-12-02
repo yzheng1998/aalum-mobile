@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
 import {
   InputField,
   RoundContainer,
@@ -14,10 +13,10 @@ class PrimaryInput extends Component {
     const { icon, title, error, ...rest } = this.props
     return (
       <MainContainer>
-        {title ? <Title error={error}>{title}</Title> : <View />}
+        {title && <Title error={error}>{title}</Title>}
         <RoundContainer error={error}>
           <InputField icon={icon} {...rest} />
-          {icon ? <Icon>{icon}</Icon> : <View />}
+          {icon && <Icon>{icon}</Icon>}
         </RoundContainer>
         <ErrorMessage>{error || ''}</ErrorMessage>
       </MainContainer>
