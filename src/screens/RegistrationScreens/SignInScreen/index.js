@@ -32,7 +32,10 @@ export default class SignUpScreen extends Component {
           autoCapitalize="none"
           onChangeText={text => this.setState({ password: text })}
         />
-        <TextButton text="Forgot Password?" />
+        <TextButton
+          text="Forgot Password?"
+          onPress={() => this.props.navigation.navigate('ForgotPassword')}
+        />
         <PrimaryButton
           title="Sign In"
           onPress={() => {
