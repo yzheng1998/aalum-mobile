@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PrimaryButton from '../../../components/PrimaryButton'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryInput from '../../../components/PrimaryInput'
+import TextButton from '../../../components/TextButton'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Lock from 'react-native-vector-icons/Foundation'
 
@@ -31,6 +32,7 @@ export default class SignUpScreen extends Component {
           autoCapitalize="none"
           onChangeText={text => this.setState({ password: text })}
         />
+        <TextButton text="Forgot Password?" />
         <PrimaryButton
           title="Sign In"
           onPress={() => {
