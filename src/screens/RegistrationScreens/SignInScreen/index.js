@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PrimaryButton from '../../../components/PrimaryButton'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryInput from '../../../components/PrimaryInput'
+import TextButton from '../../../components/TextButton'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Lock from 'react-native-vector-icons/Foundation'
 
@@ -19,7 +20,7 @@ export default class SignUpScreen extends Component {
         <PrimaryInput
           error={emailError}
           placeholder="Email"
-          icon={<Icon name="md-person" size={20} color="rgb(181, 171, 202)" />}
+          icon={<Icon name="md-person" size={20} color="#8F8F8F" />}
           autoCapitalize="none"
           onChangeText={text => this.setState({ email: text })}
         />
@@ -27,9 +28,13 @@ export default class SignUpScreen extends Component {
           secureTextEntry
           error={passwordError}
           placeholder="Password"
-          icon={<Lock name="lock" size={20} color="rgb(181, 171, 202)" />}
+          icon={<Lock name="lock" size={20} color="#8F8F8F" />}
           autoCapitalize="none"
           onChangeText={text => this.setState({ password: text })}
+        />
+        <TextButton
+          text="Forgot Password?"
+          onPress={() => this.props.navigation.navigate('ForgotPassword')}
         />
         <PrimaryButton
           title="Sign In"
