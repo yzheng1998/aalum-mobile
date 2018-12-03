@@ -11,6 +11,8 @@ export default class ForgotPasswordScreen extends Component {
   render() {
     return (
       <RegistrationScreen
+        showBack
+        navigation={this.props.navigation}
         title="Forgot Password"
         subtitle="Enter your email to receive a link to reset your password."
       >
