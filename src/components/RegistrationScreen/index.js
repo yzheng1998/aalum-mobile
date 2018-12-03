@@ -7,10 +7,18 @@ import { Subtitle } from '../Subtitle'
 
 export default class RegistrationScreen extends Component {
   render() {
-    const { showBack, children, title, subtitle, navigation } = this.props
+    const {
+      showBack,
+      children,
+      title,
+      subtitle,
+      navigation,
+      image
+    } = this.props
     return (
       <View>
         <StatusBar hidden />
+        {image}
         {showBack && <BackButton onPress={() => navigation.goBack()} />}
         {title && <Title>{title}</Title>}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
