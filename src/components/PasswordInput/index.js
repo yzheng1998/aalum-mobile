@@ -19,21 +19,12 @@ export default class PasswordInput extends Component {
         {...rest}
         icon={
           <SecurityToggle onPress={() => this.setState({ secure: !secure })}>
-            {secure ? (
-              <Icon
-                name="eye"
-                size={20}
-                style={{ marginTop: 2, marginRight: 2 }}
-                color={theme.colors.black}
-              />
-            ) : (
-              <Icon
-                name="eye-with-line"
-                size={20}
-                style={{ marginTop: 2, marginRight: 2 }}
-                color={theme.colors.grey}
-              />
-            )}
+            <Icon
+              name={secure ? 'eye' : 'eye-with-line'}
+              size={20}
+              style={{ marginTop: 2, marginRight: 2 }}
+              color={secure ? theme.colors.black : theme.colors.grey}
+            />
           </SecurityToggle>
         }
       />
