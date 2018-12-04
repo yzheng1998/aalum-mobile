@@ -3,8 +3,6 @@ import { Dimensions } from 'react-native'
 
 const { height } = Dimensions.get('window')
 
-export const Image = styled.Image``
-
 export const imageStyle = {
   alignSelf: 'center',
   width: height * 0.41,

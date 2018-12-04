@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from './styles'
+import { View, Image } from './styles'
 import BackButton from '../BackButton'
 import { StatusBar } from 'react-native'
 import { Title } from '../Title'
@@ -13,12 +13,13 @@ export default class RegistrationScreen extends Component {
       title,
       subtitle,
       navigation,
-      image
+      source,
+      imageStyle
     } = this.props
     return (
       <View>
         <StatusBar hidden />
-        {image}
+        <Image source={source} style={imageStyle} />
         {showBack && <BackButton onPress={() => navigation.goBack()} />}
         {title && <Title>{title}</Title>}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
