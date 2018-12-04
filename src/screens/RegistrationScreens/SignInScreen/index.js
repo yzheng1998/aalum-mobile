@@ -1,13 +1,20 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import { Dimensions } from 'react-native'
-import { GreyBar, TabContainer } from './styles'
+import {
+  GreyBar,
+  TabContainer,
+  labelStyle,
+  tabStyle,
+  indicatorStyle,
+  tabBarStyle,
+  tabViewStyle
+} from './styles'
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import theme from '../../../../theme'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 
-export default class SignInScreen extends React.Component {
+export default class SignInScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,22 +32,10 @@ export default class SignInScreen extends React.Component {
     <TabBar
       {...props}
       scrollEnabled
-      tabStyle={{ width: 123 }}
-      labelStyle={{
-        color: theme.colors.gradientRight,
-        fontFamily: theme.fonts.title,
-        fontSize: 16,
-        marginBottom: 4
-      }}
-      style={{
-        marginRight: 64,
-        marginLeft: 64,
-        backgroundColor: 'transparent'
-      }}
-      indicatorStyle={{
-        backgroundColor: theme.colors.gradientRight,
-        height: 3
-      }}
+      tabStyle={tabStyle}
+      labelStyle={labelStyle}
+      style={tabBarStyle}
+      indicatorStyle={indicatorStyle}
     />
   )
 
@@ -62,7 +57,7 @@ export default class SignInScreen extends React.Component {
               height: Dimensions.get('window').height
             }}
             renderTabBar={this.renderTabBar}
-            style={{ backgroundColor: 'transparent', marginTop: 30 }}
+            style={tabViewStyle}
           />
         </TabContainer>
       </RegistrationScreen>
