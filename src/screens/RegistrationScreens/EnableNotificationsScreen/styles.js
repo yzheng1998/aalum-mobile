@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { Dimensions } from 'react-native'
 
 const { height } = Dimensions.get('window')
