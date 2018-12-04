@@ -85,7 +85,7 @@ const RegistrationStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'SignIn',
+    initialRouteName: 'Photo',
     headerMode: 'screen'
   }
 )

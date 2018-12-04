@@ -1,0 +1,49 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'aalummobile' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for aalummobile
+  rn_path = '../node_modules/react-native'
+  pod 'yoga', path: "#{rn_path}/ReactCommon/yoga/yoga.podspec"
+  pod 'React', path: rn_path, subspecs: [
+    'Core',
+    'RCTActionSheet',
+    'RCTAnimation',
+    'RCTGeolocation',
+    'RCTImage',
+    'RCTLinkingIOS',
+    'RCTNetwork',
+    'RCTSettings',
+    'RCTText',
+    'RCTVibration',
+    'RCTWebSocket'
+  ]
+  pod 'RSKImageCropper'
+  pod 'QBImagePickerController'
+  pod 'RNImageCropPicker', :path =>  '../node_modules/react-native-image-crop-picker'
+
+  target 'aalummobile-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+
+    pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+
+  end
+
+  target 'aalummobileTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == "React"
+      target.remove_from_project
+    end
+  end
+end
