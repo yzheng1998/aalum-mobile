@@ -9,6 +9,7 @@ export default class GenderScreen extends Component {
         showBack
         navigation={this.props.navigation}
         title="Which gender(s) best describes you?"
+        progress="66%"
       >
         <PrimaryButton
           title="Continue"

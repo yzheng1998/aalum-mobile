@@ -13,6 +13,7 @@ export default class CreatePasswordScreen extends Component {
       <RegistrationScreen
         title="Create a Password"
         subtitle="Your password should contain 1 letter, 1 number, and at least 8 characters."
+        progress="33%"
       >
         <PasswordInput onChange={password => this.setState({ password })} />
         <PrimaryButton

@@ -9,7 +9,8 @@ export default class IntroduceYourselfScreen extends Component {
       <RegistrationScreen
         navigation={this.props.navigation}
         showBack
-        title="Introuce Yourself"
+        title="Introduce Yourself"
+        progress="50%"
       >
         <PrimaryInput
           title="Name"
