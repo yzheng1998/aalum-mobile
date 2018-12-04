@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CodeInput from 'react-native-confirmation-code-input'
-import theme from '../../../theme'
+import theme from '../../../../../../theme'
 
 export default class VerificationInput extends Component {
   render() {
