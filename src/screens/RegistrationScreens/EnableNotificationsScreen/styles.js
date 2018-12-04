@@ -1,5 +1,11 @@
 import styled from 'styled-components'
+import { Dimensions } from 'react-native'
 
-export const Screen = styled.View`
-  flex: 1;
-`
+const { height } = Dimensions.get('window')
+
+export const imageStyle = {
+  alignSelf: 'center',
+  width: height * 0.43,
+  height: height * 0.3,
+  marginTop: height * 0.14
+}
