@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Image from 'react-native'
 import PrimaryButton from '../../../../../components/PrimaryButton'
 import RegistrationScreen from '../../../../../components/RegistrationScreen'
 import PrimaryInput from '../../../../../components/PrimaryInput'
