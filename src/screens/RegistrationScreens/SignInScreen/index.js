@@ -1,48 +1,67 @@
 import React, { Component } from 'react'
-import PrimaryButton from '../../../components/PrimaryButton'
+import { Dimensions } from 'react-native'
+import {
+  GreyBar,
+  TabContainer,
+  labelStyle,
+  tabStyle,
+  indicatorStyle,
+  tabBarStyle,
+  tabViewStyle,
+  imageStyle
+} from './styles'
+import Logo from '../../../../assets/images/registrationFlow/Logo.png'
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view'
+import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 import RegistrationScreen from '../../../components/RegistrationScreen'
-import PrimaryInput from '../../../components/PrimaryInput'
-import TextButton from '../../../components/TextButton'
-import Icon from 'react-native-vector-icons/Ionicons'
-import Lock from 'react-native-vector-icons/Foundation'
 
-export default class SignUpScreen extends Component {
-  state = {
-    email: '',
-    password: '',
-    emailError: '',
-    passwordError: ''
+export default class SignInScreen extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      index: 0,
+      routes: [
+        { key: 'first', title: 'Sign In' },
+        { key: 'second', title: 'Sign Up' }
+      ],
+      FirstRoute: () => <SignIn navigation={props.navigation} />,
+      SecondRoute: () => <SignUp navigation={props.navigation} />
+    }
   }
+
+  renderTabBar = props => (
+    <TabBar
+      {...props}
+      scrollEnabled
+      tabStyle={tabStyle}
+      labelStyle={labelStyle}
+      style={tabBarStyle}
+      indicatorStyle={indicatorStyle}
+    />
+  )
+
   render() {
-    const { passwordError, emailError } = this.state
+    const { FirstRoute, SecondRoute } = this.state
     return (
-      <RegistrationScreen>
-        <PrimaryInput
-          error={emailError}
-          placeholder="Email"
-          icon={<Icon name="md-person" size={20} color="#8F8F8F" />}
-          autoCapitalize="none"
-          onChangeText={text => this.setState({ email: text })}
-        />
-        <PrimaryInput
-          secureTextEntry
-          error={passwordError}
-          placeholder="Password"
-          icon={<Lock name="lock" size={20} color="#8F8F8F" />}
-          autoCapitalize="none"
-          onChangeText={text => this.setState({ password: text })}
-        />
-        <TextButton
-          text="Forgot Password?"
-          onPress={() => this.props.navigation.navigate('ForgotPassword')}
-        />
-        <PrimaryButton
-          title="Sign In"
-          onPress={() => {
-            this.props.navigation.navigate('Verification')
-          }}
-          style={{ marginTop: 15 }}
-        />
+      <RegistrationScreen source={Logo} imageStyle={imageStyle}>
+        <TabContainer>
+          <GreyBar />
+          <TabView
+            navigationState={this.state}
+            renderScene={SceneMap({
+              first: FirstRoute,
+              second: SecondRoute
+            })}
+            onIndexChange={index => this.setState({ index })}
+            initialLayout={{
+              width: Dimensions.get('window').width,
+              height: Dimensions.get('window').height
+            }}
+            renderTabBar={this.renderTabBar}
+            style={tabViewStyle}
+          />
+        </TabContainer>
       </RegistrationScreen>
     )
   }

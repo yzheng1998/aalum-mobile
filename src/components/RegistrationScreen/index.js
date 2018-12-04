@@ -14,10 +14,11 @@ export default class RegistrationScreen extends Component {
       subtitle,
       navigation,
       source,
-      imageStyle
+      imageStyle,
+      ...rest
     } = this.props
     return (
-      <View>
+      <View {...rest}>
         <StatusBar hidden />
         <Image source={source} style={imageStyle} />
         {showBack && <BackButton onPress={() => navigation.goBack()} />}
