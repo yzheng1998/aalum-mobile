@@ -8,7 +8,8 @@ export default class SeekingGenderScreen extends Component {
       <RegistrationScreen
         showBack
         navigation={this.props.navigation}
-        title="Select genders to connect with?"
+        title="Select genders to connect with"
+        progress="80%"
       >
         <PrimaryButton
           title="Continue"
