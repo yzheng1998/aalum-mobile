@@ -8,7 +8,6 @@ import {
   indicatorStyle,
   tabBarStyle,
   tabViewStyle,
-  Image,
   imageStyle
 } from './styles'
 import Logo from '../../../../assets/images/registrationFlow/Logo.png'
@@ -45,7 +44,7 @@ export default class SignInScreen extends Component {
   render() {
     const { FirstRoute, SecondRoute } = this.state
     return (
-      <RegistrationScreen image={<Image source={Logo} style={imageStyle} />}>
+      <RegistrationScreen source={Logo} imageStyle={imageStyle}>
         <TabContainer>
           <GreyBar />
           <TabView

@@ -10,6 +10,7 @@ export default class SignUp extends Component {
     email: '',
     emailError: ''
   }
+
   render() {
     const { emailError } = this.state
     return (

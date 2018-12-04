@@ -40,8 +40,6 @@ export const tabStyle = { width: 123 }
 
 export const tabViewStyle = { backgroundColor: 'transparent', marginTop: 30 }
 
-export const Image = styled.Image``
-
 export const imageStyle = {
   alignSelf: 'center',
   width: height * 0.22,

@@ -12,6 +12,7 @@ export default class SignIn extends Component {
     emailError: '',
     passwordError: ''
   }
+
   render() {
     const { passwordError, emailError } = this.state
     return (
