@@ -15,7 +15,7 @@ export const TopText = styled.Text`
 `
 export const BottomText = styled.Text`
   margin-right: 22px;
-  margin-top: 30px;
+  margin-top: 14px;
   margin-left: 30px;
   font-family: ${theme.fonts.bodyText};
   font-size: 16px;
