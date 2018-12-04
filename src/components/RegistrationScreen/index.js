@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, Image } from './styles'
+import { SafeAreaView, Screen, Image } from './styles'
 import BackButton from '../BackButton'
 import { StatusBar } from 'react-native'
 import { Title } from '../Title'
 import { Subtitle } from '../Subtitle'
+import ProgressBar from '../ProgressBar'
 
 export default class RegistrationScreen extends Component {
   render() {
@@ -15,17 +16,21 @@ export default class RegistrationScreen extends Component {
       navigation,
       source,
       imageStyle,
+      progress,
       ...rest
     } = this.props
     return (
-      <View {...rest}>
-        <StatusBar hidden />
-        <Image source={source} style={imageStyle} />
-        {showBack && <BackButton onPress={() => navigation.goBack()} />}
-        {title && <Title>{title}</Title>}
-        {subtitle && <Subtitle>{subtitle}</Subtitle>}
-        {children}
-      </View>
+      <SafeAreaView {...rest}>
+        <Screen>
+          <StatusBar hidden />
+          {progress && <ProgressBar progress={progress} />}
+          {showBack && <BackButton onPress={() => navigation.goBack()} />}
+          <Image source={source} style={imageStyle} />
+          {title && <Title>{title}</Title>}
+          {subtitle && <Subtitle>{subtitle}</Subtitle>}
+          {children}
+        </Screen>
+      </SafeAreaView>
     )
   }
 }
