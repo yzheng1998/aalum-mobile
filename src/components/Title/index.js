@@ -7,7 +7,7 @@ export const Title = styled.Text`
   margin-left: 20px;
   margin-right: 20px;
   font-size: 28px;
-  margin-top: 48px;
+  margin-top: 84px;
   font-family: ${theme.fonts.title};
   color: ${theme.colors.charcoal};
 `

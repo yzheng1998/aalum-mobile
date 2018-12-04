@@ -15,7 +15,7 @@ class PrimaryInput extends Component {
       <MainContainer>
         {title && <Title error={error}>{title}</Title>}
         <RoundContainer error={error}>
-          <InputField icon={icon} {...rest} />
+          <InputField icon={icon} autoCapitalize="none" {...rest} />
           {icon && <Icon>{icon}</Icon>}
         </RoundContainer>
         <ErrorMessage>{error || ''}</ErrorMessage>
