@@ -21,7 +21,7 @@ export default class RegistrationScreen extends Component {
     } = this.props
     return (
       <SafeAreaView {...rest}>
-        <Screen>
+        <Screen keyboardShouldPersistTaps="handled" scrollEnabled={false}>
           <StatusBar hidden />
           {progress && <ProgressBar progress={progress} />}
           {showBack && <BackButton onPress={() => navigation.goBack()} />}
