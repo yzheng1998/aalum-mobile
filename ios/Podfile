@@ -31,6 +31,8 @@ target 'aalummobile' do
 
     pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
 
+    pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   end
 
   target 'aalummobileTests' do
