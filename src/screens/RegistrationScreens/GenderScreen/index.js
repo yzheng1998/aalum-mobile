@@ -27,6 +27,8 @@ export default class GenderScreen extends Component {
       .filter(gender => gender.selected)
       .map(gender => gender.title)
 
+    const enabled =
+      this.state.genderSelection.filter(gender => gender.selected).length > 0
     return (
       <RegistrationScreen
         showBack
@@ -43,6 +45,7 @@ export default class GenderScreen extends Component {
           onPress={() =>
             this.props.navigation.navigate('Seeking', { genders: finalGenders })
           }
+          disabled={!enabled}
         />
       </RegistrationScreen>
     )

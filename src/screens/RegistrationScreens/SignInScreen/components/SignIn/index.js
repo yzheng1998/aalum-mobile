@@ -14,12 +14,12 @@ export default class SignIn extends Component {
   }
 
   render() {
-    const { passwordError, emailError } = this.state
+    const { passwordError, emailError, email, password } = this.state
+    const enabled = email && password
     return (
       <RegistrationScreen style={{ marginTop: 66 }}>
         <PrimaryInput
           error={emailError}
-          autoFocus
           placeholder="Email"
           icon={<Icon name="person" size={20} color="rgb(181, 171, 202)" />}
           autoCapitalize="none"
@@ -37,7 +37,11 @@ export default class SignIn extends Component {
           onPress={() => this.props.navigation.navigate('ForgotPassword')}
           text="Forgot Password?"
         />
-        <PrimaryButton title="Sign In" style={{ marginTop: 15 }} />
+        <PrimaryButton
+          title="Sign In"
+          style={{ marginTop: 15 }}
+          disabled={!enabled}
+        />
       </RegistrationScreen>
     )
   }

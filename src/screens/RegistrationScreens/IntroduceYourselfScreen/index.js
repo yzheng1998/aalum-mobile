@@ -20,6 +20,7 @@ export default class IntroduceYourselfScreen extends Component {
   }
   render() {
     const { birthday, showBirthdayPicker, birthdayFormatted, name } = this.state
+    const enabled = name && birthday
     return (
       <Screen>
         <RegistrationScreen
@@ -33,6 +34,7 @@ export default class IntroduceYourselfScreen extends Component {
               title="Name"
               placeholder={name || 'Enter your first name'}
               autoCapitalize="words"
+              onChangeText={text => this.setState({ name: text })}
             />
             <PrimaryInput
               title="Birthday"
@@ -52,6 +54,7 @@ export default class IntroduceYourselfScreen extends Component {
             <PrimaryButton
               title="Continue"
               onPress={() => this.props.navigation.navigate('Gender')}
+              disabled={!enabled}
             />
           </ContentContainer>
         </RegistrationScreen>

@@ -12,7 +12,8 @@ export default class SignUp extends Component {
   }
 
   render() {
-    const { emailError } = this.state
+    const { emailError, email } = this.state
+    const enabled = email
     return (
       <RegistrationScreen style={{ marginTop: 66 }}>
         <TopText>Sign up with your .edu or alumni email:</TopText>
@@ -34,6 +35,7 @@ export default class SignUp extends Component {
             this.props.navigation.navigate('Verification')
           }}
           style={{ marginTop: 30 }}
+          disabled={!enabled}
         />
       </RegistrationScreen>
     )
