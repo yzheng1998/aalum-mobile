@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, Keyboard } from 'react-native'
+import { Screen, ContentContainer } from './styles'
 import moment from 'moment'
 
 import RegistrationScreen from '../../../components/RegistrationScreen'
@@ -20,36 +21,40 @@ export default class IntroduceYourselfScreen extends Component {
   render() {
     const { birthday, showBirthdayPicker, birthdayFormatted, name } = this.state
     return (
-      <RegistrationScreen
-        navigation={this.props.navigation}
-        showBack
-        title="Introduce Yourself"
-        progress="50%"
-      >
-        <PrimaryInput
-          title="Name"
-          placeholder={name || 'Enter your first name'}
-          autoCapitalize="words"
-        />
-        <PrimaryInput
-          title="Birthday"
-          placeholder={birthdayFormatted || 'MM/DD/YYYY'}
-          defaultValue={birthdayFormatted}
-          editable={false}
-          pointerEvents="none"
-          as={TouchableOpacity}
-          onPress={() =>
-            this.setState({ showBirthdayPicker: true, birthday }, () =>
-              this.datePicker.openDatePicker()
-            )
-          }
-          style={birthdayFormatted && { lineHeight: 20 }} // corrects some visual bugs
-        />
-        <PrimaryButton
-          title="Continue"
-          onPress={() => this.props.navigation.navigate('Gender')}
-        />
-
+      <Screen>
+        <RegistrationScreen
+          navigation={this.props.navigation}
+          showBack
+          title="Introduce Yourself"
+          progress="50%"
+        >
+          <ContentContainer>
+            <PrimaryInput
+              title="Name"
+              placeholder={name || 'Enter your first name'}
+              autoCapitalize="words"
+            />
+            <PrimaryInput
+              title="Birthday"
+              placeholder={birthdayFormatted || 'MM/DD/YYYY'}
+              defaultValue={birthdayFormatted}
+              editable={false}
+              pointerEvents="none"
+              as={TouchableOpacity}
+              onPress={() => {
+                Keyboard.dismiss()
+                this.setState({ showBirthdayPicker: true, birthday }, () =>
+                  this.datePicker.openDatePicker()
+                )
+              }}
+              style={birthdayFormatted && { lineHeight: 20 }} // corrects some visual bugs
+            />
+            <PrimaryButton
+              title="Continue"
+              onPress={() => this.props.navigation.navigate('Gender')}
+            />
+          </ContentContainer>
+        </RegistrationScreen>
         <DatePicker
           ref={datePicker => {
             this.datePicker = datePicker
@@ -69,7 +74,7 @@ export default class IntroduceYourselfScreen extends Component {
             })
           }}
         />
-      </RegistrationScreen>
+      </Screen>
     )
   }
 }
