@@ -6,7 +6,7 @@ import PhotoUpload from './PhotoUpload'
 export default class AddPhotoScreen extends Component {
   state = { photo: '' }
 
-  callback = photo => this.setState({ photo })
+  setPhoto = photo => this.setState({ photo })
 
   render() {
     return (
@@ -17,7 +17,7 @@ export default class AddPhotoScreen extends Component {
         subtitle="Please upload your favorite photo of yourself! You’ll be able to add and edit photos later."
         progress="95%"
       >
-        <PhotoUpload callback={this.callback} />
+        <PhotoUpload callback={this.setPhoto} />
         <PrimaryButton
           title="Continue"
           onPress={() => this.props.navigation.navigate('Location')}
