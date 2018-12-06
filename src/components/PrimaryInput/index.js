@@ -10,11 +10,11 @@ import {
 
 class PrimaryInput extends Component {
   render() {
-    const { icon, title, error, ...rest } = this.props
+    const { as, onPress, icon, title, error, ...rest } = this.props
     return (
       <MainContainer>
         {title && <Title error={error}>{title}</Title>}
-        <RoundContainer error={error}>
+        <RoundContainer as={as} onPress={onPress} error={error}>
           <InputField icon={icon} autoCapitalize="none" {...rest} />
           {icon && <Icon>{icon}</Icon>}
         </RoundContainer>
