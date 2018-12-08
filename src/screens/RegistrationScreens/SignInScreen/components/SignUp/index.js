@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addInfo } from '../../../../../redux/actions'
 import PrimaryButton from '../../../../../components/PrimaryButton'
 import RegistrationScreen from '../../../../../components/RegistrationScreen'
 import PrimaryInput from '../../../../../components/PrimaryInput'
 import Icon from '../../../../../components/Icon'
 import { TopText, BottomText } from './styles'
 
-export default class SignUp extends Component {
+const mapDispatchToProps = dispatch => {
+  return { addEmail: email => dispatch(addInfo(email)) }
+}
+
+class SignUp extends Component {
   state = {
     email: '',
     emailError: ''
@@ -32,6 +38,7 @@ export default class SignUp extends Component {
         <PrimaryButton
           title="Next"
           onPress={() => {
+            this.props.addEmail({ key: 'email', value: email })
             this.props.navigation.navigate('Verification')
           }}
           style={{ marginTop: 30 }}
@@ -41,3 +48,9 @@ export default class SignUp extends Component {
     )
   }
 }
+
+const SignUpScreen = connect(
+  null,
+  mapDispatchToProps
+)(SignUp)
+export default SignUpScreen

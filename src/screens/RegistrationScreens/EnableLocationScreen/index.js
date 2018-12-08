@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import LocationGraphic from '../../../../assets/images/registrationFlow/LocationGraphic.png'
 import { imageStyle } from './styles'
 
-export default class EnableLocationScreen extends Component {
+const mapStateToProps = state => {
+  return { state: state }
+}
+
+class EnableLocationScreen extends Component {
   render() {
+    console.log(this.props.state)
     return (
       <RegistrationScreen
         title="Enable Location"
@@ -22,3 +28,6 @@ export default class EnableLocationScreen extends Component {
     )
   }
 }
+
+const EnableLocation = connect(mapStateToProps)(EnableLocationScreen)
+export default EnableLocation

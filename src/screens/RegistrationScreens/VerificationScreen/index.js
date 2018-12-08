@@ -5,7 +5,7 @@ import { InputContainer, CodeText } from './styles'
 import PrimaryButton from '../../../components/PrimaryButton'
 import VerificationInput from './components/VerificationInput'
 
-export default class VerificationScreen extends Component {
+class VerificationScreen extends Component {
   state = {
     disabled: true
   }
@@ -49,3 +49,5 @@ export default class VerificationScreen extends Component {
     )
   }
 }
+
+export default VerificationScreen
