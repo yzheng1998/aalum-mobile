@@ -27,8 +27,10 @@ export default class GenderScreen extends Component {
       .filter(gender => gender.selected)
       .map(gender => gender.title)
 
-    const enabled =
-      this.state.genderSelection.filter(gender => gender.selected).length > 0
+    const numberSelected = this.state.genderSelection.filter(
+      gender => gender.selected
+    ).length
+    const enabled = numberSelected > 0
     return (
       <RegistrationScreen
         showBack
@@ -39,6 +41,7 @@ export default class GenderScreen extends Component {
         <GenderButtonList
           genderSelection={this.state.genderSelection}
           selectGender={this.selectGender}
+          disabled={numberSelected >= 5}
         />
         <PrimaryButton
           title="Continue"
