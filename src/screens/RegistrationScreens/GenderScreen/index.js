@@ -53,7 +53,7 @@ class GenderScreen extends Component {
         <PrimaryButton
           title="Continue"
           onPress={() => {
-            this.props.addGenders({ key: 'gender', value: genderEnums })
+            this.props.addGenders({ key: 'genders', value: genderEnums })
             this.props.navigation.navigate('Seeking', { genders: finalGenders })
           }}
           disabled={!enabled}

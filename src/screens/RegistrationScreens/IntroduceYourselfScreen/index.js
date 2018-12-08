@@ -63,7 +63,10 @@ class IntroduceYourselfScreen extends Component {
               title="Continue"
               onPress={() => {
                 this.props.addInfo({ key: 'name', value: name })
-                this.props.addInfo({ key: 'birthday', value: birthday })
+                this.props.addInfo({
+                  key: 'birthday',
+                  value: birthday.toString()
+                })
                 this.props.navigation.navigate('Gender')
               }}
               disabled={!enabled}
