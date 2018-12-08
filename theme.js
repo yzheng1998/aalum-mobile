@@ -1,6 +1,7 @@
 const theme = {
   colors: {
     white: '#FFFFFF',
+    black: '#4F4F4F',
     gradientLeft: '#DA2752',
     gradientRight: '#FF6534',
     grey: '#A8A8A8',
