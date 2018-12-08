@@ -26,6 +26,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
+    "moment": "^2.22.2",
     "prettier": "^1.15.2",
     "react": "16.6.1",
     "react-apollo": "^2.3.1",
