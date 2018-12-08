@@ -3,9 +3,9 @@ import { Button, ButtonText } from './styles'
 
 export default class GenderButton extends Component {
   render() {
-    const { title, selectGender, selected } = this.props
+    const { title, selectGender, selected, disabled } = this.props
     return (
-      <Button onPress={selectGender} selected={selected}>
+      <Button disabled={disabled} onPress={selectGender} selected={selected}>
         <ButtonText selected={selected}>{title}</ButtonText>
       </Button>
     )

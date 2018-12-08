@@ -4,7 +4,7 @@ import GenderButton from '../GenderButton'
 
 export default class GenderButtonList extends Component {
   render() {
-    const { genderSelection, selectGender } = this.props
+    const { genderSelection, selectGender, allSelected, disabled } = this.props
     return (
       <ButtonContainer>
         {genderSelection.map((gender, index) => (
@@ -12,7 +12,8 @@ export default class GenderButtonList extends Component {
             key={gender.title}
             title={gender.title}
             selectGender={() => selectGender(index)}
-            selected={gender.selected}
+            selected={allSelected || gender.selected}
+            disabled={disabled}
           />
         ))}
       </ButtonContainer>
