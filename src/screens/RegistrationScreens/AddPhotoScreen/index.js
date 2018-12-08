@@ -5,11 +5,9 @@ import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PhotoUpload from './PhotoUpload'
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addPhoto: photo => dispatch(addInfo(photo))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  addPhoto: photo => dispatch(addInfo(photo))
+})
 
 class AddPhotoScreen extends Component {
   state = { photo: '' }

@@ -7,9 +7,9 @@ import PrimaryInput from '../../../../../components/PrimaryInput'
 import Icon from '../../../../../components/Icon'
 import { TopText, BottomText } from './styles'
 
-const mapDispatchToProps = dispatch => {
-  return { addEmail: email => dispatch(addInfo(email)) }
-}
+const mapDispatchToProps = dispatch => ({
+  addEmail: email => dispatch(addInfo(email))
+})
 
 class SignUp extends Component {
   state = {

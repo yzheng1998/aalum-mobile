@@ -5,9 +5,9 @@ import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PasswordInput from '../../../components/PasswordInput'
 
-const mapDispatchToProps = dispatch => {
-  return { addPassword: password => dispatch(addInfo(password)) }
-}
+const mapDispatchToProps = dispatch => ({
+  addPassword: password => dispatch(addInfo(password))
+})
 
 class CreatePasswordScreen extends Component {
   state = {
@@ -23,7 +23,9 @@ class CreatePasswordScreen extends Component {
         subtitle="Your password should contain 1 letter, 1 number, and at least 8 characters."
         progress="33%"
       >
-        <PasswordInput onChangeText={password => this.setState({ password })} />
+        <PasswordInput
+          onChangeText={value => this.setState({ password: value })}
+        />
         <PrimaryButton
           title="Next"
           onPress={() => {

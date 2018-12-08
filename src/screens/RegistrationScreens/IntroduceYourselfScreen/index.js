@@ -13,11 +13,9 @@ import { addInfo } from '../../../redux/actions'
 import DatePicker from '../../../components/DatePicker/DatePicker'
 /* eslint-enable */
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addInfo: info => dispatch(addInfo(info))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  addInfo: info => dispatch(addInfo(info))
+})
 
 class IntroduceYourselfScreen extends Component {
   state = {

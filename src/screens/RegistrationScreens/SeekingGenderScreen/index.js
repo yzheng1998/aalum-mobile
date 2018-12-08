@@ -8,11 +8,9 @@ import { GenderList, GenderEnumsObj } from '../../../../constants'
 import { ToggleContainer, Toggle, ToggleText } from './styles'
 import theme from '../../../../theme'
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addGenders: genders => dispatch(addInfo(genders))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  addGenders: genders => dispatch(addInfo(genders))
+})
 
 const initialGenderSelection = GenderList.map(title => ({
   title,

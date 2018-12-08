@@ -6,11 +6,9 @@ import PrimaryButton from '../../../components/PrimaryButton'
 import GenderButtonList from '../../../components/GenderButtonList'
 import { GenderList, GenderEnumsObj } from '../../../../constants'
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addGenders: genders => dispatch(addInfo(genders))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  addGenders: genders => dispatch(addInfo(genders))
+})
 
 const initialGenderSelection = GenderList.map(title => ({
   title,
