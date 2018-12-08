@@ -8,6 +8,6 @@ export const SafeAreaView = styled.SafeAreaView`
 
 export const Image = styled.Image``
 
-export const Screen = styled.View`
+export const Screen = styled.ScrollView`
   flex: 1;
 `
