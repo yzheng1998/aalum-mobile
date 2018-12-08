@@ -2,16 +2,24 @@ import React, { Component } from 'react'
 import { TouchableOpacity, Keyboard } from 'react-native'
 import { Screen, ContentContainer } from './styles'
 import moment from 'moment'
+import { connect } from 'react-redux'
 
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PrimaryInput from '../../../components/PrimaryInput'
+import { addInfo } from '../../../redux/actions'
 
 /* eslint-disable */
 import DatePicker from '../../../components/DatePicker/DatePicker'
 /* eslint-enable */
 
-export default class IntroduceYourselfScreen extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    addInfo: info => dispatch(addInfo(info))
+  }
+}
+
+class IntroduceYourselfScreen extends Component {
   state = {
     name: '',
     birthday: '',
@@ -53,7 +61,11 @@ export default class IntroduceYourselfScreen extends Component {
             />
             <PrimaryButton
               title="Continue"
-              onPress={() => this.props.navigation.navigate('Gender')}
+              onPress={() => {
+                this.props.addInfo({ key: 'name', value: name })
+                this.props.addInfo({ key: 'birthday', value: birthday })
+                this.props.navigation.navigate('Gender')
+              }}
               disabled={!enabled}
             />
           </ContentContainer>
@@ -81,3 +93,9 @@ export default class IntroduceYourselfScreen extends Component {
     )
   }
 }
+
+const IntroduceYourself = connect(
+  null,
+  mapDispatchToProps
+)(IntroduceYourselfScreen)
+export default IntroduceYourself
