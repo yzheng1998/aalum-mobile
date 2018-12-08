@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
+import PhotoUpload from './PhotoUpload'
 
 export default class AddPhotoScreen extends Component {
+  state = { photo: '' }
+
+  setPhoto = photo => this.setState({ photo })
+
   render() {
     return (
       <RegistrationScreen
@@ -12,6 +17,7 @@ export default class AddPhotoScreen extends Component {
         subtitle="Please upload your favorite photo of yourself! You’ll be able to add and edit photos later."
         progress="95%"
       >
+        <PhotoUpload callback={this.setPhoto} />
         <PrimaryButton
           title="Continue"
           onPress={() => this.props.navigation.navigate('Location')}

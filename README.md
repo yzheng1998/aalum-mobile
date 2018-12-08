@@ -1,2 +1,10 @@
 # AAlum Mobile
-`npm run ios` to start app
+
+To start app:
+
+```bash
+npm i
+cd ios && pod install
+cd ..
+npm run ios
+```
