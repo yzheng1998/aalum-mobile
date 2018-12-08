@@ -31,7 +31,7 @@ export const PlusSign = styled.View`
 `
 
 export const PlusSignWrapper = styled.View`
-  background-color: white;
+  background-color: ${themeGet('colors.offWhite')};
   width: 90px;
   height: 90px;
   border-radius: 45px;
