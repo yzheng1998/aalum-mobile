@@ -63,7 +63,7 @@ class IntroduceYourselfScreen extends Component {
                 this.props.addInfo({ key: 'name', value: name })
                 this.props.addInfo({
                   key: 'birthday',
-                  value: birthday.toString()
+                  value: birthdayFormatted
                 })
                 this.props.navigation.navigate('Gender')
               }}

@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
+import { Alert, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux'
-import { addInfo } from '../../../redux/actions'
+import { Mutation } from 'react-apollo'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PhotoUpload from './PhotoUpload'
+import { REGISTER_USER } from './graphql'
 
-const mapDispatchToProps = dispatch => ({
-  addPhoto: photo => dispatch(addInfo(photo))
+const mapStateToProps = state => ({
+  state
 })
 
 class AddPhotoScreen extends Component {
-  state = { photo: '' }
+  state = {
+    photo: ''
+  }
 
   setPhoto = photo => this.setState({ photo })
 
   render() {
     const { photo } = this.state
+    const variables = { ...this.props.state, photo }
     return (
       <RegistrationScreen
         showBack
@@ -25,21 +30,33 @@ class AddPhotoScreen extends Component {
         progress="95%"
       >
         <PhotoUpload callback={this.setPhoto} />
-        <PrimaryButton
-          title="Continue"
-          onPress={() => {
-            this.props.addPhoto({ key: 'photo', value: photo })
+        <Mutation
+          mutation={REGISTER_USER}
+          variables={{ variables }}
+          onCompleted={async ({ register: { user, token } }) => {
+            await AsyncStorage.setItem('token', token)
+            await AsyncStorage.setItem('userId', user.id)
             this.props.navigation.navigate('Location')
           }}
-          style={{ marginTop: 29 }}
-        />
+          onError={error =>
+            Alert.alert("Couldn't register user", error.message)
+          }
+        >
+          {register => (
+            <PrimaryButton
+              title="Continue"
+              onPress={() => register()}
+              style={{ marginTop: 29 }}
+            />
+          )}
+        </Mutation>
       </RegistrationScreen>
     )
   }
 }
 
 const AddPhoto = connect(
-  null,
-  mapDispatchToProps
+  mapStateToProps
+  // mapDispatchToProps
 )(AddPhotoScreen)
 export default AddPhoto
