@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PhotoUpload from './PhotoUpload'
 
-export default class AddPhotoScreen extends Component {
+const mapDispatchToProps = dispatch => ({
+  addPhoto: photo => dispatch(addInfo(photo))
+})
+
+class AddPhotoScreen extends Component {
   state = { photo: '' }
 
   setPhoto = photo => this.setState({ photo })
 
   render() {
+    const { photo } = this.state
     return (
       <RegistrationScreen
         showBack
@@ -20,10 +27,19 @@ export default class AddPhotoScreen extends Component {
         <PhotoUpload callback={this.setPhoto} />
         <PrimaryButton
           title="Continue"
-          onPress={() => this.props.navigation.navigate('Location')}
+          onPress={() => {
+            this.props.addPhoto({ key: 'photo', value: photo })
+            this.props.navigation.navigate('Location')
+          }}
           style={{ marginTop: 29 }}
         />
       </RegistrationScreen>
     )
   }
 }
+
+const AddPhoto = connect(
+  null,
+  mapDispatchToProps
+)(AddPhotoScreen)
+export default AddPhoto

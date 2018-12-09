@@ -11,15 +11,15 @@ export const GenderList = [
   'Transmasculine'
 ]
 
-export const GenderEnums = [
-  'WOMAN',
-  'MAN',
-  'AGENDER',
-  'TRANSWOMAN',
-  'TRANSMAN',
-  'NONBINARY',
-  'GENDERQUEER',
-  'GENDERFLUID',
-  'TRANSFEMININE',
-  'TRANSMASCULINE'
-]
+export const GenderEnumsObj = {
+  Woman: 'WOMAN',
+  Man: 'MAN',
+  Agender: 'AGENDER',
+  'Trans Woman': 'TRANSWOMAN',
+  'Trans Man': 'TRANSMAN',
+  Nonbinary: 'NONBINARY',
+  Genderqueer: 'GENDERQUEER',
+  Genderfluid: 'GENDERFLUID',
+  Transfeminine: 'TRANSFEMININE',
+  Transmasculine: 'TRANSMASCULINE'
+}

@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PasswordInput from '../../../components/PasswordInput'
 
-export default class CreatePasswordScreen extends Component {
+const mapDispatchToProps = dispatch => ({
+  addPassword: password => dispatch(addInfo(password))
+})
+
+class CreatePasswordScreen extends Component {
   state = {
     password: ''
   }
@@ -17,13 +23,24 @@ export default class CreatePasswordScreen extends Component {
         subtitle="Your password should contain 1 letter, 1 number, and at least 8 characters."
         progress="33%"
       >
-        <PasswordInput onChange={text => this.setState({ password: text })} />
+        <PasswordInput
+          onChangeText={value => this.setState({ password: value })}
+        />
         <PrimaryButton
           title="Next"
-          onPress={() => this.props.navigation.navigate('IntroduceYourself')}
+          onPress={() => {
+            this.props.addPassword({ key: 'password', value: password })
+            this.props.navigation.navigate('IntroduceYourself')
+          }}
           disabled={!enabled}
         />
       </RegistrationScreen>
     )
   }
 }
+
+const CreatePassword = connect(
+  null,
+  mapDispatchToProps
+)(CreatePasswordScreen)
+export default CreatePassword

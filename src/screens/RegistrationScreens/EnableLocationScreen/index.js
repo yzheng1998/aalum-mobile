@@ -4,7 +4,7 @@ import PrimaryButton from '../../../components/PrimaryButton'
 import LocationGraphic from '../../../../assets/images/registrationFlow/LocationGraphic.png'
 import { imageStyle } from './styles'
 
-export default class EnableLocationScreen extends Component {
+class EnableLocationScreen extends Component {
   render() {
     return (
       <RegistrationScreen
@@ -22,3 +22,5 @@ export default class EnableLocationScreen extends Component {
     )
   }
 }
+
+export default EnableLocationScreen

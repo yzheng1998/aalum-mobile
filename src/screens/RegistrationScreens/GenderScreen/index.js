@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import GenderButtonList from '../../../components/GenderButtonList'
-import { GenderList } from '../../../../constants'
+import { GenderList, GenderEnumsObj } from '../../../../constants'
+
+const mapDispatchToProps = dispatch => ({
+  addGenders: genders => dispatch(addInfo(genders))
+})
 
 const initialGenderSelection = GenderList.map(title => ({
   title,
   selected: false
 }))
 
-export default class GenderScreen extends Component {
+class GenderScreen extends Component {
   state = {
     genderSelection: initialGenderSelection
   }
@@ -23,14 +29,13 @@ export default class GenderScreen extends Component {
   }
 
   render() {
-    const finalGenders = this.state.genderSelection
-      .filter(gender => gender.selected)
-      .map(gender => gender.title)
-
-    const numberSelected = this.state.genderSelection.filter(
+    const filteredGenders = this.state.genderSelection.filter(
       gender => gender.selected
-    ).length
+    )
+    const numberSelected = filteredGenders.length
     const enabled = numberSelected > 0
+    const finalGenders = filteredGenders.map(gender => gender.title)
+    const genderEnums = finalGenders.map(gender => GenderEnumsObj[gender])
     return (
       <RegistrationScreen
         showBack
@@ -45,12 +50,19 @@ export default class GenderScreen extends Component {
         />
         <PrimaryButton
           title="Continue"
-          onPress={() =>
+          onPress={() => {
+            this.props.addGenders({ key: 'genders', value: genderEnums })
             this.props.navigation.navigate('Seeking', { genders: finalGenders })
-          }
+          }}
           disabled={!enabled}
         />
       </RegistrationScreen>
     )
   }
 }
+
+const Gender = connect(
+  null,
+  mapDispatchToProps
+)(GenderScreen)
+export default Gender
