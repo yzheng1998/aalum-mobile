@@ -6,6 +6,9 @@ import RegistrationScreen from '../../../../../components/RegistrationScreen'
 import PrimaryInput from '../../../../../components/PrimaryInput'
 import Icon from '../../../../../components/Icon'
 import { TopText, BottomText } from './styles'
+import constraints from './constraints'
+
+const validate = require('validate.js')
 
 const mapDispatchToProps = dispatch => ({
   addEmail: email => dispatch(addInfo(email))
@@ -14,21 +17,64 @@ const mapDispatchToProps = dispatch => ({
 class SignUp extends Component {
   state = {
     email: '',
-    emailError: ''
+    emailError: '',
+    displayErrors: {},
+    errors: {},
+    touched: {}
+  }
+
+  validateForm = isOnChangeText => {
+    const errors = validate(
+      {
+        email: this.state.email
+      },
+      constraints
+    )
+
+    const constructDisplayErrors = () => {
+      const displayErrors = {}
+      Object.keys(errors || {}).forEach(key => {
+        if (this.state.touched[key]) {
+          displayErrors[key] = errors[key]
+        }
+      })
+      return displayErrors
+    }
+
+    const errorsReduced =
+      Object.keys(errors || {}).length <
+      Object.keys(this.state.errors || {}).length
+
+    if (!isOnChangeText || (isOnChangeText && errorsReduced)) {
+      this.setState({ displayErrors: constructDisplayErrors() })
+    }
+    this.setState({ errors })
+  }
+
+  addTouched = key => {
+    const touched = {
+      ...this.state.touched,
+      [key]: true
+    }
+    this.setState({ touched })
   }
 
   render() {
-    const { emailError, email } = this.state
-    const enabled = email
+    const { displayErrors, errors, email } = this.state
+    const enabled = !errors
     return (
       <RegistrationScreen style={{ marginTop: 66 }}>
         <TopText>Sign up with your .edu or alumni email:</TopText>
         <PrimaryInput
-          error={emailError}
+          error={displayErrors.email}
           placeholder="Enter your email"
           icon={<Icon name="person" size={20} color="rgb(181, 171, 202)" />}
           autoCapitalize="none"
-          onChangeText={text => this.setState({ email: text })}
+          onChangeText={text => {
+            this.setState({ email: text }, () => this.validateForm(true))
+          }}
+          onFocus={() => this.addTouched('email')}
+          onBlur={() => this.validateForm(false)}
         />
         <BottomText>
           AALUM helps you find romantic connections with members of your college
