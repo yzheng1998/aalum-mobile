@@ -4,10 +4,10 @@ import theme from '../../../../../../theme'
 
 export default class VerificationInput extends Component {
   render() {
-    const { onSubmit } = this.props
+    const { onSubmit, code } = this.props
     return (
       <CodeInput
-        compareWithCode="1234"
+        compareWithCode={code}
         codeLength={4}
         keyboardType="numeric"
         className="border-box"
