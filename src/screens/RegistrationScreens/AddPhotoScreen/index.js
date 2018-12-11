@@ -6,7 +6,7 @@ import PhotoUpload from './PhotoUpload'
 export default class AddPhotoScreen extends Component {
   state = { photo: '' }
 
-  setPhoto = photo => this.setState({ photo })
+  setPhoto = photo => this.setState({ photo }, () => console.log(photo))
 
   render() {
     return (

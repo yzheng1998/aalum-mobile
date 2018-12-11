@@ -61,17 +61,29 @@ class PhotoUpload extends Component {
     }
   }
 
+  handleError = error => console.log(error.message)
+
   render() {
     const { image, imageUrl } = this.state
     return (
-      <Mutation mutation={SIGN_S3_URL} onCompleted={this.handleComplete}>
+      <Mutation
+        mutation={SIGN_S3_URL}
+        onCompleted={this.handleComplete}
+        onError={this.handleError}
+      >
         {signS3Url => (
           <PhotoUploader
             onPress={() => this.onPhotoUploadPress(signS3Url)}
             border={imageUrl}
           >
             {imageUrl ? (
-              <MainPhoto source={{ uri: image.sourceURL }} />
+              <MainPhoto
+                source={
+                  Platform.OS === 'android'
+                    ? { uri: image.path }
+                    : { uri: image.sourceURL }
+                }
+              />
             ) : (
               <Camera name="camera" size={90} color="#bdbdbd" />
             )}

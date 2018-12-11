@@ -38,7 +38,10 @@ export const indicatorStyle = {
 
 export const tabStyle = { width: 123 }
 
-export const tabViewStyle = { backgroundColor: 'transparent', marginTop: 30 }
+export const tabViewStyle = {
+  backgroundColor: 'transparent',
+  marginTop: 30
+}
 
 export const imageStyle = {
   alignSelf: 'center',

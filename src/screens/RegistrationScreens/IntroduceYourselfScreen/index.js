@@ -32,7 +32,7 @@ export default class IntroduceYourselfScreen extends Component {
           <ContentContainer>
             <PrimaryInput
               title="Name"
-              placeholder={name || 'Enter your first name'}
+              placeholder={'Enter your first name'}
               autoCapitalize="words"
               onChangeText={text => this.setState({ name: text })}
             />
