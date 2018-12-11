@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { Mutation } from 'react-apollo'
+import { Alert, AsyncStorage } from 'react-native'
+
+import { RESET_PASSWORD } from './graphql'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PasswordInput from '../../../components/PasswordInput'
@@ -9,6 +13,7 @@ export default class ResetPasswordScreen extends Component {
   }
 
   render() {
+    const { password } = this.state
     return (
       <RegistrationScreen
         title="Reset Password"
@@ -16,12 +21,30 @@ export default class ResetPasswordScreen extends Component {
       >
         <PasswordInput
           placeholder="New Password"
-          onChangeText={password => this.setState({ password })}
+          onChangeText={input => this.setState({ password: input })}
         />
-        <PrimaryButton
-          title="Next"
-          onPress={() => this.props.navigation.goBack()}
-        />
+        <Mutation
+          mutation={RESET_PASSWORD}
+          variables={{ resetPasswordInput: { newPassword: password } }}
+          onCompleted={({ resetPassword: { success, error } }) => {
+            if (error)
+              return Alert.alert('Could not reset password', error.message)
+            if (!success)
+              return Alert.alert(
+                'Could not reset password',
+                'Please try again later'
+              )
+            Alert.alert('Success!', 'Password reset successfully!')
+            AsyncStorage.setItem('token', '')
+            this.props.navigation.navigate('SignIn')
+            return success
+          }}
+          onError={error => Alert.alert(error.message)}
+        >
+          {resetPassword => (
+            <PrimaryButton title="Next" onPress={() => resetPassword()} />
+          )}
+        </Mutation>
       </RegistrationScreen>
     )
   }
