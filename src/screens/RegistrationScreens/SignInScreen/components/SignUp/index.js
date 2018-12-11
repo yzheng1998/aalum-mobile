@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addInfo } from '../../../../../redux/actions'
+import { Alert } from 'react-native'
+import { Mutation } from 'react-apollo'
 import PrimaryButton from '../../../../../components/PrimaryButton'
 import RegistrationScreen from '../../../../../components/RegistrationScreen'
 import PrimaryInput from '../../../../../components/PrimaryInput'
 import Icon from '../../../../../components/Icon'
 import { TopText, BottomText } from './styles'
 import constraints from './constraints'
+import { VERIFY_EMAIL } from './graphql'
 
 const validate = require('validate.js')
 
@@ -81,15 +84,28 @@ class SignUp extends Component {
           or alumni network. Tap Next to get a verification code sent to your
           email.
         </BottomText>
-        <PrimaryButton
-          title="Next"
-          onPress={() => {
+        <Mutation
+          mutation={VERIFY_EMAIL}
+          variables={{ email }}
+          onCompleted={({ sendVerificationCode: { error, code } }) => {
+            if (error) return Alert.alert('Could not sign in', error.message)
             this.props.addEmail({ key: 'email', value: email })
-            this.props.navigation.navigate('Verification')
+            this.props.navigation.navigate('Verification', {
+              code: code.toString()
+            })
+            return true
           }}
-          style={{ marginTop: 30 }}
-          disabled={!enabled}
-        />
+          onError={error => Alert.alert('Could not sign in', error.message)}
+        >
+          {sendVerificationCode => (
+            <PrimaryButton
+              title="Next"
+              onPress={() => sendVerificationCode()}
+              style={{ marginTop: 30 }}
+              disabled={!enabled}
+            />
+          )}
+        </Mutation>
       </RegistrationScreen>
     )
   }

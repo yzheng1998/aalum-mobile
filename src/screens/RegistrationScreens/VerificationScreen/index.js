@@ -29,6 +29,7 @@ class VerificationScreen extends Component {
 
   render() {
     const { disabled } = this.state
+    const code = this.props.navigation.getParam('code')
     return (
       <RegistrationScreen
         navigation={this.props.navigation}
@@ -38,7 +39,7 @@ class VerificationScreen extends Component {
       >
         <CodeText>Enter your code:</CodeText>
         <InputContainer>
-          <VerificationInput onSubmit={this.onSubmit} />
+          <VerificationInput onSubmit={this.onSubmit} code={code} />
         </InputContainer>
         <PrimaryButton
           disabled={disabled}
