@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import Camera from 'react-native-vector-icons/Entypo'
 import ImagePicker from 'react-native-image-crop-picker'
-import { Platform } from 'react-native'
+import { Platform, Alert } from 'react-native'
 import RNFetchBlob from 'rn-fetch-blob'
 
 import { PhotoUploader, MainPhoto, PlusSign, PlusSignWrapper } from './styles'
@@ -61,7 +61,7 @@ class PhotoUpload extends Component {
     }
   }
 
-  handleError = error => console.log(error.message)
+  handleError = error => Alert.alert('Could not upload photo', error.message)
 
   render() {
     const { image, imageUrl } = this.state

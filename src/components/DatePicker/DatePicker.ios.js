@@ -6,7 +6,7 @@ export default class DatePicker extends Component {
   openDatePicker = () => null
 
   render() {
-    const { doneOnPress, date, setDate, mode, visible } = this.props
+    const { doneOnPress, date, setDate, mode, visible, ...rest } = this.props
     return (
       <Container>
         {visible && (
@@ -14,7 +14,12 @@ export default class DatePicker extends Component {
             <DoneButton onPress={doneOnPress}>
               <DoneButtonText>Done</DoneButtonText>
             </DoneButton>
-            <DatePickerIOS mode={mode} date={date} onDateChange={setDate} />
+            <DatePickerIOS
+              mode={mode}
+              date={date}
+              onDateChange={setDate}
+              {...rest}
+            />
           </View>
         )}
       </Container>

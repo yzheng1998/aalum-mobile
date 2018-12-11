@@ -8,9 +8,11 @@ export const InputContainer = styled.View`
   height: 60px;
 `
 export const CodeText = styled.Text`
-  line-height: 25px;
-  align-self: center;
+  width: 138px;
+  height: 25px;
+  margin-left: 114px;
   font-family: ${theme.fonts.bodyText};
   font-size: 18px;
+  text-align: center;
   color: ${theme.colors.charcoal};
 `

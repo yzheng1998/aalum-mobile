@@ -26,9 +26,9 @@ export const labelStyle = {
 }
 
 export const tabBarStyle = {
-  marginRight: 64,
-  marginLeft: 64,
-  backgroundColor: 'transparent'
+  alignSelf: 'center',
+  backgroundColor: 'transparent',
+  height: 50
 }
 
 export const indicatorStyle = {

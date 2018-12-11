@@ -44,7 +44,7 @@ class VerificationScreen extends Component {
         <PrimaryButton
           disabled={disabled}
           title="Next"
-          onPress={() => this.props.navigation.navigate('Password')}
+          onPress={() => this.props.navigation.navigate('ResetPassword')}
         />
       </RegistrationScreen>
     )

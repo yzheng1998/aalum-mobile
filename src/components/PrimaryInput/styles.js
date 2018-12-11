@@ -34,9 +34,7 @@ export const RoundContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: ${Platform.OS === 'ios'
-    ? '8px 16px 8px 16px'
-    : '0px 12px -3px 12px'};
+  padding: ${Platform.OS === 'ios' ? '8px 16px 8px 16px' : '0px 12px 0px 12px'};
   border-color: ${({ error }) =>
     error ? themeGet('colors.error') : themeGet('colors.grey')};
   background-color: ${themeGet('colors.white')};

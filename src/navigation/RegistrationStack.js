@@ -10,6 +10,7 @@ import AddPhotoScreen from '../screens/RegistrationScreens/AddPhotoScreen'
 import EnableLocationScreen from '../screens/RegistrationScreens/EnableLocationScreen'
 import EnableNotificationsScreen from '../screens/RegistrationScreens/EnableNotificationsScreen'
 import ForgotPasswordScreen from '../screens/RegistrationScreens/ForgotPasswordScreen'
+import ForgotPasswordVerify from '../screens/RegistrationScreens/ForgotPasswordVerify'
 
 const RegistrationStack = createStackNavigator(
   {
@@ -73,6 +74,12 @@ const RegistrationStack = createStackNavigator(
     },
     ForgotPassword: {
       screen: ForgotPasswordScreen,
+      navigationOptions: () => ({
+        header: null
+      })
+    },
+    ForgotPasswordVerify: {
+      screen: ForgotPasswordVerify,
       navigationOptions: () => ({
         header: null
       })

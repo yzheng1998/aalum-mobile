@@ -47,6 +47,7 @@ export default class SignInScreen extends Component {
           <GreyBar />
           <TabView
             navigationState={this.state}
+            // renderScene={this.renderPage}
             renderScene={SceneMap({
               first: this.FirstRoute,
               second: this.SecondRoute
