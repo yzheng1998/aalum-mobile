@@ -12,6 +12,15 @@ export default class ForgotPasswordScreen extends Component {
     email: ''
   }
 
+  onCompleted = ({ forgotPassword: { token, code, error } }) => {
+    if (error) return Alert.alert('Could not verify email', error.message)
+    AsyncStorage.setItem('token', token)
+    this.props.navigation.navigate('ForgotPasswordVerify', {
+      code: code.toString()
+    })
+    return true
+  }
+
   render() {
     const { email } = this.state
     return (
@@ -28,15 +37,7 @@ export default class ForgotPasswordScreen extends Component {
         <Mutation
           mutation={FORGOT_PASSWORD}
           variables={{ email }}
-          onCompleted={({ forgotPassword: { token, code, error } }) => {
-            if (error)
-              return Alert.alert('Could not verify email', error.message)
-            AsyncStorage.setItem('token', token)
-            this.props.navigation.navigate('ForgotPasswordVerify', {
-              code: code.toString()
-            })
-            return true
-          }}
+          onCompleted={this.onCompleted}
           onError={error =>
             Alert.alert('Could not verify email', error.message)
           }

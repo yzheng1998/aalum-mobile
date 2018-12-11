@@ -12,6 +12,16 @@ export default class ResetPasswordScreen extends Component {
     password: ''
   }
 
+  onCompleted = ({ resetPassword: { success, error } }) => {
+    if (error) return Alert.alert('Could not reset password', error.message)
+    if (!success)
+      return Alert.alert('Could not reset password', 'Please try again later')
+    Alert.alert('Success!', 'Password reset successfully!')
+    AsyncStorage.setItem('token', '')
+    this.props.navigation.navigate('SignIn')
+    return success
+  }
+
   render() {
     const { password } = this.state
     return (
@@ -26,19 +36,7 @@ export default class ResetPasswordScreen extends Component {
         <Mutation
           mutation={RESET_PASSWORD}
           variables={{ resetPasswordInput: { newPassword: password } }}
-          onCompleted={({ resetPassword: { success, error } }) => {
-            if (error)
-              return Alert.alert('Could not reset password', error.message)
-            if (!success)
-              return Alert.alert(
-                'Could not reset password',
-                'Please try again later'
-              )
-            Alert.alert('Success!', 'Password reset successfully!')
-            AsyncStorage.setItem('token', '')
-            this.props.navigation.navigate('SignIn')
-            return success
-          }}
+          onCompleted={this.onCompleted}
           onError={error => Alert.alert(error.message)}
         >
           {resetPassword => (
