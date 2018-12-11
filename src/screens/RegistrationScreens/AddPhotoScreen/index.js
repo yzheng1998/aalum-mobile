@@ -16,7 +16,7 @@ class AddPhotoScreen extends Component {
     photo: ''
   }
 
-  setPhoto = photo => this.setState({ photo })
+  setPhoto = photo => this.setState({ photo }, () => console.log(photo))
 
   onCompleted = async ({ register: { user, token } }) => {
     await AsyncStorage.setItem('token', token)
