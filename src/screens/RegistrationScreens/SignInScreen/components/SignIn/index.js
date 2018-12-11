@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { Mutation } from 'react-apollo'
+import { AsyncStorage, Alert } from 'react-native'
+import { LOGIN_USER } from './graphql'
 import PrimaryButton from '../../../../../components/PrimaryButton'
 import RegistrationScreen from '../../../../../components/RegistrationScreen'
 import PrimaryInput from '../../../../../components/PrimaryInput'
@@ -11,6 +14,15 @@ export default class SignIn extends Component {
     password: '',
     emailError: '',
     passwordError: ''
+  }
+
+  loginUser = async ({ loginUser: { user, token, error } }) => {
+    if (error) {
+      return Alert.alert('Could not sign in', error.message)
+    }
+    await AsyncStorage.setItem('userId', user.id)
+    await AsyncStorage.setItem('token', token)
+    return true
   }
 
   render() {
@@ -37,11 +49,21 @@ export default class SignIn extends Component {
           onPress={() => this.props.navigation.navigate('ForgotPassword')}
           text="Forgot Password?"
         />
-        <PrimaryButton
-          title="Sign In"
-          style={{ marginTop: 15 }}
-          disabled={!enabled}
-        />
+        <Mutation
+          mutation={LOGIN_USER}
+          variables={{ email, password }}
+          onCompleted={this.loginUser}
+          onError={error => Alert.alert('Could not sign in', error.message)}
+        >
+          {loginUser => (
+            <PrimaryButton
+              title="Sign In"
+              style={{ marginTop: 15 }}
+              disabled={!enabled}
+              onPress={() => loginUser()}
+            />
+          )}
+        </Mutation>
       </RegistrationScreen>
     )
   }
