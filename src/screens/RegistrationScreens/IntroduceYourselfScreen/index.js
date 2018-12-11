@@ -89,6 +89,9 @@ class IntroduceYourselfScreen extends Component {
               birthdayFormatted: moment(date).format('MM/DD/YYYY')
             })
           }}
+          maximumDate={moment()
+            .subtract(18, 'y')
+            .toDate()}
         />
       </Screen>
     )
