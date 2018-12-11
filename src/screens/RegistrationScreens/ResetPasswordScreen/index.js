@@ -6,10 +6,52 @@ import { RESET_PASSWORD } from './graphql'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PasswordInput from '../../../components/PasswordInput'
+import constraints from './constraints'
+
+const validate = require('validate.js')
 
 export default class ResetPasswordScreen extends Component {
   state = {
-    password: ''
+    password: '',
+    displayErrors: {},
+    errors: {},
+    touched: {}
+  }
+
+  validateForm = isOnChangeText => {
+    const errors = validate(
+      {
+        password: this.state.password
+      },
+      constraints
+    )
+
+    const constructDisplayErrors = () => {
+      const displayErrors = {}
+      Object.keys(errors || {}).forEach(key => {
+        if (this.state.touched[key]) {
+          displayErrors[key] = errors[key]
+        }
+      })
+      return displayErrors
+    }
+
+    const errorsReduced =
+      Object.keys(errors || {}).length <
+      Object.keys(this.state.errors || {}).length
+
+    if (!isOnChangeText || (isOnChangeText && errorsReduced)) {
+      this.setState({ displayErrors: constructDisplayErrors() })
+    }
+    this.setState({ errors })
+  }
+
+  addTouched = key => {
+    const touched = {
+      ...this.state.touched,
+      [key]: true
+    }
+    this.setState({ touched })
   }
 
   onCompleted = ({ resetPassword: { success, error } }) => {
@@ -23,15 +65,21 @@ export default class ResetPasswordScreen extends Component {
   }
 
   render() {
-    const { password } = this.state
+    const { password, errors, displayErrors } = this.state
+    const enabled = !errors
     return (
       <RegistrationScreen
         title="Reset Password"
         subtitle="Your password should contain 1 letter, 1 number, and at least 8 characters."
       >
         <PasswordInput
+          error={displayErrors.password}
           placeholder="New Password"
-          onChangeText={input => this.setState({ password: input })}
+          onChangeText={input =>
+            this.setState({ password: input }, () => this.validateForm(true))
+          }
+          onFocus={() => this.addTouched('password')}
+          onBlur={() => this.validateForm(false)}
         />
         <Mutation
           mutation={RESET_PASSWORD}
@@ -40,7 +88,11 @@ export default class ResetPasswordScreen extends Component {
           onError={error => Alert.alert(error.message)}
         >
           {resetPassword => (
-            <PrimaryButton title="Next" onPress={() => resetPassword()} />
+            <PrimaryButton
+              title="Next"
+              onPress={() => resetPassword()}
+              disabled={!enabled}
+            />
           )}
         </Mutation>
       </RegistrationScreen>

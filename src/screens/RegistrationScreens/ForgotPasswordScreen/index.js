@@ -23,6 +23,7 @@ export default class ForgotPasswordScreen extends Component {
 
   render() {
     const { email } = this.state
+    const enabled = email
     return (
       <RegistrationScreen
         showBack
@@ -43,7 +44,11 @@ export default class ForgotPasswordScreen extends Component {
           }
         >
           {forgotPassword => (
-            <PrimaryButton title="Next" onPress={() => forgotPassword()} />
+            <PrimaryButton
+              title="Next"
+              onPress={() => forgotPassword()}
+              disabled={!enabled}
+            />
           )}
         </Mutation>
       </RegistrationScreen>
