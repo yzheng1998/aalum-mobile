@@ -16,6 +16,15 @@ export default class SignIn extends Component {
     passwordError: ''
   }
 
+  loginUser = async ({ loginUser: { user, token, error } }) => {
+    if (error) {
+      return Alert.alert('Could not sign in', error.message)
+    }
+    await AsyncStorage.setItem('userId', user.id)
+    await AsyncStorage.setItem('token', token)
+    return true
+  }
+
   render() {
     const { passwordError, emailError, email, password } = this.state
     const enabled = email && password
@@ -43,14 +52,7 @@ export default class SignIn extends Component {
         <Mutation
           mutation={LOGIN_USER}
           variables={{ email, password }}
-          onCompleted={async ({ loginUser: { user, token, error } }) => {
-            if (error) {
-              return Alert.alert('Could not sign in', error.message)
-            }
-            await AsyncStorage.setItem('userId', user.id)
-            await AsyncStorage.setItem('token', token)
-            return true
-          }}
+          onCompleted={this.loginUser}
           onError={error => Alert.alert('Could not sign in', error.message)}
         >
           {loginUser => (
