@@ -92,6 +92,9 @@ class IntroduceYourselfScreen extends Component {
           maximumDate={moment()
             .subtract(18, 'y')
             .toDate()}
+          maxDate={moment()
+            .subtract(18, 'y')
+            .toDate()}
         />
       </Screen>
     )
