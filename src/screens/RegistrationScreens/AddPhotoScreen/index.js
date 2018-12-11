@@ -26,7 +26,7 @@ class AddPhotoScreen extends Component {
 
   render() {
     const { photo } = this.state
-    const variables = { ...this.props.state, photo }
+    const variables = { input: { ...this.props.state, photo } }
     return (
       <RegistrationScreen
         showBack
@@ -38,7 +38,7 @@ class AddPhotoScreen extends Component {
         <PhotoUpload callback={this.setPhoto} />
         <Mutation
           mutation={REGISTER_USER}
-          variables={{ variables }}
+          variables={variables}
           onCompleted={this.onCompleted}
           onError={error =>
             Alert.alert("Couldn't register user", error.message)
