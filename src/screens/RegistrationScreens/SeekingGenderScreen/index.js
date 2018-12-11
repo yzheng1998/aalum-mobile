@@ -46,6 +46,7 @@ class SeekingGenderScreen extends Component {
         navigation={this.props.navigation}
         title="Select genders to connect with"
         progress="80%"
+        scrollEnabled
       >
         <GenderButtonList
           genderSelection={genderSelection}

@@ -17,11 +17,16 @@ export default class RegistrationScreen extends Component {
       source,
       imageStyle,
       progress,
+      scrollEnabled,
       ...rest
     } = this.props
     return (
       <SafeAreaView {...rest}>
-        <Screen keyboardShouldPersistTaps="handled" scrollEnabled={false}>
+        <Screen
+          keyboardShouldPersistTaps="handled"
+          scrollEnabled={scrollEnabled || false}
+          alwaysBounceVertical={false}
+        >
           <StatusBar hidden />
           {progress && <ProgressBar progress={progress} />}
           {showBack && <BackButton onPress={() => navigation.goBack()} />}
