@@ -35,6 +35,7 @@ class AddPhotoScreen extends Component {
         title="Add a Photo"
         subtitle="Please upload your favorite photo of yourself! You’ll be able to add and edit photos later."
         progress="95%"
+        scrollEnabled
       >
         <PhotoUpload callback={this.setPhoto} />
         <Mutation

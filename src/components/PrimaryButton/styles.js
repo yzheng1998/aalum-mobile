@@ -6,6 +6,7 @@ export const Button = styled.TouchableOpacity`
   height: 60px;
   margin-left: 32px;
   margin-right: 32px;
+  margin-bottom: 30px;
 `
 
 export const ButtonText = styled.Text`

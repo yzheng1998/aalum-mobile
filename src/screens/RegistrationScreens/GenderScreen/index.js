@@ -42,6 +42,7 @@ class GenderScreen extends Component {
         navigation={this.props.navigation}
         title="Which gender(s) best describes you?"
         progress="66%"
+        scrollEnabled
       >
         <GenderButtonList
           genderSelection={this.state.genderSelection}
