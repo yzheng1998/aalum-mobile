@@ -27,6 +27,7 @@ class AddPhotoScreen extends Component {
   render() {
     const { photo } = this.state
     const variables = { input: { ...this.props.state, photo } }
+    const enabled = photo
     return (
       <RegistrationScreen
         showBack
@@ -49,6 +50,7 @@ class AddPhotoScreen extends Component {
               title="Continue"
               onPress={() => register()}
               style={{ marginTop: 29 }}
+              disabled={!enabled}
             />
           )}
         </Mutation>
