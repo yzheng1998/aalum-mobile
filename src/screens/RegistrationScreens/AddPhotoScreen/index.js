@@ -18,6 +18,12 @@ class AddPhotoScreen extends Component {
 
   setPhoto = photo => this.setState({ photo })
 
+  onCompleted = async ({ register: { user, token } }) => {
+    await AsyncStorage.setItem('token', token)
+    await AsyncStorage.setItem('userId', user.id)
+    this.props.navigation.navigate('Location')
+  }
+
   render() {
     const { photo } = this.state
     const variables = { ...this.props.state, photo }
@@ -33,11 +39,7 @@ class AddPhotoScreen extends Component {
         <Mutation
           mutation={REGISTER_USER}
           variables={{ variables }}
-          onCompleted={async ({ register: { user, token } }) => {
-            await AsyncStorage.setItem('token', token)
-            await AsyncStorage.setItem('userId', user.id)
-            this.props.navigation.navigate('Location')
-          }}
+          onCompleted={this.onCompleted}
           onError={error =>
             Alert.alert("Couldn't register user", error.message)
           }
