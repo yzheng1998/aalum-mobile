@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, View, ScrollView, Platform } from 'react-native'
 import {
   GreyBar,
   TabContainer,
@@ -42,7 +42,11 @@ export default class SignInScreen extends Component {
 
   render() {
     return (
-      <RegistrationScreen source={Logo} imageStyle={imageStyle}>
+      <RegistrationScreen
+        as={Platform.OS === 'ios' ? ScrollView : View}
+        source={Logo}
+        imageStyle={imageStyle}
+      >
         <TabContainer>
           <GreyBar />
           <TabView

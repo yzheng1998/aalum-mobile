@@ -18,6 +18,7 @@ export default class RegistrationScreen extends Component {
       imageStyle,
       progress,
       scrollEnabled,
+      as,
       ...rest
     } = this.props
     return (
@@ -26,6 +27,7 @@ export default class RegistrationScreen extends Component {
           keyboardShouldPersistTaps="handled"
           scrollEnabled={scrollEnabled || false}
           alwaysBounceVertical={false}
+          as={as}
         >
           <StatusBar hidden />
           {progress && <ProgressBar progress={progress} />}
