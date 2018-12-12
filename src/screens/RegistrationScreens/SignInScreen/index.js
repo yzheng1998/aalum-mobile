@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, View, ScrollView, Platform } from 'react-native'
 import {
   GreyBar,
   TabContainer,
@@ -17,18 +17,17 @@ import SignUp from './components/SignUp'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 
 export default class SignInScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      index: 0,
-      routes: [
-        { key: 'first', title: 'Sign In' },
-        { key: 'second', title: 'Sign Up' }
-      ],
-      FirstRoute: () => <SignIn navigation={props.navigation} />,
-      SecondRoute: () => <SignUp navigation={props.navigation} />
-    }
+  state = {
+    index: 0,
+    routes: [
+      { key: 'first', title: 'Sign In' },
+      { key: 'second', title: 'Sign Up' }
+    ]
   }
+
+  FirstRoute = () => <SignIn navigation={this.props.navigation} />
+
+  SecondRoute = () => <SignUp navigation={this.props.navigation} />
 
   renderTabBar = props => (
     <TabBar
@@ -42,16 +41,19 @@ export default class SignInScreen extends Component {
   )
 
   render() {
-    const { FirstRoute, SecondRoute } = this.state
     return (
-      <RegistrationScreen source={Logo} imageStyle={imageStyle}>
+      <RegistrationScreen
+        as={Platform.OS === 'ios' ? ScrollView : View}
+        source={Logo}
+        imageStyle={imageStyle}
+      >
         <TabContainer>
           <GreyBar />
           <TabView
             navigationState={this.state}
             renderScene={SceneMap({
-              first: FirstRoute,
-              second: SecondRoute
+              first: this.FirstRoute,
+              second: this.SecondRoute
             })}
             onIndexChange={index => this.setState({ index })}
             initialLayout={{

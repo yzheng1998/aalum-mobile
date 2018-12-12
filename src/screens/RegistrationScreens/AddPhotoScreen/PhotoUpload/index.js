@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import Camera from 'react-native-vector-icons/Entypo'
 import ImagePicker from 'react-native-image-crop-picker'
-import { Platform } from 'react-native'
+import { Platform, Alert } from 'react-native'
 import RNFetchBlob from 'rn-fetch-blob'
 
 import { PhotoUploader, MainPhoto, PlusSign, PlusSignWrapper } from './styles'
@@ -61,17 +61,29 @@ class PhotoUpload extends Component {
     }
   }
 
+  handleError = error => Alert.alert('Could not upload photo', error.message)
+
   render() {
     const { image, imageUrl } = this.state
     return (
-      <Mutation mutation={SIGN_S3_URL} onCompleted={this.handleComplete}>
+      <Mutation
+        mutation={SIGN_S3_URL}
+        onCompleted={this.handleComplete}
+        onError={this.handleError}
+      >
         {signS3Url => (
           <PhotoUploader
             onPress={() => this.onPhotoUploadPress(signS3Url)}
             border={imageUrl}
           >
             {imageUrl ? (
-              <MainPhoto source={{ uri: image.sourceURL }} />
+              <MainPhoto
+                source={
+                  Platform.OS === 'android'
+                    ? { uri: image.path }
+                    : { uri: image.sourceURL }
+                }
+              />
             ) : (
               <Camera name="camera" size={90} color="#bdbdbd" />
             )}

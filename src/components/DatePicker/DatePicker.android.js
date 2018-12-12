@@ -7,12 +7,13 @@ export default class DatePicker extends Component {
     this.state = {
       error: ''
     }
-    const { setDate, doneOnPress, date } = props
+    const { setDate, doneOnPress, date, maxDate } = props
     this.openDatePicker = async () => {
       try {
         const { action, year, month, day } = await DatePickerAndroid.open({
           date,
-          mode: 'spinner'
+          mode: 'spinner',
+          maxDate
         })
         if (action !== DatePickerAndroid.dismissedAction) {
           setDate(new Date(year, month, day))
