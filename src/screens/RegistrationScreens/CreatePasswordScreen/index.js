@@ -72,8 +72,16 @@ class CreatePasswordScreen extends Component {
           }
           onFocus={() => this.addTouched('password')}
           onBlur={() => this.validateForm(false)}
+          autoFocus
+          returnKeyType="done"
+          onSubmitEditing={() => {
+            this.button.onPress()
+          }}
         />
         <PrimaryButton
+          ref={button => {
+            this.button = button
+          }}
           title="Next"
           onPress={() => {
             this.props.addPassword({ key: 'password', value: password })

@@ -31,19 +31,32 @@ export default class SignIn extends Component {
     return (
       <RegistrationScreen style={{ marginTop: 66 }}>
         <PrimaryInput
+          autoFocus
           error={emailError}
           placeholder="Email"
           icon={<Icon name="person" size={20} color="rgb(181, 171, 202)" />}
           autoCapitalize="none"
           onChangeText={text => this.setState({ email: text })}
+          returnKeyType="next"
+          onSubmitEditing={() => {
+            this.password.focus()
+          }}
+          blurOnSubmit={false}
         />
         <PrimaryInput
+          ref={input => {
+            this.password = input
+          }}
           secureTextEntry
           error={passwordError}
           placeholder="Password"
           icon={<Icon name="lock" size={20} color="rgb(181, 171, 202)" />}
           autoCapitalize="none"
+          returnKeyType="done"
           onChangeText={text => this.setState({ password: text })}
+          onSubmitEditing={() => {
+            this.signInButton.onPress()
+          }}
         />
         <TextButton
           onPress={() => this.props.navigation.navigate('ForgotPassword')}
@@ -57,6 +70,9 @@ export default class SignIn extends Component {
         >
           {loginUser => (
             <PrimaryButton
+              ref={button => {
+                this.signInButton = button
+              }}
               title="Sign In"
               style={{ marginTop: 15 }}
               disabled={!enabled}

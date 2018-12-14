@@ -9,6 +9,10 @@ import {
 } from './styles'
 
 class PrimaryInput extends Component {
+  focus = () => {
+    this.textInput.focus()
+  }
+
   render() {
     const { as, onPress, icon, title, error, ...rest } = this.props
     return (
@@ -16,6 +20,9 @@ class PrimaryInput extends Component {
         {title && <Title error={error}>{title}</Title>}
         <RoundContainer as={as} onPress={onPress} error={error}>
           <InputField
+            ref={input => {
+              this.textInput = input
+            }}
             autoCorrect={false}
             icon={icon}
             autoCapitalize="none"

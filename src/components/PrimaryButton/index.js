@@ -4,6 +4,10 @@ import { Button, ButtonText, gradientStyle } from './styles'
 import theme from '../../../theme'
 
 export default class PrimaryButton extends Component {
+  onPress = () => {
+    this.props.onPress()
+  }
+
   render() {
     const { title, disabled, ...rest } = this.props
     const { gradientLeft, gradientRight } = theme.colors

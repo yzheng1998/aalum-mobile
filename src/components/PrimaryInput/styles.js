@@ -21,7 +21,6 @@ export const Title = styled.Text`
 
 export const InputField = styled.TextInput`
   width: ${({ icon }) => (icon ? '90%' : '100%')};
-  line-height: 16px;
   font-size: 14px;
   font-family: ${themeGet('fonts.bodyText')};
   color: ${themeGet('colors.charcoal')};
