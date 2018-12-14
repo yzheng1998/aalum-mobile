@@ -61,7 +61,7 @@ class AddPhotoScreen extends Component {
 }
 
 const AddPhoto = connect(
-  mapStateToProps
-  // mapDispatchToProps
+  mapStateToProps,
+  null
 )(AddPhotoScreen)
 export default AddPhoto

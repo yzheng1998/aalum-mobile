@@ -13,20 +13,29 @@ import { addInfo } from '../../../redux/actions'
 import DatePicker from '../../../components/DatePicker/DatePicker'
 /* eslint-enable */
 
+const mapStateToProps = state => ({
+  name: state.name,
+  birthday: state.birthday
+})
+
 const mapDispatchToProps = dispatch => ({
   addInfo: info => dispatch(addInfo(info))
 })
 
 class IntroduceYourselfScreen extends Component {
-  state = {
-    name: '',
-    birthday: '',
-    birthdayFormatted: '',
-    showBirthdayPicker: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: this.props.name || '',
+      birthday: '',
+      birthdayFormatted: this.props.birthday || '',
+      showBirthdayPicker: false
+    }
   }
+
   render() {
     const { birthday, showBirthdayPicker, birthdayFormatted, name } = this.state
-    const enabled = name && birthday
+    const enabled = name && birthdayFormatted
     return (
       <Screen>
         <RegistrationScreen
@@ -41,6 +50,20 @@ class IntroduceYourselfScreen extends Component {
               placeholder="Enter your first name"
               autoCapitalize="words"
               onChangeText={text => this.setState({ name: text })}
+              defaultValue={this.state.name}
+              autoFocus
+              returnKeyType="next"
+              onFocus={() => {
+                this.setState({
+                  showBirthdayPicker: false
+                })
+              }}
+              onSubmitEditing={() => {
+                Keyboard.dismiss()
+                this.setState({ showBirthdayPicker: true, birthday }, () =>
+                  this.datePicker.openDatePicker()
+                )
+              }}
             />
             <PrimaryInput
               title="Birthday"
@@ -55,11 +78,17 @@ class IntroduceYourselfScreen extends Component {
                   this.datePicker.openDatePicker()
                 )
               }}
-              style={birthdayFormatted && { lineHeight: 20 }} // corrects some visual bugs
+              style={birthdayFormatted && { lineHeight: 20 }}
             />
             <PrimaryButton
+              ref={button => {
+                this.button = button
+              }}
               title="Continue"
               onPress={() => {
+                this.setState({
+                  showBirthdayPicker: false
+                })
                 this.props.addInfo({ key: 'name', value: name })
                 this.props.addInfo({
                   key: 'birthday',
@@ -77,11 +106,14 @@ class IntroduceYourselfScreen extends Component {
           }}
           visible={showBirthdayPicker}
           mode="date"
-          date={birthday || new Date(1996, 0, 1)}
+          date={new Date(birthdayFormatted) || new Date(1996, 0, 1)}
           doneOnPress={() => {
             this.setState({
               showBirthdayPicker: false
             })
+            if (enabled) {
+              this.button.onPress()
+            }
           }}
           setDate={date => {
             this.setState({
@@ -102,7 +134,7 @@ class IntroduceYourselfScreen extends Component {
 }
 
 const IntroduceYourself = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(IntroduceYourselfScreen)
 export default IntroduceYourself

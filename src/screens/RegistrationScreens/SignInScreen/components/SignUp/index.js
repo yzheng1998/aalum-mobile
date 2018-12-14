@@ -62,6 +62,15 @@ class SignUp extends Component {
     this.setState({ touched })
   }
 
+  onCompleted = ({ sendVerificationCode: { error, code } }) => {
+    if (error) return Alert.alert('Could not sign in', error.message)
+    this.props.addEmail({ key: 'email', value: this.state.email })
+    this.props.navigation.navigate('Verification', {
+      code: code.toString()
+    })
+    return true
+  }
+
   render() {
     const { displayErrors, errors, email } = this.state
     const enabled = !errors
@@ -78,6 +87,10 @@ class SignUp extends Component {
           }}
           onFocus={() => this.addTouched('email')}
           onBlur={() => this.validateForm(false)}
+          returnKeyType="done"
+          onSubmitEditing={() => {
+            this.SignUpButton.onPress()
+          }}
         />
         <BottomText>
           AALUM helps you find romantic connections with members of your college
@@ -87,18 +100,14 @@ class SignUp extends Component {
         <Mutation
           mutation={VERIFY_EMAIL}
           variables={{ email }}
-          onCompleted={({ sendVerificationCode: { error, code } }) => {
-            if (error) return Alert.alert('Could not sign in', error.message)
-            this.props.addEmail({ key: 'email', value: email })
-            this.props.navigation.navigate('Verification', {
-              code: code.toString()
-            })
-            return true
-          }}
+          onCompleted={this.onCompleted}
           onError={error => Alert.alert('Could not sign in', error.message)}
         >
           {sendVerificationCode => (
             <PrimaryButton
+              ref={button => {
+                this.SignUpButton = button
+              }}
               title="Next"
               onPress={() => sendVerificationCode()}
               style={{ marginTop: 30 }}
