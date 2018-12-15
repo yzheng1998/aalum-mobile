@@ -75,7 +75,7 @@ class CreatePasswordScreen extends Component {
           autoFocus
           returnKeyType="done"
           onSubmitEditing={() => {
-            this.button.onPress()
+            if (enabled) this.button.onPress()
           }}
         />
         <PrimaryButton

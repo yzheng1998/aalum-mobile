@@ -111,9 +111,7 @@ class IntroduceYourselfScreen extends Component {
             this.setState({
               showBirthdayPicker: false
             })
-            if (enabled) {
-              this.button.onPress()
-            }
+            if (enabled) this.button.onPress()
           }}
           setDate={date => {
             this.setState({

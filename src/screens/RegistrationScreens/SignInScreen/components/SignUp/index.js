@@ -89,8 +89,9 @@ class SignUp extends Component {
           onBlur={() => this.validateForm(false)}
           returnKeyType="done"
           onSubmitEditing={() => {
-            this.SignUpButton.onPress()
+            if (enabled) this.SignUpButton.onPress()
           }}
+          keyboardType="email-address"
         />
         <BottomText>
           AALUM helps you find romantic connections with members of your college
