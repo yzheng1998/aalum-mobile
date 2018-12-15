@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Message } from './styles'
 import { connect } from 'react-redux'
 import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
@@ -34,6 +35,7 @@ class GenderScreen extends Component {
     )
     const numberSelected = filteredGenders.length
     const enabled = numberSelected > 0
+    const disabled = numberSelected >= 5
     const finalGenders = filteredGenders.map(gender => gender.title)
     const genderEnums = finalGenders.map(gender => GenderEnumsObj[gender])
     return (
@@ -47,10 +49,12 @@ class GenderScreen extends Component {
         <GenderButtonList
           genderSelection={this.state.genderSelection}
           selectGender={this.selectGender}
-          disabled={numberSelected >= 5}
+          disabled={disabled}
         />
+        <Message disabled={disabled}>Select a maximum of 5 genders</Message>
         <PrimaryButton
           title="Continue"
+          style={{ marginTop: 40 }}
           onPress={() => {
             this.props.addGenders({ key: 'genders', value: genderEnums })
             this.props.navigation.navigate('Seeking', { genders: finalGenders })

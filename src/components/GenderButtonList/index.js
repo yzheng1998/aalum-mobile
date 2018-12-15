@@ -13,7 +13,7 @@ export default class GenderButtonList extends Component {
             title={gender.title}
             selectGender={() => selectGender(index)}
             selected={allSelected || gender.selected}
-            disabled={disabled}
+            disabled={disabled && !gender.selected}
           />
         ))}
       </ButtonContainer>

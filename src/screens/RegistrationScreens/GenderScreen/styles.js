@@ -1,5 +1,10 @@
 import styled from 'styled-components'
+import { themeGet } from 'styled-system'
 
-export const Screen = styled.View`
-  flex: 1;
+export const Message = styled.Text`
+  margin-left: 30px;
+  color: ${props =>
+    props.disabled ? themeGet('colors.black') : 'transparent'};
+  font-family: ${themeGet('fonts.title')};
+  font-size: 13px;
 `
