@@ -3,6 +3,7 @@ import PrimaryInput from '../PrimaryInput'
 import { SecurityToggle } from './styles'
 import Icon from 'react-native-vector-icons/Entypo'
 import theme from '../../../theme'
+import { buttonRadius } from '../../../constants'
 
 export default class PasswordInput extends Component {
   state = {
@@ -18,7 +19,10 @@ export default class PasswordInput extends Component {
         secureTextEntry={secure}
         {...rest}
         icon={
-          <SecurityToggle onPress={() => this.setState({ secure: !secure })}>
+          <SecurityToggle
+            touchSlop={buttonRadius}
+            onPress={() => this.setState({ secure: !secure })}
+          >
             <Icon
               name={secure ? 'eye' : 'eye-with-line'}
               size={20}
