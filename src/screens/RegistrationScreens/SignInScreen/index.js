@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, View, ScrollView, Platform } from 'react-native'
+import { Dimensions, View, ScrollView, Platform, Keyboard } from 'react-native'
 import {
   GreyBar,
   TabContainer,
@@ -55,7 +55,10 @@ export default class SignInScreen extends Component {
               first: this.FirstRoute,
               second: this.SecondRoute
             })}
-            onIndexChange={index => this.setState({ index })}
+            onIndexChange={index => {
+              Keyboard.dismiss()
+              this.setState({ index })
+            }}
             initialLayout={{
               width: Dimensions.get('window').width,
               height: Dimensions.get('window').height

@@ -22,7 +22,7 @@ export default class SignIn extends Component {
     }
     await AsyncStorage.setItem('userId', user.id)
     await AsyncStorage.setItem('token', token)
-    return true
+    return Alert.alert('Successfully signed in!')
   }
 
   render() {
@@ -41,7 +41,7 @@ export default class SignIn extends Component {
           onSubmitEditing={() => {
             this.password.focus()
           }}
-          blurOnSubmit={false}
+          keyboardType="email-address"
         />
         <PrimaryInput
           ref={input => {
