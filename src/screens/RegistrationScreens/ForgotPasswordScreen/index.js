@@ -34,6 +34,12 @@ export default class ForgotPasswordScreen extends Component {
         <PrimaryInput
           placeholder="Enter your email"
           onChangeText={input => this.setState({ email: input })}
+          autoFocus
+          onSubmitEditing={() => {
+            if (enabled) this.button.onPress()
+          }}
+          returnKeyType="done"
+          keyboardType="email-address"
         />
         <Mutation
           mutation={FORGOT_PASSWORD}
@@ -45,6 +51,9 @@ export default class ForgotPasswordScreen extends Component {
         >
           {forgotPassword => (
             <PrimaryButton
+              ref={button => {
+                this.button = button
+              }}
               title="Next"
               onPress={() => forgotPassword()}
               disabled={!enabled}

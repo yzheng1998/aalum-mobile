@@ -80,6 +80,11 @@ export default class ResetPasswordScreen extends Component {
           }
           onFocus={() => this.addTouched('password')}
           onBlur={() => this.validateForm(false)}
+          autoFocus
+          onSubmitEditing={() => {
+            if (enabled) this.button.onPress()
+          }}
+          returnKeyType="done"
         />
         <Mutation
           mutation={RESET_PASSWORD}
@@ -89,6 +94,9 @@ export default class ResetPasswordScreen extends Component {
         >
           {resetPassword => (
             <PrimaryButton
+              ref={button => {
+                this.button = button
+              }}
               title="Next"
               onPress={() => resetPassword()}
               disabled={!enabled}
