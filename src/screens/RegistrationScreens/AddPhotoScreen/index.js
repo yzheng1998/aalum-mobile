@@ -37,7 +37,7 @@ class AddPhotoScreen extends Component {
         progress="95%"
         scrollEnabled
       >
-        <PhotoUpload callback={this.setPhoto} />
+        <PhotoUpload photo={this.state.photo} setPhoto={this.setPhoto} />
         <Mutation
           mutation={REGISTER_USER}
           variables={variables}
