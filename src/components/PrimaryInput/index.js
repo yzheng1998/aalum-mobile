@@ -16,7 +16,7 @@ class PrimaryInput extends Component {
   render() {
     const { as, onPress, icon, title, error, ...rest } = this.props
     return (
-      <MainContainer>
+      <MainContainer activeOpacity={1} onPress={this.focus}>
         {title && <Title error={error}>{title}</Title>}
         <RoundContainer as={as} onPress={onPress} error={error}>
           <InputField
