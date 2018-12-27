@@ -32,15 +32,8 @@ class PhotoUpload extends Component {
   }
 
   parseVariables = imageData => {
-    if (Platform.OS === 'ios') {
-      return {
-        signS3UrlInput: {
-          fileName: imageData.filename,
-          contentType: imageData.mime
-        }
-      }
-    }
-    const fileName = imageData.path.split('/').pop()
+    const fileName =
+      Platform.OS === 'ios' ? imageData.path : imageData.path.split('/').pop()
     return {
       signS3UrlInput: {
         fileName,
