@@ -6,9 +6,14 @@ import store from './src/redux/store'
 import { client } from './src/apollo'
 import RootNavigator from './src/navigation/RootNavigator'
 import theme from './theme'
+import { YellowBox } from 'react-native'
 
 export default class App extends Component {
   render() {
+    YellowBox.ignoreWarnings([
+      'Error: User cancelled image selection',
+      'Remote debugger'
+    ])
     return (
       <ApolloProvider client={client}>
         <Provider store={store}>
