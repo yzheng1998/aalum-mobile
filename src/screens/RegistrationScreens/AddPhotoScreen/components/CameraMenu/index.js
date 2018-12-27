@@ -31,7 +31,8 @@ export default class CameraMenu extends Component {
       ImagePicker.openCamera({
         width: 300,
         height: 300,
-        cropping: true
+        cropping: true,
+        useFrontCamera: true
       }).then(imageData => {
         const variables = this.parseVariables(imageData)
         updateState({ imageData }, () => {
