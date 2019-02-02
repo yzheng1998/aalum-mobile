@@ -1,6 +1,8 @@
-# AAlum Mobile
+# AAlum Mobile App
 
-To start app:
+A dating app that is exclusive for college students and college alumni.
+
+### Running
 
 ```bash
 npm i
@@ -9,17 +11,9 @@ cd ..
 npm run ios
 ```
 
-
-# Photoball Website
-
-A website that allows for customization and displays Photoball's merchandise!
-
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-  - [Running the Project Locally](#running)
 - [Project Layout](#project-layout)
-  - [Project Structure](#project-structure)
   - [Important Directories and Files](#important-directories-and-files)
 - [Work Flow](#work-flow)
   - [Zen Hub](#zenhub)
@@ -35,48 +29,6 @@ A website that allows for customization and displays Photoball's merchandise!
   - [Git Pull Requests](#git-pull-requests)
     - [Creating a Pull Request](#creating-a-pull-request)
     - [Formatting a Pull Request](#formatting-a-pull-request)
-
-## Getting Started
-
-### Running
-
-```bash
-$ npm i
-```
-
-```bash
-$ npm run start
-```
-
-## Project Layout
-
-### Project Structure
-
-```
-photoball-retail-website
-└───node_modules
-|
-└───public
-│
-└───src
-│   │   App.js
-│   │   config.js
-|   |   index.js
-|   |   theme.js
-│   │
-│   └───containers
-│   |   └───Home
-│   |
-│   └───components
-|
-|   .eslintrc.json
-|   .gitignore
-|   .prettierrc
-|   .travis.yml
-|   package-lock.json
-|   package.json
-|   README.md
-```
 
 ### Important Directories and Files
 
@@ -100,11 +52,6 @@ photoball-retail-website
 - #### theme.js
 
   - Used to store constants that are important to style (like colors, fonts, widths, heights, etc.). This is also where we load our fonts.
-
-- #### containers
-
-  - Used to store the different "Pages" of the app.
-    **Note:** Pages are determined by url. If you can reach a component by going to a specific url and that component is the root of that url, then it should go into containers.
 
 - #### components
   - The top level components folder is used to store components that will be used throughout the app. If a component is used in more than one container, then it should be in this folder.
