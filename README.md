@@ -11,6 +11,9 @@ cd ..
 npm run ios
 ```
 
+### Figma
+https://www.figma.com/file/bvJwaT2B7N37d3Rs7NVUHUfO/Wireframes?node-id=221%3A0
+
 ## Table of Contents
 
 - [Project Layout](#project-layout)
