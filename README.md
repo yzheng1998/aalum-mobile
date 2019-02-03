@@ -11,9 +11,14 @@ cd ..
 npm run ios
 ```
 
-If you don't have cocoapods, first run:
+If you don't have cocoapods installed, first run:
 ```bash
 sudo gem install cocoapods
+```
+
+If you don't have react-native installed, first run: 
+```bash
+sudo npm install -g react-native-cli
 ```
 
 Install Xcode
