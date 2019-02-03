@@ -11,6 +11,14 @@ cd ..
 npm run ios
 ```
 
+If you don't have cocoapods, first run:
+```bash
+sudo gem install cocoapods
+```
+
+Install XCode
+https://developer.apple.com/xcode/
+
 ### Figma
 https://www.figma.com/file/bvJwaT2B7N37d3Rs7NVUHUfO/Wireframes?node-id=221%3A0
 
