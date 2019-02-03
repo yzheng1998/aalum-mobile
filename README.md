@@ -16,8 +16,11 @@ If you don't have cocoapods, first run:
 sudo gem install cocoapods
 ```
 
-Install XCode
+Install Xcode
 https://developer.apple.com/xcode/
+
+Open project in Xcode.
+Select Xcode menu, then Preferences, then Locations tab. Select your Xcode version from the dropdown and exit Xcode.
 
 ### Figma
 https://www.figma.com/file/bvJwaT2B7N37d3Rs7NVUHUfO/Wireframes?node-id=221%3A0
