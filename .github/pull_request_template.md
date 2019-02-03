@@ -1,3 +1,3 @@
 resolves
 
-**Time Spent:**
+**Time Spent (hours):**
