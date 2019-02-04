@@ -18,12 +18,11 @@ export default class SignIn extends Component {
 
   loginUser = async ({ loginUser: { user, token, error } }) => {
     if (error) {
-      return Alert.alert('Could not sign in', error.message)
+      Alert.alert('Could not sign in', error.message)
     }
     await AsyncStorage.setItem('userId', user.id)
     await AsyncStorage.setItem('token', token)
     this.props.navigation.navigate('Swipe')
-    return true
   }
 
   render() {

@@ -5,11 +5,6 @@ import DiscoverStack from './DiscoverStack'
 import { AsyncStorage, Alert } from 'react-native'
 import LoadingWrapper from '../components/LoadingWrapper'
 
-const isSignedIn = async () => {
-  const token = await AsyncStorage.getItem('token')
-  return token !== null
-}
-
 const createRootNavigator = (loggedIn = false) =>
   createSwitchNavigator(
     {
@@ -33,10 +28,16 @@ export default class RootNavigator extends Component {
   }
 
   componentDidMount() {
-    isSignedIn()
+    this.isSignedIn()
       .then(res => this.setState({ signedIn: res, loading: false }))
       .catch(() => Alert.alert('An error occurred'))
   }
+
+  isSignedIn = async () => {
+    const token = await AsyncStorage.getItem('token')
+    return !token
+  }
+
   render() {
     const { loading, signedIn } = this.state
     if (loading) {
