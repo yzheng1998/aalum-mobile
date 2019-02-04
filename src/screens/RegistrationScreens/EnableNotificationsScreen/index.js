@@ -13,7 +13,11 @@ export default class EnableNotificationsScreen extends Component {
         source={NotificationGraphic}
         imageStyle={imageStyle}
       >
-        <PrimaryButton title="Allow Notifications" style={{ marginTop: 29 }} />
+        <PrimaryButton
+          title="Allow Notifications"
+          style={{ marginTop: 29 }}
+          onPress={() => this.props.navigation.navigate('Swipe')}
+        />
       </RegistrationScreen>
     )
   }
