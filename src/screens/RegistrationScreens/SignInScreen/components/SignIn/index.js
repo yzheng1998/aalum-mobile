@@ -22,7 +22,8 @@ export default class SignIn extends Component {
     }
     await AsyncStorage.setItem('userId', user.id)
     await AsyncStorage.setItem('token', token)
-    return Alert.alert('Successfully signed in!')
+    this.props.navigation.navigate('Swipe')
+    return true
   }
 
   render() {
