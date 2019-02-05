@@ -8,7 +8,11 @@ const theme = {
     darkGrey: '#8F8F8F',
     charcoal: '#333333',
     offWhite: '#F9F9F9',
-    error: '#DA2752'
+    error: '#DA2752',
+    pureBlack: '#000000',
+    green: '#219653',
+    mediumGrey: '#828282',
+    shadow: 'rgba(0, 0, 0, 0.15)'
   },
   fonts: {
     heading: 'Montserrat-Bold',
