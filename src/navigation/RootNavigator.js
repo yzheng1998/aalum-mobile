@@ -35,7 +35,7 @@ export default class RootNavigator extends Component {
 
   isSignedIn = async () => {
     const token = await AsyncStorage.getItem('token')
-    return !token
+    return token !== null
   }
 
   render() {
