@@ -12,7 +12,8 @@ const theme = {
     pureBlack: '#000000',
     green: '#219653',
     mediumGrey: '#828282',
-    shadow: 'rgba(0, 0, 0, 0.15)'
+    shadow: 'rgba(0, 0, 0, 0.15)',
+    inactiveText: '#ADADAD'
   },
   fonts: {
     heading: 'Montserrat-Bold',
