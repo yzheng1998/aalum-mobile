@@ -10,6 +10,7 @@ export default class SearchBar extends Component {
       text: ''
     }
   }
+
   render() {
     return (
       <Container>
