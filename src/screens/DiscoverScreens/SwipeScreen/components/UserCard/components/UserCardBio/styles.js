@@ -3,8 +3,8 @@ import { themeGet } from 'styled-system'
 
 export const Container = styled.View`
   margin-top: -45px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 25px;
+  margin-right: 25px;
   padding-left: 15px;
   box-shadow: 0px 6px 25px ${themeGet('colors.shadow')};
   background-color: white;
