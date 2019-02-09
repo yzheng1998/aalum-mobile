@@ -4,7 +4,7 @@ import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import GenderButtonList from '../../../components/GenderButtonList'
-import { GenderList, GenderEnumsObj } from '../../../../constants'
+import { GenderList, stringToEnum } from '../../../../enumMappings'
 import { ToggleContainer, Toggle, ToggleText } from './styles'
 import theme from '../../../../theme'
 
@@ -38,7 +38,9 @@ class SeekingGenderScreen extends Component {
     const numberSelected = filteredGenders.length
     const enabled = numberSelected > 0
     const finalGenders = filteredGenders.map(gender => gender.title)
-    const genderEnums = finalGenders.map(gender => GenderEnumsObj[gender])
+    const genderEnums = finalGenders.map(gender =>
+      stringToEnum('gender', gender)
+    )
     const allSelected = numberSelected === genderSelection.length
     return (
       <RegistrationScreen
