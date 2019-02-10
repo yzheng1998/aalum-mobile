@@ -55,12 +55,47 @@ const interestStringToEnumObj = {
 export const interestList = Object.keys(interestStringToEnumObj)
 
 // merges all individual objects into one object
+
+const degreeFullStringToEnumObj = {
+  'Current College Student': 'CURRENT',
+  "Bachelor's of Arts Degree": 'BACHLORSART',
+  "Bachelor's of Science": 'BACHLORSSCIENCE',
+  "Master's Degree": 'MASTERS',
+  Doctorate: 'DOCTORATE',
+  "Associate's Degree": 'ASSOCIATES'
+}
+
+export const degreeFullList = Object.keys(degreeFullStringToEnumObj)
+
+const degreeAbbrStringToEnumObj = {
+  Current: 'CURRENT',
+  'B.A.': 'BACHLORSART',
+  'B.S.': 'BACHLORSSCIENCE',
+  'M.S.': 'MASTERS',
+  PhD: 'DOCTORATE',
+  "Associate's": 'ASSOCIATES'
+}
+
+export const degreeAbbrList = Object.keys(degreeAbbrStringToEnumObj)
+
+const professionStringToEnumObj = {
+  Doctor: 'DOCTOR',
+  Lawyer: 'LAWYER',
+  Engineer: 'ENGINEER',
+  Banker: 'BANKER'
+}
+
+export const professionList = Object.keys(professionStringToEnumObj)
+
 const stringToEnumObj = {
   ...genderStringToEnumObj,
   ...ethnicityStringToEnumObj,
   ...languageStringToEnumObj,
   ...bodyTypeStringToEnumObj,
-  ...interestStringToEnumObj
+  ...interestStringToEnumObj,
+  ...degreeFullStringToEnumObj,
+  ...degreeAbbrStringToEnumObj,
+  ...professionStringToEnumObj
 }
 
 // creates inversion of stringToEnumObj to make an enumToString Obj
