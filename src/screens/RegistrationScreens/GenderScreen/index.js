@@ -5,7 +5,7 @@ import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import GenderButtonList from '../../../components/GenderButtonList'
-import { GenderList, GenderEnumsObj } from '../../../../constants'
+import { GenderList, stringToEnum } from '../../../../enumMappings'
 
 const mapDispatchToProps = dispatch => ({
   addGenders: genders => dispatch(addInfo(genders))
@@ -37,7 +37,9 @@ class GenderScreen extends Component {
     const enabled = numberSelected > 0
     const disabled = numberSelected >= 5
     const finalGenders = filteredGenders.map(gender => gender.title)
-    const genderEnums = finalGenders.map(gender => GenderEnumsObj[gender])
+    const genderEnums = finalGenders.map(gender =>
+      stringToEnum('gender', gender)
+    )
     return (
       <RegistrationScreen
         showBack

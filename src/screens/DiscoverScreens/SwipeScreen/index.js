@@ -18,7 +18,7 @@ export default class SwipeScreen extends Component {
       <Screen>
         <Button title="Logout" onPress={this.logout} />
         <SearchButton navigation={this.props.navigation} />
-        <UserCard picture={SAMPLE_URL} />
+        <UserCard navigation={this.props.navigation} picture={SAMPLE_URL} />
       </Screen>
     )
   }
