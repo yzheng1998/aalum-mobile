@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserSummary from './components/UserSummary'
 import UserDetails from './components/UserDetails'
 import UserBio from './components/UserBio'
 import MatchButton from '../../../components/MatchButton'
@@ -17,8 +18,15 @@ export default class UserScreen extends Component {
   render() {
     return (
       <Screen>
-        <UserPictureCarousel
-          userPictures={userPictures}
+        <UserPictureCarousel userPictures={userPictures} />
+        <UserSummary
+          name="Clark"
+          age={37}
+          distance={0.1}
+          school="Harvard University"
+          degree="BACHELORSARTS"
+          year="2013"
+          profession="ENGINEER"
         />
         <UserBio info={SAMPLE_TEXT} />
         <UserDetails
