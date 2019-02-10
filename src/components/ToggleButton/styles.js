@@ -3,7 +3,8 @@ import theme from '../../../theme'
 
 export const Button = styled.TouchableOpacity`
   border: 3px solid
-    ${props => (props.selected ? theme.colors.gradientLeft : theme.colors.grey)};
+    ${props =>
+      props.isSelected ? theme.colors.gradientLeft : theme.colors.grey};
   border-radius: 15px;
   margin-right: 5px;
   margin-left: 5px;
@@ -14,7 +15,7 @@ export const Button = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
   font-family: ${theme.fonts.title};
   color: ${props =>
-    props.selected ? theme.colors.gradientLeft : theme.colors.grey};
+    props.isSelected ? theme.colors.gradientLeft : theme.colors.grey};
   font-size: 18px;
   align-self: center;
   margin-left: 20px;
