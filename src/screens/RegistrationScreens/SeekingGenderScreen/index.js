@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
-import GenderButtonList from '../../../components/GenderButtonList'
+import ToggleButtonGroup from '../../../components/ToggleButtonGroup'
 import { GenderList, stringToEnum } from '../../../../enumMappings'
 import { ToggleContainer, Toggle, ToggleText } from './styles'
 import theme from '../../../../theme'
@@ -50,9 +50,9 @@ class SeekingGenderScreen extends Component {
         progress="80%"
         scrollEnabled
       >
-        <GenderButtonList
-          genderSelection={genderSelection}
-          selectGender={this.selectGender}
+        <ToggleButtonGroup
+          buttonSelection={genderSelection}
+          select={this.selectGender}
           allSelected={allSelected}
         />
         <ToggleContainer>

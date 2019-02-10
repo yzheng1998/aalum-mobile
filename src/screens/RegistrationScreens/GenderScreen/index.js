@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
-import GenderButtonList from '../../../components/GenderButtonList'
+import ToggleButtonGroup from '../../../components/ToggleButtonGroup'
 import { GenderList, stringToEnum } from '../../../../enumMappings'
 
 const mapDispatchToProps = dispatch => ({
@@ -48,9 +48,9 @@ class GenderScreen extends Component {
         progress="66%"
         scrollEnabled
       >
-        <GenderButtonList
-          genderSelection={this.state.genderSelection}
-          selectGender={this.selectGender}
+        <ToggleButtonGroup
+          buttonSelection={this.state.genderSelection}
+          select={this.selectGender}
           disabled={disabled}
         />
         <Message disabled={disabled}>Select a maximum of 5 genders</Message>
