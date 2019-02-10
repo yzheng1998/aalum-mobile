@@ -1,16 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container, NameText, LocationText, EducationText } from './styles'
 
-class UserSearchCardDetails extends Component {
-  render() {
-    return (
-      <Container>
-        <NameText>Arthur, 39</NameText>
-        <LocationText>Atlantis, FL</LocationText>
-        <EducationText>University of Florida, B.A. 2001</EducationText>
-      </Container>
-    )
-  }
-}
+const UserSearchCardDetails = ({
+  name,
+  age,
+  location,
+  school,
+  degree,
+  year
+}) => (
+  <Container>
+    <NameText>{`${name}, ${age}`}</NameText>
+    <LocationText>{location}</LocationText>
+    <EducationText>{`${school}, ${degree} ${year}`}</EducationText>
+  </Container>
+)
 
 export default UserSearchCardDetails
