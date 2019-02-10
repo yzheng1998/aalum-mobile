@@ -23,17 +23,17 @@ const UserDetails = ({
     { title: 'Interests', content: enumsToStrs('interests', interests) }
   ]
 
-  const rows = details.map(detail => (
-    <UserDetailsRow
-      key={detail.title}
-      title={detail.title}
-      content={detail.content}
-    />
-  ))
-
   return (
     <Container>
-      <DetailsContainer>{rows}</DetailsContainer>
+      <DetailsContainer>
+        {details.map(detail => (
+          <UserDetailsRow
+            key={detail.title}
+            title={detail.title}
+            content={detail.content}
+          />
+        ))}
+      </DetailsContainer>
     </Container>
   )
 }
