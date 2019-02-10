@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
   addInfo: info => dispatch(addInfo(info))
 })
 
-const defaultDate = '01/01/1993'
+const defaultDate = '01/01/1996'
 
 class IntroduceYourselfScreen extends Component {
   constructor(props) {
