@@ -9,6 +9,7 @@ export default class UserScreen extends Component {
   render() {
     return (
       <Screen>
+        <UserBio info={SAMPLE_TEXT} />
         <UserDetails
           gender={['MAN']}
           ethnicity={['CAUCASIAN']}
@@ -32,7 +33,6 @@ export default class UserScreen extends Component {
             'GARDENING'
           ]}
         />
-        <UserBio info={SAMPLE_TEXT} />
       </Screen>
     )
   }
