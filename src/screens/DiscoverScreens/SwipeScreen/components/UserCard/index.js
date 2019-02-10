@@ -1,10 +1,10 @@
 import React from 'react'
-import { LargeContainer } from './styles'
+import { TouchableOpacity } from './styles'
 import UserCardPicture from './components/UserCardPicture'
 import UserCardBio from './components/UserCardBio'
 
-const UserCard = ({ picture }) => (
-  <LargeContainer>
+const UserCard = ({ picture, navigation }) => (
+  <TouchableOpacity onPress={() => navigation.navigate('User')}>
     <UserCardPicture source={picture} />
     <UserCardBio
       name="Harley"
@@ -14,7 +14,7 @@ const UserCard = ({ picture }) => (
       degree="B.A"
       year="2021"
     />
-  </LargeContainer>
+  </TouchableOpacity>
 )
 
 export default UserCard
