@@ -15,8 +15,14 @@ export default class SearchScreen extends Component {
         />
         <SearchBar />
         <UserSearchCard
-          profilePicture="https://media.licdn.com/dms/image/C4D03AQEimgIJC3va5g/profile-displayphoto-shrink_200_200/0?e=1549497600&v=beta&t=RpwoPYFCUcjYQbkCJeIGaEnqWfTug0k_i2brmKMIL64"
+          profilePicture="https://i.ytimg.com/vi/nIV26rVCWjw/maxresdefault.jpg"
           name="Arthur"
+          age={39}
+          location="Atlantis, FL"
+          school="University of Florida"
+          degree="B.A"
+          year={2001}
+          isInterested={false}
         />
       </Screen>
     )
