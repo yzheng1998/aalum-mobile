@@ -20,3 +20,7 @@ export const Title = styled.Text`
   font-family: ${themeGet('fonts.bodyText')};
   color: ${themeGet('colors.inactiveText')};
 `
+
+export const Button = styled.TouchableOpacity`
+  margin-top: 19px;
+`
