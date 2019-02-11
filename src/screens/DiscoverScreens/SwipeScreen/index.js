@@ -19,11 +19,7 @@ export default class SwipeScreen extends Component {
     return (
       <Screen>
         <Button title="Logout" onPress={this.logout} />
-        <ScreenHeader
-          navigation={this.props.navigation}
-          title="Discover"
-          showBack
-        >
+        <ScreenHeader navigation={this.props.navigation} title="Discover">
           <FilterButton navigation={this.props.navigation} />
         </ScreenHeader>
         <SearchButton navigation={this.props.navigation} />
