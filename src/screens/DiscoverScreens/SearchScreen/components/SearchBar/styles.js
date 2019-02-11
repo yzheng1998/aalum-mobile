@@ -5,7 +5,7 @@ export const Container = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 132px;
+  margin-top: 19px;
   margin-left: 25px;
   margin-right: 25px;
   margin-bottom: 37px;

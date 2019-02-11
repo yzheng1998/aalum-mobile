@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Screen = styled.View`
   flex: 1;
-  justify-content: center;
+  margin-top: 69px;
 `
 
 export const Button = styled.Button``
