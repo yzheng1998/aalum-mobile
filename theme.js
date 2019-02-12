@@ -15,7 +15,6 @@ const theme = {
     offWhite: '#F9F9F9',
     error: '#DA2752',
     green: '#219653',
-    mediumGrey: '#828282',
     shadow: 'rgba(0, 0, 0, 0.15)',
     inactiveText: '#ADADAD'
   },
