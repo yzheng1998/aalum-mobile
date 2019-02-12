@@ -7,6 +7,7 @@ export const Button = styled.TouchableOpacity`
   margin-left: 32px;
   margin-right: 32px;
   margin-bottom: 30px;
+  box-shadow: 0px 6px 25px ${theme.colors.shadow};
 `
 
 export const ButtonText = styled.Text`
