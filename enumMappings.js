@@ -71,8 +71,8 @@ const degreeAbbrStringToEnumObj = {
   Current: 'CURRENT',
   'B.A.': 'BACHLORSART',
   'B.S.': 'BACHLORSSCIENCE',
-  'M.S.': 'MASTERS',
-  PhD: 'DOCTORATE',
+  "Master's": 'MASTERS',
+  Doctorate: 'DOCTORATE',
   "Associate's": 'ASSOCIATES'
 }
 
