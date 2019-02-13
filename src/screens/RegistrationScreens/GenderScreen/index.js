@@ -5,41 +5,29 @@ import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import ToggleButtonGroup from '../../../components/ToggleButtonGroup'
-import { GenderList, stringToEnum } from '../../../../enumMappings'
+import { genderList } from '../../../../enumMappings'
 
 const mapDispatchToProps = dispatch => ({
   addGenders: genders => dispatch(addInfo(genders))
 })
 
-const initialGenderSelection = GenderList.map(title => ({
-  title,
-  selected: false
-}))
+const mapStateToProps = state => ({
+  genders: state.genders
+})
 
 class GenderScreen extends Component {
-  state = {
-    genderSelection: initialGenderSelection
-  }
-
-  selectGender = index => {
-    const { genderSelection } = this.state
-    genderSelection[index].selected = !genderSelection[index].selected
-    this.setState({
-      genderSelection
-    })
+  constructor(props) {
+    super(props)
+    this.updateState = this.setState.bind(this)
+    this.state = {
+      genderSelection: this.props.genders || []
+    }
   }
 
   render() {
-    const filteredGenders = this.state.genderSelection.filter(
-      gender => gender.selected
-    )
-    const numberSelected = filteredGenders.length
-    const enabled = numberSelected > 0
-    const disabled = numberSelected >= 5
-    const finalGenders = filteredGenders.map(gender => gender.title)
-    const genderEnums = finalGenders.map(gender =>
-      stringToEnum('gender', gender)
-    )
+    const { genderSelection } = this.state
+    const enabled = genderSelection.length > 0
+    const disabled = genderSelection.length >= 5
     return (
       <RegistrationScreen
         showBack
@@ -49,8 +37,11 @@ class GenderScreen extends Component {
         scrollEnabled
       >
         <ToggleButtonGroup
-          buttonSelection={this.state.genderSelection}
-          select={this.selectGender}
+          optionsArray={genderList}
+          selectionArray={genderSelection}
+          updateState={selection =>
+            this.updateState({ genderSelection: selection })
+          }
           disabled={disabled}
         />
         <Message disabled={disabled}>Select a maximum of 5 genders</Message>
@@ -58,8 +49,8 @@ class GenderScreen extends Component {
           title="Continue"
           style={{ marginTop: 40 }}
           onPress={() => {
-            this.props.addGenders({ key: 'genders', value: genderEnums })
-            this.props.navigation.navigate('Seeking', { genders: finalGenders })
+            this.props.addGenders({ key: 'genders', value: genderSelection })
+            this.props.navigation.navigate('Seeking')
           }}
           disabled={!enabled}
         />
@@ -69,7 +60,7 @@ class GenderScreen extends Component {
 }
 
 const Gender = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(GenderScreen)
 export default Gender
