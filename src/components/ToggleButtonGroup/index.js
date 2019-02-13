@@ -5,7 +5,9 @@ import _ from 'lodash'
 import { stringToEnum } from '../../../enumMappings'
 
 export default class ToggleButtonGroup extends Component {
-  onPress = (updateState, array, val) => {
+  /* updates the selectionArray in state to add value if it doesn't exist
+  and to remove value if it already exists */
+  addOrRemoveValue = (updateState, array, val) => {
     const enumVal = stringToEnum(val)
     if (!_.includes(array, enumVal)) {
       updateState([...array, enumVal])
@@ -14,6 +16,8 @@ export default class ToggleButtonGroup extends Component {
     }
   }
 
+  // takes an array of selected enums called selectionArray
+  // takes an array of string options called optionsArray
   render() {
     const {
       title,
@@ -35,8 +39,8 @@ export default class ToggleButtonGroup extends Component {
                 key={option}
                 title={option}
                 isSelected={allSelected || isSelected}
-                onPress={selection =>
-                  this.onPress(updateState, selectionArray, selection)
+                addOrRemoveValue={selection =>
+                  this.addOrRemoveValue(updateState, selectionArray, selection)
                 }
                 disabled={disabled && !isSelected}
               />

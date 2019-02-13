@@ -54,6 +54,7 @@ const interestStringToEnumObj = {
 
 export const interestList = Object.keys(interestStringToEnumObj)
 
+// merges all individual objects into one object
 const stringToEnumObj = {
   ...genderStringToEnumObj,
   ...ethnicityStringToEnumObj,
@@ -62,9 +63,8 @@ const stringToEnumObj = {
   ...interestStringToEnumObj
 }
 
+// creates inversion of stringToEnumObj to make an enumToString Obj
 const enumToStringObj = _.invert(stringToEnumObj)
-
-// returns correct enum or string object given the name of enum type
 
 // converts enum to string given name of enum type and the enum
 export const enumToString = enm => enumToStringObj[enm]
