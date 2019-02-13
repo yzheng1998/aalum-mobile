@@ -13,8 +13,7 @@ const genderStringToEnumObj = {
   Transmasculine: 'TRANSMASCULINE'
 }
 
-const genderEnumToStringObj = _.invert(genderStringToEnumObj)
-export const GenderList = Object.keys(genderStringToEnumObj)
+export const genderList = Object.keys(genderStringToEnumObj)
 
 const ethnicityStringToEnumObj = {
   Caucasian: 'CAUCASIAN',
@@ -26,7 +25,7 @@ const ethnicityStringToEnumObj = {
   'Native Hawaiian/Other Pacific Islander': 'PACIFICISLANDER'
 }
 
-const ethnicityEnumToStringObj = _.invert(ethnicityStringToEnumObj)
+export const ethnicityList = Object.keys(ethnicityStringToEnumObj)
 
 const languageStringToEnumObj = {
   English: 'ENGLISH',
@@ -34,7 +33,7 @@ const languageStringToEnumObj = {
   Chinese: 'CHINESE'
 }
 
-const languageEnumToStringObj = _.invert(languageStringToEnumObj)
+export const languageList = Object.keys(languageStringToEnumObj)
 
 const bodyTypeStringToEnumObj = {
   Slender: 'SLENDER',
@@ -43,7 +42,7 @@ const bodyTypeStringToEnumObj = {
   'Full-figured': 'FULLFIGURED'
 }
 
-const bodyTypeEnumToStringObj = _.invert(bodyTypeStringToEnumObj)
+export const bodyTypeList = Object.keys(bodyTypeStringToEnumObj)
 
 const interestStringToEnumObj = {
   boating: 'BOATING',
@@ -53,43 +52,22 @@ const interestStringToEnumObj = {
   gardening: 'GARDENING'
 }
 
-const interestEnumToStringObj = _.invert(interestStringToEnumObj)
+export const interestList = Object.keys(interestStringToEnumObj)
 
-// returns correct enum or string object given the name of enum type
-const mapNameToObj = name => {
-  switch (name) {
-    case 'gender':
-      return {
-        strToEnm: genderStringToEnumObj,
-        enmToStr: genderEnumToStringObj
-      }
-    case 'ethnicity':
-      return {
-        strToEnm: ethnicityStringToEnumObj,
-        enmToStr: ethnicityEnumToStringObj
-      }
-    case 'languages':
-      return {
-        strToEnm: languageStringToEnumObj,
-        enmToStr: languageEnumToStringObj
-      }
-    case 'bodyType':
-      return {
-        strToEnm: bodyTypeStringToEnumObj,
-        enmToStr: bodyTypeEnumToStringObj
-      }
-    case 'interests':
-      return {
-        strToEnm: interestStringToEnumObj,
-        enmToStr: interestEnumToStringObj
-      }
-    default:
-      return null
-  }
+const stringToEnumObj = {
+  ...genderStringToEnumObj,
+  ...ethnicityStringToEnumObj,
+  ...languageStringToEnumObj,
+  ...bodyTypeStringToEnumObj,
+  ...interestStringToEnumObj
 }
 
+const enumToStringObj = _.invert(stringToEnumObj)
+
+// returns correct enum or string object given the name of enum type
+
 // converts enum to string given name of enum type and the enum
-export const enumToString = (name, enm) => mapNameToObj(name).enmToStr[enm]
+export const enumToString = enm => enumToStringObj[enm]
 
 // converts string to enum given name of enum type and the string
-export const stringToEnum = (name, str) => mapNameToObj(name).strToEnm[str]
+export const stringToEnum = str => stringToEnumObj[str]
