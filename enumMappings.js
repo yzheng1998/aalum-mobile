@@ -58,8 +58,8 @@ export const interestList = Object.keys(interestStringToEnumObj)
 
 const degreeFullStringToEnumObj = {
   'Current College Student': 'CURRENT',
-  "Bachelor's of Arts Degree": 'BACHLORSART',
-  "Bachelor's of Science": 'BACHLORSSCIENCE',
+  "Bachelor's of Arts Degree": 'BACHELORSART',
+  "Bachelor's of Science": 'BACHELORSSCIENCE',
   "Master's Degree": 'MASTERS',
   Doctorate: 'DOCTORATE',
   "Associate's Degree": 'ASSOCIATES'
@@ -69,12 +69,14 @@ export const degreeFullList = Object.keys(degreeFullStringToEnumObj)
 
 const degreeAbbrStringToEnumObj = {
   Current: 'CURRENT',
-  'B.A.': 'BACHLORSART',
-  'B.S.': 'BACHLORSSCIENCE',
+  'B.A.': 'BACHELORSART',
+  'B.S.': 'BACHELORSSCIENCE',
   "Master's": 'MASTERS',
   Doctorate: 'DOCTORATE',
   "Associate's": 'ASSOCIATES'
 }
+
+const degreeAbbrEnumToStringObj = _.invert(degreeAbbrStringToEnumObj)
 
 export const degreeAbbrList = Object.keys(degreeAbbrStringToEnumObj)
 
@@ -94,7 +96,6 @@ const stringToEnumObj = {
   ...bodyTypeStringToEnumObj,
   ...interestStringToEnumObj,
   ...degreeFullStringToEnumObj,
-  ...degreeAbbrStringToEnumObj,
   ...professionStringToEnumObj
 }
 
@@ -106,3 +107,8 @@ export const enumToString = enm => enumToStringObj[enm]
 
 // converts string to enum given name of enum type and the string
 export const stringToEnum = str => stringToEnumObj[str]
+
+// special converters for degree abbreviations due to duplicate keys
+export const degreeAbbrEnumToString = enm => degreeAbbrEnumToStringObj[enm]
+
+export const degreeAbbrStringToEnum = enm => degreeAbbrEnumToStringObj[enm]
