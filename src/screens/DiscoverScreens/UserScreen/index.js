@@ -5,6 +5,8 @@ import UserBio from './components/UserBio'
 import MatchButton from '../../../components/MatchButton'
 import { Screen, ButtonContainer } from './styles'
 import UserPictureCarousel from './components/UserPictureCarousel'
+import PrimaryButton from '../../../components/PrimaryButton'
+import Icon from '../../../components/Icon'
 
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
@@ -56,6 +58,12 @@ export default class UserScreen extends Component {
           <MatchButton name="close" />
           <MatchButton name="heart" />
         </ButtonContainer>
+        <PrimaryButton title="Message">
+          <Icon
+            name="mail"
+            style={{ fontSize: 27, marginRight: 15, color: 'white' }}
+          />
+        </PrimaryButton>
       </Screen>
     )
   }
