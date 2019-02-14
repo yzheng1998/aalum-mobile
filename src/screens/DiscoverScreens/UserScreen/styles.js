@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-export const Screen = styled.View`
-  flex: 1;
+export const Screen = styled.ScrollView`
   padding-top: 50px;
 `
 
