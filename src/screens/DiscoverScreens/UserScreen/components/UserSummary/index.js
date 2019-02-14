@@ -16,12 +16,12 @@ const UserSummary = ({
     {
       key: 'education',
       iconName: 'school',
-      content: `${school}, ${enumToString('degreeAbbr', degree)} ${year}`
+      content: `${school}, ${enumToString(degree)} ${year}`
     },
     {
       key: 'profession',
       iconName: 'briefcase',
-      content: `${enumToString('profession', profession)}`
+      content: `${enumToString(profession)}`
     }
   ]
 
