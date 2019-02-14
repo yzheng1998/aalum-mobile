@@ -11,16 +11,15 @@ const UserDetails = ({
   bodyType,
   interests
 }) => {
-  const enumsToStrs = (name, arr) =>
-    arr.map(elt => enumToString(name, elt)).join(', ')
+  const enumsToStrs = arr => arr.map(elt => enumToString(elt)).join(', ')
 
   const details = [
-    { title: 'Gender', content: enumsToStrs('gender', gender) },
-    { title: 'Ethnicity', content: enumsToStrs('ethnicity', ethnicity) },
-    { title: 'Languages', content: enumsToStrs('languages', languages) },
+    { title: 'Gender', content: enumsToStrs(gender) },
+    { title: 'Ethnicity', content: enumsToStrs(ethnicity) },
+    { title: 'Languages', content: enumsToStrs(languages) },
     { title: 'Height', content: height },
-    { title: 'Body Type', content: enumsToStrs('bodyType', bodyType) },
-    { title: 'Interests', content: enumsToStrs('interests', interests) }
+    { title: 'Body Type', content: enumsToStrs(bodyType) },
+    { title: 'Interests', content: enumsToStrs(interests) }
   ]
 
   return (
