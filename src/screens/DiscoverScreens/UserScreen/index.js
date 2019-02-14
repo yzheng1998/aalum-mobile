@@ -24,7 +24,7 @@ export default class UserScreen extends Component {
           age={37}
           distance={0.1}
           school="Harvard University"
-          degree="BACHELORSARTS"
+          degree="BACHELORSART"
           year="2013"
           profession="ENGINEER"
         />

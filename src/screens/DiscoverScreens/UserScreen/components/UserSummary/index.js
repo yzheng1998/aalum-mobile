@@ -1,5 +1,8 @@
 import React from 'react'
-import { enumToString } from '../../../../../../enumMappings'
+import {
+  enumToString,
+  degreeAbbrEnumToString
+} from '../../../../../../enumMappings'
 import { Container, RowContainer, NameText, DetailsText, Icn } from './styles'
 
 const UserSummary = ({
@@ -16,7 +19,7 @@ const UserSummary = ({
     {
       key: 'education',
       iconName: 'school',
-      content: `${school}, ${enumToString(degree)} ${year}`
+      content: `${school}, ${degreeAbbrEnumToString(degree)} ${year}`
     },
     {
       key: 'profession',
