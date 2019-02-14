@@ -9,11 +9,11 @@ const UserPictureCarousel = ({ userPictures }) => (
       activeDotColor={theme.colors.white}
       dotColor={theme.colors.darkerGrey}
     >
-      {userPictures.map(imageURL => (
-        <Frame key={imageURL}>
+      {userPictures.map((imageUrl, i) => (
+        <Frame key={i}>
           <Picture
             source={{
-              uri: imageURL
+              uri: imageUrl
             }}
           />
         </Frame>
