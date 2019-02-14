@@ -9,7 +9,7 @@ export default class PrimaryButton extends Component {
   }
 
   render() {
-    const { title, disabled, ...rest } = this.props
+    const { title, disabled, children, ...rest } = this.props
     const { gradientLeft, gradientRight } = theme.colors
     return (
       <Button style={{ marginTop: 60 }} disabled={disabled} {...rest}>
@@ -17,8 +17,13 @@ export default class PrimaryButton extends Component {
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           colors={[gradientLeft, gradientRight]}
-          style={{ ...gradientStyle, opacity: disabled ? 0.6 : 1 }}
+          style={{
+            ...gradientStyle,
+            opacity: disabled ? 0.6 : 1,
+            flexDirection: 'row'
+          }}
         >
+          {children}
           <ButtonText>{title}</ButtonText>
         </LinearGradient>
       </Button>
