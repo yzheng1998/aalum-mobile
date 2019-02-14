@@ -10,12 +10,10 @@ const theme = {
     whiteGrey: '#E0E0E0',
     darkGrey: '#8F8F8F',
     darkerGrey: '#828282',
-    carbonGrey: '#828282',
     charcoal: '#333333',
     offWhite: '#F9F9F9',
     error: '#DA2752',
     green: '#219653',
-    mediumGrey: '#828282',
     shadow: 'rgba(0, 0, 0, 0.15)',
     inactiveText: '#ADADAD'
   },

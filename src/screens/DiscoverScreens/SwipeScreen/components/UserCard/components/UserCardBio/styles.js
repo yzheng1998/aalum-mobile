@@ -26,5 +26,5 @@ export const EducationTitle = styled.Text`
   margin-bottom: 12px;
   font-family: ${themeGet('fonts.bodyText')};
   font-size: 14px;
-  color: ${themeGet('colors.mediumGrey')};
+  color: ${themeGet('colors.darkerGrey')};
 `

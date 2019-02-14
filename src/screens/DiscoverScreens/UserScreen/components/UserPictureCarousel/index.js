@@ -8,9 +8,10 @@ const UserPictureCarousel = ({ userPictures }) => (
     <Swiper
       activeDotColor={theme.colors.white}
       dotColor={theme.colors.darkerGrey}
+      loop={false}
     >
-      {userPictures.map((imageUrl, i) => (
-        <Frame key={i}>
+      {userPictures.map(imageUrl => (
+        <Frame key={imageUrl}>
           <Picture
             source={{
               uri: imageUrl
