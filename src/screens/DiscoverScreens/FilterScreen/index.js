@@ -12,7 +12,6 @@ export default class FilterScreen extends Component {
           title="Filter"
           showBack
         />
-
         <PrimaryButton title="Apply" />
       </Screen>
     )
