@@ -20,5 +20,5 @@ export const LocationText = styled.Text`
 export const EducationText = styled.Text`
   font-size: 11px;
   font-family: ${themeGet('fonts.bodyText')};
-  color: ${themeGet('colors.carbonGrey')};
+  color: ${themeGet('colors.darkerGrey')};
 `

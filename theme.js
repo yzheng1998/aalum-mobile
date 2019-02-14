@@ -10,7 +10,6 @@ const theme = {
     whiteGrey: '#E0E0E0',
     darkGrey: '#8F8F8F',
     darkerGrey: '#828282',
-    carbonGrey: '#828282',
     charcoal: '#333333',
     offWhite: '#F9F9F9',
     error: '#DA2752',
