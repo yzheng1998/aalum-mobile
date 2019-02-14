@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { createSwitchNavigator, createAppContainer } from 'react-navigation'
 import RegistrationStack from './RegistrationStack'
-import DiscoverStack from './DiscoverStack'
 import { AsyncStorage, Alert } from 'react-native'
 import LoadingWrapper from '../components/LoadingWrapper'
+import MainTabNavigator from './MainTabNavigator'
 
 const createRootNavigator = (loggedIn = false) =>
   createSwitchNavigator(
@@ -11,12 +11,12 @@ const createRootNavigator = (loggedIn = false) =>
       Registration: {
         screen: RegistrationStack
       },
-      Discover: {
-        screen: DiscoverStack
+      MainTab: {
+        screen: MainTabNavigator
       }
     },
     {
-      initialRouteName: loggedIn ? 'Discover' : 'Registration',
+      initialRouteName: loggedIn ? 'Discover' : 'MainTab',
       headerMode: 'screen'
     }
   )
