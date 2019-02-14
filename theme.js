@@ -15,6 +15,8 @@ const theme = {
     error: '#DA2752',
     green: '#219653',
     shadow: 'rgba(0, 0, 0, 0.15)',
+    lightShadow: 'rgba(0,0,0,0.16)',
+    darkShadow: 'rgba(0,0,0,0.1)',
     inactiveText: '#ADADAD'
   },
   fonts: {
