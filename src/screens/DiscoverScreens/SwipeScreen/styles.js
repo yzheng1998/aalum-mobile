@@ -6,3 +6,9 @@ export const Screen = styled.View`
 `
 
 export const Button = styled.Button``
+
+export const ButtonContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 41px;
+`
