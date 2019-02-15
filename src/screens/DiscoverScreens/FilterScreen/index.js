@@ -4,6 +4,7 @@ import ScreenHeader from '../../../components/ScreenHeader'
 import PrimaryButton from '../../../components/PrimaryButton'
 import FilterSliders from './components/FilterSliders'
 import FilterButtonGroups from './components/FilterButtonGroups'
+import { inchesToString } from '../../../../constants'
 
 export default class FilterScreen extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class FilterScreen extends Component {
     this.state = {
       distance: [40],
       age: [20, 26],
-      height: [4.9, 5.8]
+      height: [30, 65]
     }
   }
 
@@ -22,23 +23,33 @@ export default class FilterScreen extends Component {
       {
         title: 'DISTANCE',
         min: 1,
+        minText: '1 mile',
         max: 100,
+        maxText: '100+ miles',
         step: 1,
-        current: distance
+        current: distance,
+        suffix: 'mile',
+        formatter: x => x
       },
       {
         title: 'AGE',
         min: 18,
+        minText: '18',
         max: 60,
+        maxText: '60+',
         step: 1,
-        current: age
+        current: age,
+        suffix: '',
+        formatter: x => x
       },
       {
         title: 'HEIGHT',
         min: 0,
-        max: 9,
-        step: 0.1,
-        current: height
+        max: 108,
+        step: 1,
+        current: height,
+        suffix: '',
+        formatter: inchesToString
       }
     ]
     return (

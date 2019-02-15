@@ -12,9 +12,13 @@ class FilterSliders extends Component {
             key={slider.title}
             title={slider.title}
             min={slider.min}
+            minText={slider.minText}
             max={slider.max}
+            maxText={slider.maxText}
             step={slider.step}
             current={slider.current}
+            suffix={slider.suffix}
+            formatter={slider.formatter}
             updateState={updateState}
           />
         ))}

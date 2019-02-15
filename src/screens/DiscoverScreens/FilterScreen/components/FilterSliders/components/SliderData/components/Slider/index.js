@@ -16,10 +16,8 @@ class Slider extends Component {
           step={step}
           values={current}
           sliderLength={width - 40}
-          valuePrefix="mile"
           trackStyle={trackStyle}
           selectedStyle={selectedStyle}
-          valueSuffix="mile"
           customMarker={Marker}
           enabledOne
           enabledTwo

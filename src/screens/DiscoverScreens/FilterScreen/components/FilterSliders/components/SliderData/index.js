@@ -10,13 +10,28 @@ import {
 
 class SliderData extends Component {
   render() {
-    const { title, min, max, current, step, updateState } = this.props
+    const {
+      title,
+      min,
+      max,
+      minText,
+      maxText,
+      current,
+      step,
+      suffix,
+      formatter,
+      updateState
+    } = this.props
     return (
       <Container>
         <RowContainer>
           <Title>{title}</Title>
           <CurrentValueText>
-            {current[1] ? `${current[0]} - ${current[1]}` : current[0]}
+            {current[1]
+              ? `${formatter(current[0])} - ${formatter(current[1])} ${suffix}`
+              : `${formatter(current[0])} ${
+                  current[0] === 1 ? suffix : `${suffix}s`
+                }`}
           </CurrentValueText>
         </RowContainer>
         <Slider
@@ -26,10 +41,11 @@ class SliderData extends Component {
           current={current}
           step={step}
           updateState={updateState}
+          formatter={formatter}
         />
         <RowContainer>
-          <BoundaryText>{min}</BoundaryText>
-          <BoundaryText>{max}</BoundaryText>
+          <BoundaryText>{minText}</BoundaryText>
+          <BoundaryText>{maxText}</BoundaryText>
         </RowContainer>
       </Container>
     )
