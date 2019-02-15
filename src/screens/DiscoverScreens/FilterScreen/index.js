@@ -29,7 +29,8 @@ export default class FilterScreen extends Component {
         step: 1,
         current: distance,
         suffix: 'mile',
-        formatter: x => x
+        formatter: x => x,
+        updateState: val => this.updateState({ distance: val })
       },
       {
         title: 'AGE',
@@ -40,7 +41,8 @@ export default class FilterScreen extends Component {
         step: 1,
         current: age,
         suffix: '',
-        formatter: x => x
+        formatter: x => x,
+        updateState: val => this.updateState({ age: val })
       },
       {
         title: 'HEIGHT',
@@ -49,7 +51,8 @@ export default class FilterScreen extends Component {
         step: 1,
         current: height,
         suffix: '',
-        formatter: inchesToString
+        formatter: inchesToString,
+        updateState: val => this.updateState({ height: val })
       }
     ]
     return (
@@ -59,7 +62,7 @@ export default class FilterScreen extends Component {
           title="Filter"
           showBack
         />
-        <FilterSliders sliders={sliders} updateState={this.updateState} />
+        <FilterSliders sliders={sliders} />
         <FilterButtonGroups />
         <PrimaryButton title="Apply" />
       </Screen>

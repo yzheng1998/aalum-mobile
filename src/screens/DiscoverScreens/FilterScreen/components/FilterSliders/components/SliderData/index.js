@@ -35,7 +35,6 @@ class SliderData extends Component {
           </CurrentValueText>
         </RowContainer>
         <Slider
-          title={title}
           min={min}
           max={max}
           current={current}

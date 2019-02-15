@@ -7,7 +7,7 @@ import { Container, trackStyle, selectedStyle } from './styles'
 class Slider extends Component {
   render() {
     const { width } = Dimensions.get('window')
-    const { title, min, max, step, current, updateState } = this.props
+    const { min, max, step, current, updateState } = this.props
     return (
       <Container>
         <MultiSlider
@@ -21,20 +21,7 @@ class Slider extends Component {
           customMarker={Marker}
           enabledOne
           enabledTwo
-          onValuesChange={val => {
-            switch (title) {
-              case 'DISTANCE':
-                updateState({ distance: val })
-                break
-              case 'AGE':
-                updateState({ age: val })
-                break
-              case 'HEIGHT':
-                updateState({ height: val })
-                break
-              default:
-            }
-          }}
+          onValuesChange={val => updateState(val)}
         />
       </Container>
     )

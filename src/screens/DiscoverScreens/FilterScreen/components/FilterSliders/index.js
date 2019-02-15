@@ -4,7 +4,7 @@ import { Container } from './styles'
 
 class FilterSliders extends Component {
   render() {
-    const { sliders, updateState } = this.props
+    const { sliders } = this.props
     return (
       <Container>
         {sliders.map(slider => (
@@ -19,7 +19,7 @@ class FilterSliders extends Component {
             current={slider.current}
             suffix={slider.suffix}
             formatter={slider.formatter}
-            updateState={updateState}
+            updateState={slider.updateState}
           />
         ))}
       </Container>
