@@ -70,13 +70,12 @@ export default class UserScreen extends Component {
           />
         </PrimaryButton>
         <ActionSheet
-          ref={o => (this.ActionSheet = o)}
+          ref={o => {
+            this.ActionSheet = o
+          }}
           options={['Report', 'Unmatch', 'Cancel']}
           cancelButtonIndex={2}
           destructiveButtonIndex={1}
-          onPress={index => {
-            /* do something */
-          }}
         />
       </Screen>
     )
