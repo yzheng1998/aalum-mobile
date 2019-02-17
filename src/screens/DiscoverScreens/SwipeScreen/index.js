@@ -11,155 +11,24 @@ import MatchButton from '../../../components/MatchButton'
 const SAMPLE_URL =
   'https://cdn-images-1.medium.com/max/2000/0*bdhf1cch4Mjib3UL.jpg'
 
+const user = {
+  name: 'Harley',
+  age: '25',
+  distance: '0.1',
+  school: 'Harvard University',
+  degree: 'B.A',
+  year: '2021',
+  picture: SAMPLE_URL
+}
+
+const cards = [user, user, user]
+
 export default class SwipeScreen extends Component {
-  state = {
-    cards: [
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      },
-      {
-        name: 'Harley',
-        age: '25',
-        distance: '0.1',
-        school: 'Harvard University',
-        degree: 'B.A',
-        year: '2021',
-        picture: SAMPLE_URL
-      }
-    ]
+  constructor(props) {
+    super(props)
+    this.swipeCardRef = React.createRef()
   }
+
   logout = async () => {
     AsyncStorage.clear()
     this.props.navigation.navigate('SignIn')
@@ -176,7 +45,9 @@ export default class SwipeScreen extends Component {
         </ScreenHeader>
         <SearchButton navigation={this.props.navigation} />
         <SwipeCards
-          cards={this.state.cards}
+          ref={this.swipeCardRef}
+          cards={cards}
+          cardStyle={{ width: '80%' }}
           renderCard={cardData => (
             <UserCard navigation={this.props.navigation} cardData={cardData} />
           )}
@@ -187,10 +58,17 @@ export default class SwipeScreen extends Component {
           )}
           handleYup={this.handleYup}
           handleNope={this.handleNope}
+          on
         />
         <ButtonContainer>
-          <MatchButton name="close" />
-          <MatchButton name="heart" />
+          <MatchButton
+            name="close"
+            onPress={() => this.swipeCardRef.current._forceLeftSwipe()}
+          />
+          <MatchButton
+            name="heart"
+            onPress={() => this.swipeCardRef.current._forceRightSwipe()}
+          />
         </ButtonContainer>
       </Screen>
     )

@@ -1,9 +1,16 @@
 import React from 'react'
+import { TouchableOpacity } from 'react-native'
 import { Container, CloseIcon, HeartIcon } from './styles'
 
-const MatchButton = ({ name }) => (
+const MatchButton = ({ name, onPress }) => (
   <Container>
-    {name === 'heart' ? <HeartIcon name="heart" /> : <CloseIcon name="close" />}
+    <TouchableOpacity onPress={onPress}>
+      {name === 'heart' ? (
+        <HeartIcon name="heart" />
+      ) : (
+        <CloseIcon name="close" />
+      )}
+    </TouchableOpacity>
   </Container>
 )
 
