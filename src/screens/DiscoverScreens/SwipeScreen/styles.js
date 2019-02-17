@@ -1,14 +1,15 @@
 import styled from 'styled-components'
+import { Dimensions } from 'react-native'
+
+const { height } = Dimensions.get('window')
 
 export const Screen = styled.View`
-  flex: 1;
-  margin-top: 69px;
+  padding-top: ${height * 0.065};
 `
-
-export const Button = styled.Button``
 
 export const ButtonContainer = styled.View`
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 41px;
+  margin-top: ${height * 0.0373};
+  padding-bottom: ${height * 0.064};
 `

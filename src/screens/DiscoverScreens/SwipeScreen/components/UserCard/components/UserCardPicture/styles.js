@@ -5,7 +5,7 @@ const { height } = Dimensions.get('window')
 
 export const Container = styled.View`
   justify-content: center;
-  height: ${height * 0.465};
+  height: ${height * 0.44};
   border-radius: 10px;
   overflow: hidden;
 `
