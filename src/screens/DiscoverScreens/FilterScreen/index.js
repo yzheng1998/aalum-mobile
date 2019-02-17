@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Screen } from './styles'
+import { Screen, Container, Padding } from './styles'
 import ScreenHeader from '../../../components/ScreenHeader'
 import PrimaryButton from '../../../components/PrimaryButton'
 import FilterSliders from './components/FilterSliders'
@@ -45,16 +45,18 @@ export default class FilterScreen extends Component {
       }
     ]
     return (
-      <Screen>
-        <ScreenHeader
-          navigation={this.props.navigation}
-          title="Filter"
-          showBack
-        />
-        <FilterSliders sliders={sliders} />
-        <FilterButtonGroups />
+      <Container>
+        <Screen>
+          <ScreenHeader
+            navigation={this.props.navigation}
+            title="Filter"
+            showBack
+          />
+          <FilterButtonGroups />
+          <Padding />
+        </Screen>
         <PrimaryButton title="Apply" />
-      </Screen>
+      </Container>
     )
   }
 }
