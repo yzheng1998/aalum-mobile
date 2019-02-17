@@ -3,10 +3,12 @@ import UserSummary from './components/UserSummary'
 import UserDetails from './components/UserDetails'
 import UserBio from './components/UserBio'
 import MatchButton from '../../../components/MatchButton'
-import { Screen, ButtonContainer } from './styles'
+import { Screen, ButtonContainer, Button } from './styles'
 import UserPictureCarousel from './components/UserPictureCarousel'
 import PrimaryButton from '../../../components/PrimaryButton'
 import Icon from '../../../components/Icon'
+import ActionSheet from 'react-native-actionsheet'
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
@@ -20,6 +22,9 @@ export default class UserScreen extends Component {
   render() {
     return (
       <Screen>
+        <Button onPress={() => this.ActionSheet.show()}>
+          <MaterialIcon name="dots-vertical" color="white" size={37} />
+        </Button>
         <UserPictureCarousel userPictures={userPictures} />
         <UserSummary
           name="Clark"
@@ -64,6 +69,14 @@ export default class UserScreen extends Component {
             style={{ fontSize: 27, marginRight: 15, color: 'white' }}
           />
         </PrimaryButton>
+        <ActionSheet
+          ref={o => {
+            this.ActionSheet = o
+          }}
+          options={['Report', 'Unmatch', 'Cancel']}
+          cancelButtonIndex={2}
+          destructiveButtonIndex={1}
+        />
       </Screen>
     )
   }
