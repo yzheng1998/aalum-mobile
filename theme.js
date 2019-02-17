@@ -2,13 +2,20 @@ const theme = {
   colors: {
     white: '#FFFFFF',
     black: '#4F4F4F',
+    pureBlack: '#000000',
     gradientLeft: '#DA2752',
-    gradientRight: '#FF6534',
+    gradientRight: '#E935F8',
     grey: '#A8A8A8',
+    lightGrey: '#A0A0A0',
+    whiteGrey: '#E0E0E0',
     darkGrey: '#8F8F8F',
+    darkerGrey: '#828282',
     charcoal: '#333333',
     offWhite: '#F9F9F9',
-    error: '#DA2752'
+    error: '#DA2752',
+    green: '#219653',
+    shadow: 'rgba(0, 0, 0, 0.15)',
+    inactiveText: '#ADADAD'
   },
   fonts: {
     heading: 'Montserrat-Bold',

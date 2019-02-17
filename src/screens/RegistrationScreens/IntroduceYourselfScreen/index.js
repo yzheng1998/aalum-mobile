@@ -22,20 +22,29 @@ const mapDispatchToProps = dispatch => ({
   addInfo: info => dispatch(addInfo(info))
 })
 
+const defaultDate = '01/01/1996'
+
 class IntroduceYourselfScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: this.props.name || '',
-      birthday: '',
-      birthdayFormatted: this.props.birthday || '',
+      birthday: this.props.birthday || '',
       showBirthdayPicker: false
     }
   }
 
+  openDatePicker = () => {
+    Keyboard.dismiss()
+    this.setState({ showBirthdayPicker: true }, () =>
+      this.datePicker.openDatePicker()
+    )
+    if (!this.state.birthday) this.setState({ birthday: defaultDate })
+  }
+
   render() {
-    const { birthday, showBirthdayPicker, birthdayFormatted, name } = this.state
-    const enabled = name && birthdayFormatted
+    const { birthday, showBirthdayPicker, name } = this.state
+    const enabled = name && birthday
     return (
       <Screen>
         <RegistrationScreen
@@ -58,27 +67,17 @@ class IntroduceYourselfScreen extends Component {
                   showBirthdayPicker: false
                 })
               }}
-              onSubmitEditing={() => {
-                Keyboard.dismiss()
-                this.setState({ showBirthdayPicker: true, birthday }, () =>
-                  this.datePicker.openDatePicker()
-                )
-              }}
+              onSubmitEditing={this.openDatePicker}
             />
             <PrimaryInput
               title="Birthday"
-              placeholder={birthdayFormatted || 'MM/DD/YYYY'}
-              defaultValue={birthdayFormatted}
+              placeholder={birthday || 'MM/DD/YYYY'}
+              defaultValue={birthday}
               editable={false}
               pointerEvents="none"
               as={TouchableOpacity}
-              onPress={() => {
-                Keyboard.dismiss()
-                this.setState({ showBirthdayPicker: true, birthday }, () =>
-                  this.datePicker.openDatePicker()
-                )
-              }}
-              style={birthdayFormatted && { lineHeight: 20 }}
+              onPress={this.openDatePicker}
+              style={birthday && { lineHeight: 20 }}
             />
             <PrimaryButton
               ref={button => {
@@ -92,7 +91,7 @@ class IntroduceYourselfScreen extends Component {
                 this.props.addInfo({ key: 'name', value: name })
                 this.props.addInfo({
                   key: 'birthday',
-                  value: birthdayFormatted
+                  value: birthday
                 })
                 this.props.navigation.navigate('Gender')
               }}
@@ -106,7 +105,7 @@ class IntroduceYourselfScreen extends Component {
           }}
           visible={showBirthdayPicker}
           mode="date"
-          date={new Date(birthdayFormatted) || new Date(1996, 0, 1)}
+          date={birthday ? new Date(birthday) : new Date(defaultDate)}
           doneOnPress={() => {
             this.setState({
               showBirthdayPicker: false
@@ -115,8 +114,7 @@ class IntroduceYourselfScreen extends Component {
           }}
           setDate={date => {
             this.setState({
-              birthday: date,
-              birthdayFormatted: moment(date).format('MM/DD/YYYY')
+              birthday: moment(date).format('MM/DD/YYYY')
             })
           }}
           maximumDate={moment()

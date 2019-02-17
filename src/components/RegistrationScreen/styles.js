@@ -6,6 +6,12 @@ export const SafeAreaView = styled.SafeAreaView`
   background-color: ${theme.colors.offWhite};
 `
 
+export const BackButtonContainer = styled.View`
+  position: absolute;
+  top: 30px;
+  left: 20px;
+`
+
 export const Image = styled.Image``
 
 export const Screen = styled.ScrollView`

@@ -11,6 +11,22 @@ cd ..
 npm run ios
 ```
 
+If you don't have cocoapods installed, first run:
+```bash
+sudo gem install cocoapods
+```
+
+If you don't have react-native installed, first run: 
+```bash
+sudo npm install -g react-native-cli
+```
+
+Install Xcode
+https://developer.apple.com/xcode/
+
+Open project in Xcode.
+Select Xcode menu, then Preferences, then Locations tab. Select your Xcode version from the dropdown and exit Xcode.
+
 ### Figma
 https://www.figma.com/file/bvJwaT2B7N37d3Rs7NVUHUfO/Wireframes?node-id=221%3A0
 

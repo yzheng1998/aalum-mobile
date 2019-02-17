@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
-import GenderButtonList from '../../../components/GenderButtonList'
-import { GenderList, GenderEnumsObj } from '../../../../constants'
+import ToggleButtonGroup from '../../../components/ToggleButtonGroup'
+import { genderList } from '../../../../enumMappings'
 import { ToggleContainer, Toggle, ToggleText } from './styles'
 import theme from '../../../../theme'
 
@@ -12,34 +12,23 @@ const mapDispatchToProps = dispatch => ({
   addGenders: genders => dispatch(addInfo(genders))
 })
 
-const initialGenderSelection = GenderList.map(title => ({
-  title,
-  selected: false
-}))
+const mapStateToProps = state => ({
+  connectsWith: state.connectsWith
+})
 
 class SeekingGenderScreen extends Component {
-  state = {
-    genderSelection: initialGenderSelection
-  }
-
-  selectGender = index => {
-    const { genderSelection } = this.state
-    genderSelection[index].selected = !genderSelection[index].selected
-    this.setState({
-      genderSelection
-    })
+  constructor(props) {
+    super(props)
+    this.updateState = this.setState.bind(this)
+    this.state = {
+      connectsWithSelection: this.props.connectsWith || []
+    }
   }
 
   render() {
-    const { genderSelection } = this.state
-    const filteredGenders = this.state.genderSelection.filter(
-      gender => gender.selected
-    )
-    const numberSelected = filteredGenders.length
-    const enabled = numberSelected > 0
-    const finalGenders = filteredGenders.map(gender => gender.title)
-    const genderEnums = finalGenders.map(gender => GenderEnumsObj[gender])
-    const allSelected = numberSelected === genderSelection.length
+    const { connectsWithSelection } = this.state
+    const enabled = connectsWithSelection.length > 0
+    const allSelected = connectsWithSelection.length === genderList.length
     return (
       <RegistrationScreen
         showBack
@@ -48,9 +37,12 @@ class SeekingGenderScreen extends Component {
         progress="80%"
         scrollEnabled
       >
-        <GenderButtonList
-          genderSelection={genderSelection}
-          selectGender={this.selectGender}
+        <ToggleButtonGroup
+          optionsArray={genderList}
+          selectionArray={connectsWithSelection}
+          updateState={selection =>
+            this.updateState({ connectsWithSelection: selection })
+          }
           allSelected={allSelected}
         />
         <ToggleContainer>
@@ -62,12 +54,9 @@ class SeekingGenderScreen extends Component {
             ios_backgroundColor={theme.colors.grey}
             value={allSelected}
             onValueChange={isOn =>
-              this.setState(prevState => ({
-                genderSelection: prevState.genderSelection.map(gender => ({
-                  title: gender.title,
-                  selected: isOn
-                }))
-              }))
+              this.setState({
+                connectsWithSelection: isOn ? genderList : []
+              })
             }
           />
           <ToggleText>I&apos;m open to everyone</ToggleText>
@@ -76,8 +65,11 @@ class SeekingGenderScreen extends Component {
           style={{ marginTop: 22 }}
           title="Continue"
           onPress={() => {
-            this.props.addGenders({ key: 'connectsWith', value: genderEnums })
-            this.props.navigation.navigate('Photo', { seeking: finalGenders })
+            this.props.addGenders({
+              key: 'connectsWith',
+              value: connectsWithSelection
+            })
+            this.props.navigation.navigate('Photo')
           }}
           disabled={!enabled}
         />
@@ -87,7 +79,7 @@ class SeekingGenderScreen extends Component {
 }
 
 const SeekingGender = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SeekingGenderScreen)
 export default SeekingGender
