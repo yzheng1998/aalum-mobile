@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { themeGet } from 'styled-system'
 import Icon from '../Icon'
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: 61px;
   height: 61px;
   border-radius: 30.5px;
