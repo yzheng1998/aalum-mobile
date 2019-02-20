@@ -16,7 +16,7 @@ class SliderData extends Component {
       max,
       minText,
       maxText,
-      current,
+      values,
       step,
       suffix,
       formatter,
@@ -27,17 +27,17 @@ class SliderData extends Component {
         <RowContainer>
           <Title>{title}</Title>
           <CurrentValueText>
-            {current[1]
-              ? `${formatter(current[0])} - ${formatter(current[1])} ${suffix}`
-              : `${formatter(current[0])} ${
-                  current[0] === 1 ? suffix : `${suffix}s`
+            {values[1]
+              ? `${formatter(values[0])} - ${formatter(values[1])} ${suffix}`
+              : `${formatter(values[0])} ${
+                  values[0] === 1 ? suffix : `${suffix}s`
                 }`}
           </CurrentValueText>
         </RowContainer>
         <Slider
           min={min}
           max={max}
-          current={current}
+          values={values}
           step={step}
           updateState={updateState}
           formatter={formatter}

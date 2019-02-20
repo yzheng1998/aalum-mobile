@@ -7,14 +7,14 @@ import { Container, trackStyle, selectedStyle } from './styles'
 class Slider extends Component {
   render() {
     const { width } = Dimensions.get('window')
-    const { min, max, step, current, updateState } = this.props
+    const { min, max, step, values, updateState } = this.props
     return (
       <Container>
         <MultiSlider
           min={min}
           max={max}
           step={step}
-          values={current}
+          values={values}
           sliderLength={width - 40}
           trackStyle={trackStyle}
           selectedStyle={selectedStyle}

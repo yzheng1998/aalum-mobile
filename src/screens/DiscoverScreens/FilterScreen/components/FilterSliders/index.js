@@ -16,7 +16,7 @@ class FilterSliders extends Component {
             max={slider.max}
             maxText={slider.maxText}
             step={slider.step}
-            current={slider.current}
+            values={slider.values}
             suffix={slider.suffix}
             formatter={slider.formatter}
             updateState={slider.updateState}
