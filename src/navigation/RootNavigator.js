@@ -16,7 +16,7 @@ const createRootNavigator = (loggedIn = false) =>
       }
     },
     {
-      initialRouteName: loggedIn ? 'Registration' : 'MainTab',
+      initialRouteName: loggedIn ? 'MainTab' : 'Registration',
       headerMode: 'screen'
     }
   )
