@@ -52,6 +52,7 @@ export default class FilterScreen extends Component {
             title="Filter"
             showBack
           />
+          <FilterSliders sliders={sliders} />
           <FilterButtonGroups />
           <Padding />
         </Screen>
