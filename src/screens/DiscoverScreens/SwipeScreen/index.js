@@ -60,6 +60,7 @@ export default class SwipeScreen extends Component {
           handleNope={this.handleNope}
           on
         />
+        {/* eslint-disable no-underscore-dangle */}
         <ButtonContainer>
           <MatchButton
             name="close"
@@ -70,6 +71,7 @@ export default class SwipeScreen extends Component {
             onPress={() => this.swipeCardRef.current._forceRightSwipe()}
           />
         </ButtonContainer>
+        {/* eslint-enable no-underscore-dangle */}
       </Screen>
     )
   }
