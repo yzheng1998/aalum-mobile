@@ -70,6 +70,7 @@ export default class UserScreen extends Component {
             options={['Report', 'Unmatch', 'Cancel']}
             cancelButtonIndex={2}
             destructiveButtonIndex={1}
+            onPress={() => {}}
           />
         </Screen>
         <BackButtonContainer>
