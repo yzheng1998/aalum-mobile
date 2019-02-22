@@ -56,6 +56,10 @@ export default class SwipeScreen extends Component {
               <Text>No more cards</Text>
             </View>
           )}
+          yupStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
+          nopeStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
+          yupView={<MatchButton name="heart" />}
+          noView={<MatchButton name="close" />}
           handleYup={this.handleYup}
           handleNope={this.handleNope}
           on
@@ -64,11 +68,17 @@ export default class SwipeScreen extends Component {
         <ButtonContainer>
           <MatchButton
             name="close"
-            onPress={() => this.swipeCardRef.current._forceLeftSwipe()}
+            onPress={() => {
+              this.swipeCardRef.current._forceLeftSwipe()
+              this.handleNope()
+            }}
           />
           <MatchButton
             name="heart"
-            onPress={() => this.swipeCardRef.current._forceRightSwipe()}
+            onPress={() => {
+              this.swipeCardRef.current._forceRightSwipe()
+              this.handleYup()
+            }}
           />
         </ButtonContainer>
         {/* eslint-enable no-underscore-dangle */}
