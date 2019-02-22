@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Screen, Container, Padding } from './styles'
 import ScreenHeader from '../../../components/ScreenHeader'
-import PrimaryButton from '../../../components/PrimaryButton'
 import FilterSliders from './components/FilterSliders'
+import FloatingButton from '../../../components/FloatingButton'
 import FilterButtonGroups from './components/FilterButtonGroups'
 import { inchesToString } from './unitConverters'
 import {
@@ -55,7 +55,7 @@ export default class FilterScreen extends Component {
           <FilterButtonGroups />
           <Padding />
         </Screen>
-        <PrimaryButton title="Apply" />
+        <FloatingButton title="Apply" />
       </Container>
     )
   }

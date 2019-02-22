@@ -8,7 +8,7 @@ import MatchButtons from './components/MatchButtons'
 import BackButton from '../../../components/BackButton'
 import { Screen, Container, BackButtonContainer, Button } from './styles'
 import UserPictureCarousel from './components/UserPictureCarousel'
-import PrimaryButton from '../../../components/PrimaryButton'
+import FloatingButton from '../../../components/FloatingButton'
 import Icon from '../../../components/Icon'
 import theme from '../../../../theme'
 
@@ -22,7 +22,7 @@ const userPictures = [
 ]
 export default class UserScreen extends Component {
   render() {
-    const isMatched = false
+    const isMatched = true
     return (
       <Container>
         <Screen>
@@ -80,12 +80,12 @@ export default class UserScreen extends Component {
           />
         </BackButtonContainer>
         {isMatched ? (
-          <PrimaryButton title="Message">
+          <FloatingButton title="Message">
             <Icon
               name="mail"
               style={{ fontSize: 27, marginRight: 15, color: 'white' }}
             />
-          </PrimaryButton>
+          </FloatingButton>
         ) : (
           <MatchButtons />
         )}
