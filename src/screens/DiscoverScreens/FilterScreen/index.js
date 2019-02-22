@@ -5,6 +5,7 @@ import FilterSliders from './components/FilterSliders'
 import FloatingButton from '../../../components/FloatingButton'
 import FilterButtonGroups from './components/FilterButtonGroups'
 import { inchesToString } from '../../../../unitConverters'
+import FilterMultiList from './components/FilterMultiList'
 import {
   distanceSliderInfo,
   ageSliderInfo,
@@ -52,6 +53,7 @@ export default class FilterScreen extends Component {
             title="Filter"
             showBack
           />
+          <FilterMultiList />
           <FilterSliders sliders={sliders} />
           <FilterButtonGroups />
           <Padding />
