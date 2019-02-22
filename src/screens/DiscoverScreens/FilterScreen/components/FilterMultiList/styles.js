@@ -9,6 +9,6 @@ export const Container = styled.View`
 export const SubContainer = styled.View``
 
 export const searchInputStyle = {
-  height: 48,
-  fontSize: 20
+  height: 50,
+  fontSize: 18
 }

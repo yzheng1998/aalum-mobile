@@ -44,6 +44,7 @@ class FilterMultiList extends Component {
           tagRemoveIconColor={gradientLeft}
           textColor={inactiveText}
           searchInputStyle={searchInputStyle}
+          fontSize={18}
           hideSubmitButton
           hideTags
         />
