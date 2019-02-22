@@ -21,6 +21,9 @@ If you don't have react-native installed, first run:
 sudo npm install -g react-native-cli
 ```
 
+If your watchman is acting up (metroBundler gets stuck), try reinstalling watchman
+https://stackoverflow.com/questions/37370949/react-native-failed-to-build-dependencygraph-watchman-error
+
 Install Xcode
 https://developer.apple.com/xcode/
 
