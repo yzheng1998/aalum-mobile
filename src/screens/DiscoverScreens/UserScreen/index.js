@@ -6,7 +6,12 @@ import UserDetails from './components/UserDetails'
 import UserBio from './components/UserBio'
 import MatchButtons from './components/MatchButtons'
 import BackButton from '../../../components/BackButton'
-import { Screen, Container, BackButtonContainer, Button } from './styles'
+import {
+  Screen,
+  Container,
+  BackButtonContainer,
+  OptionsButtonContainer
+} from './styles'
 import UserPictureCarousel from './components/UserPictureCarousel'
 import FloatingButton from '../../../components/FloatingButton'
 import Icon from '../../../components/Icon'
@@ -26,9 +31,6 @@ export default class UserScreen extends Component {
     return (
       <Container>
         <Screen>
-          <Button onPress={() => this.ActionSheet.show()}>
-            <MaterialIcon name="dots-vertical" color="white" size={37} />
-          </Button>
           <UserPictureCarousel userPictures={userPictures} />
           <UserSummary
             name="Clark"
@@ -80,6 +82,9 @@ export default class UserScreen extends Component {
             onPress={() => this.props.navigation.goBack()}
           />
         </BackButtonContainer>
+        <OptionsButtonContainer onPress={() => this.ActionSheet.show()}>
+          <MaterialIcon name="dots-vertical" color="white" size={37} />
+        </OptionsButtonContainer>
         {isMatched ? (
           <FloatingButton title="Message">
             <Icon
