@@ -12,7 +12,6 @@ import {
   BackButtonContainer,
   OptionsButtonContainer
 } from './styles'
-import { Query } from 'react-apollo'
 import LoadingWrapper from '../../../components/LoadingWrapper'
 import UserPictureCarousel from './components/UserPictureCarousel'
 import FloatingButton from '../../../components/FloatingButton'
@@ -20,6 +19,9 @@ import Icon from '../../../components/Icon'
 import theme from '../../../../theme'
 import { inchesToString } from '../../../../unitConverters'
 import { GET_USER } from './queries'
+import { Query, Mutation } from 'react-apollo'
+import { REPORT_USER } from './mutations'
+import { Alert } from 'react-native'
 
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
@@ -30,11 +32,12 @@ export default class UserScreen extends Component {
     return (
       <Query
         query={GET_USER}
-        variables={{ id: '00a2adf5-e89e-44bc-bd84-600a72fdd844' }}
+        variables={{ id: '0108d882-2cb2-4614-9c41-db2bba4596bc' }}
       >
         {({ loading, data }) => {
           if (loading) return <LoadingWrapper loading />
           const {
+            id,
             name,
             gender,
             photos,
@@ -70,14 +73,38 @@ export default class UserScreen extends Component {
                   bodyType={[bodyType]}
                   interests={interests || []}
                 />
-                <ActionSheet
-                  ref={o => {
-                    this.ActionSheet = o
+                <Mutation
+                  mutation={REPORT_USER}
+                  onCompleted={reportData => {
+                    if (reportData.reportUser) {
+                      Alert.alert('User reported')
+                    }
                   }}
-                  options={['Report', 'Unmatch', 'Cancel']}
-                  cancelButtonIndex={2}
-                  destructiveButtonIndex={1}
-                />
+                  onError={error => {
+                    if (error) {
+                      Alert.alert('Encountered server error')
+                    }
+                  }}
+                >
+                  {reportUser => (
+                    <ActionSheet
+                      ref={o => {
+                        this.ActionSheet = o
+                      }}
+                      options={['Report', 'Unmatch', 'Cancel']}
+                      cancelButtonIndex={2}
+                      destructiveButtonIndex={1}
+                      onPress={index => {
+                        const variables = {
+                          reportedUserId: id
+                        }
+                        if (index === 0) {
+                          reportUser({ variables })
+                        }
+                      }}
+                    />
+                  )}
+                </Mutation>
               </Screen>
               <OptionsButtonContainer onPress={() => this.ActionSheet.show()}>
                 <MaterialIcon name="dots-vertical" color="white" size={37} />
