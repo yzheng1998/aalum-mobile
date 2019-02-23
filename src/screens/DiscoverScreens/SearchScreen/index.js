@@ -41,6 +41,7 @@ export default class SearchScreen extends Component {
               <SearchContainer>
                 {userData.map(user => (
                   <UserSearchCard
+                    id={user.id}
                     key={user.id}
                     profilePicture={
                       user.photos && user.photos[0]
@@ -66,6 +67,7 @@ export default class SearchScreen extends Component {
                         : 'null'
                     }
                     isInterested={user.isConnected}
+                    navigation={this.props.navigation}
                   />
                 ))}
               </SearchContainer>

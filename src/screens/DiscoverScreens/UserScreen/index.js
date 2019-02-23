@@ -26,18 +26,17 @@ import { Alert } from 'react-native'
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
 
+const DEFAULT_ID = '01890092-5243-4e00-bd56-b97753aef289'
+
 export default class UserScreen extends Component {
   render() {
+    const id = this.props.navigation.getParam('id')
     const isMatched = true
     return (
-      <Query
-        query={GET_USER}
-        variables={{ id: '0108d882-2cb2-4614-9c41-db2bba4596bc' }}
-      >
+      <Query query={GET_USER} variables={{ id: id || DEFAULT_ID }}>
         {({ loading, data }) => {
           if (loading) return <LoadingWrapper loading />
           const {
-            id,
             name,
             gender,
             photos,

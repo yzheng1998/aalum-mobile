@@ -5,6 +5,7 @@ import UserSearchCardPicture from './components/UserSearchCardPicture'
 import UserSearchCardDetails from './components/UserSearchCardDetails'
 
 const UserSearchCard = ({
+  id,
   profilePicture,
   name,
   age,
@@ -12,9 +13,10 @@ const UserSearchCard = ({
   school,
   degree,
   year,
-  isInterested
+  isInterested,
+  navigation
 }) => (
-  <Container>
+  <Container onPress={() => navigation.navigate('User', { id })}>
     <ContentContainer>
       <UserSearchCardPicture profilePicture={profilePicture} />
       <UserSearchCardDetails

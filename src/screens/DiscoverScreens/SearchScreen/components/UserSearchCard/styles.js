@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { themeGet } from 'styled-system'
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   justify-content: center;
   height: 80px;
   width: 100%;
