@@ -1,97 +1,24 @@
 import React, { Component } from 'react'
 import { Screen, SearchContainer } from './styles'
-import SearchBar from './components/SearchBar'
+import { SearchBar } from './components/SearchBar'
 import ScreenHeader from '../../../components/ScreenHeader'
 import UserSearchCard from './components/UserSearchCard'
+import { Query } from 'react-apollo'
+import { GET_USERS } from './queries'
+import LoadingWrapper from '../../../components/LoadingWrapper'
 
-const userData = [
-  {
-    pic: 'https://i.ytimg.com/vi/nIV26rVCWjw/maxresdefault.jpg',
-    name: 'Arthur',
-    age: 39,
-    location: 'Atlantis, FL',
-    school: 'University of Florida',
-    degree: 'B.A.',
-    year: 2001,
-    isInterested: false
-  },
-  {
-    pic:
-      'https://static.projects.iq.harvard.edu/files/styles/profile_full/public/atp/files/yuke_zheng.jpg?m=1531971036&itok=3oUmuyM0',
-    name: 'Yuke',
-    age: 19,
-    location: 'Cambridge, MA',
-    school: 'Harvard University',
-    degree: 'B.A.',
-    year: 2021,
-    isInterested: true
-  },
-  {
-    pic: 'https://lrmonline.com/file/2019/01/margot-robbie-harley-quinn.jpg',
-    name: 'Harley',
-    age: 25,
-    location: 'Somewhere, NY',
-    school: 'Yale University',
-    degree: 'B.S.',
-    year: 2008,
-    isInterested: false
-  },
-  {
-    pic:
-      'https://www.westhawaiitoday.com/wp-content/uploads/2018/06/web1_Hope-Kudo.jpg',
-    name: 'Hope',
-    age: 18,
-    location: 'The Big Island, HI',
-    school: 'Harvard College',
-    degree: 'B.A.',
-    year: 2022,
-    isInterested: true
-  },
-  {
-    pic: 'https://pbs.twimg.com/profile_images/941623413684232192/q4Lkt_kb.jpg',
-    name: 'Hossam',
-    age: 19,
-    location: 'Mansoura, Egypt',
-    school: 'Harvard College',
-    degree: 'B.A.',
-    year: 2021,
-    isInterested: true
-  },
-  {
-    pic:
-      'https://cdn.aarp.net/content/dam/aarp/entertainment/books/2017/10/1140-book-bites-muhammad-ali-bio.imgcache.rev4d78e736e7f066e5dca72a74ba52a250.jpg',
-    name: 'Houddy',
-    age: 29,
-    location: 'Tanzania',
-    school: 'Boston University',
-    degree: "Master's",
-    year: 2001,
-    isInterested: false
-  },
-  {
-    pic: 'https://i.ytimg.com/vi/s3frfGLylIc/maxresdefault.jpg',
-    name: 'Bliss',
-    age: 129,
-    location: 'Somewhere, Some place',
-    school: 'Ithaca College',
-    degree: 'B.S.',
-    year: 2001,
-    isInterested: true
-  },
-  {
-    pic:
-      'https://images-na.ssl-images-amazon.com/images/I/41xgjPGILRL._SX425_.jpg',
-    name: 'Courage',
-    age: 3,
-    location: 'Middle of Nowhere, Planet Earth',
-    school: 'Our Hearts',
-    degree: 'B.A.',
-    year: 2008,
-    isInterested: false
-  }
-]
+const DEFAULT_PIC_URL =
+  'https://static.projects.iq.harvard.edu/files/styles/profile_full/public/atp/files/yuke_zheng.jpg?m=1531971036&itok=3oUmuyM0'
 
 export default class SearchScreen extends Component {
+  constructor(props) {
+    super(props)
+    this.updateState = this.setState.bind(this)
+    this.state = {
+      text: ''
+    }
+  }
+
   render() {
     return (
       <Screen>
@@ -100,22 +27,51 @@ export default class SearchScreen extends Component {
           title="Search"
           showBack
         />
-        <SearchBar />
-        <SearchContainer>
-          {userData.map(data => (
-            <UserSearchCard
-              key={data.name}
-              profilePicture={data.pic}
-              name={data.name}
-              age={data.age}
-              location={data.location}
-              school={data.school}
-              degree={data.degree}
-              year={data.year}
-              isInterested={data.isInterested}
-            />
-          ))}
-        </SearchContainer>
+        <SearchBar updateState={this.updateState} />
+        <Query
+          query={GET_USERS}
+          variables={{
+            substring: this.state.text
+          }}
+        >
+          {({ loading, data }) => {
+            if (loading) return <LoadingWrapper loading />
+            const userData = data.users.nodes
+            return (
+              <SearchContainer>
+                {userData.map(user => (
+                  <UserSearchCard
+                    key={user.id}
+                    profilePicture={
+                      user.photos && user.photos[0]
+                        ? user.photos[0].imageUrl
+                        : DEFAULT_PIC_URL
+                    }
+                    name={user.name}
+                    age={user.age}
+                    location={user.location}
+                    school={
+                      user.educations && user.educations[0]
+                        ? user.educations[0].school
+                        : 'null'
+                    }
+                    degree={
+                      user.educations && user.educations[0]
+                        ? user.educations[0].degree
+                        : 'null'
+                    }
+                    year={
+                      user.educations && user.educations[0]
+                        ? user.educations[0].year
+                        : 'null'
+                    }
+                    isInterested={user.isConnected}
+                  />
+                ))}
+              </SearchContainer>
+            )
+          }}
+        </Query>
       </Screen>
     )
   }
