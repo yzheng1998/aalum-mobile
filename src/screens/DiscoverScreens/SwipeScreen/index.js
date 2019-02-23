@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Screen, ButtonContainer } from './styles'
+import { Screen, ButtonContainer, Container } from './styles'
 import { AsyncStorage, View, Text } from 'react-native'
 import SwipeCards from 'react-native-swipe-cards'
 import UserCard from './components/UserCard'
@@ -44,26 +44,31 @@ export default class SwipeScreen extends Component {
           <FilterButton navigation={this.props.navigation} />
         </ScreenHeader>
         <SearchButton navigation={this.props.navigation} />
-        <SwipeCards
-          ref={this.swipeCardRef}
-          cards={cards}
-          cardStyle={{ width: '80%' }}
-          renderCard={cardData => (
-            <UserCard navigation={this.props.navigation} cardData={cardData} />
-          )}
-          renderNoMoreCards={() => (
-            <View>
-              <Text>No more cards</Text>
-            </View>
-          )}
-          yupStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
-          nopeStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
-          yupView={<MatchButton name="heart" />}
-          noView={<MatchButton name="close" />}
-          handleYup={this.handleYup}
-          handleNope={this.handleNope}
-          on
-        />
+        <Container>
+          <SwipeCards
+            ref={this.swipeCardRef}
+            cards={cards}
+            cardStyle={{ width: '87%' }}
+            renderCard={cardData => (
+              <UserCard
+                navigation={this.props.navigation}
+                cardData={cardData}
+              />
+            )}
+            renderNoMoreCards={() => (
+              <View>
+                <Text>No more cards</Text>
+              </View>
+            )}
+            yupStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
+            nopeStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
+            yupView={<MatchButton disabled name="heart" />}
+            noView={<MatchButton disabled name="close" />}
+            handleYup={this.handleYup}
+            handleNope={this.handleNope}
+            on
+          />
+        </Container>
         {/* eslint-disable no-underscore-dangle */}
         <ButtonContainer>
           <MatchButton

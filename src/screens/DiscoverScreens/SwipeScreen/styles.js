@@ -13,3 +13,7 @@ export const ButtonContainer = styled.View`
   margin-top: ${height * 0.0373};
   padding-bottom: ${height * 0.064};
 `
+
+export const Container = styled.View`
+  height: ${height * 0.44 + 45};
+`
