@@ -7,21 +7,9 @@ import SearchButton from './components/SearchButton'
 import ScreenHeader from '../../../components/ScreenHeader'
 import FilterButton from './components/FilterButton'
 import MatchButton from '../../../components/MatchButton'
-
-const SAMPLE_URL =
-  'https://cdn-images-1.medium.com/max/2000/0*bdhf1cch4Mjib3UL.jpg'
-
-const user = {
-  name: 'Harley',
-  age: '25',
-  distance: '0.1',
-  school: 'Harvard University',
-  degree: 'B.A',
-  year: '2021',
-  picture: SAMPLE_URL
-}
-
-const cards = [user, user, user]
+import { Query } from 'react-apollo'
+import { GET_USERS } from './queries'
+import LoadingWrapper from '../../../components/LoadingWrapper'
 
 export default class SwipeScreen extends Component {
   constructor(props) {
@@ -44,31 +32,44 @@ export default class SwipeScreen extends Component {
           <FilterButton navigation={this.props.navigation} />
         </ScreenHeader>
         <SearchButton navigation={this.props.navigation} />
-        <Container>
-          <SwipeCards
-            ref={this.swipeCardRef}
-            cards={cards}
-            cardStyle={{ width: '87%' }}
-            renderCard={cardData => (
-              <UserCard
-                navigation={this.props.navigation}
-                cardData={cardData}
-              />
-            )}
-            renderNoMoreCards={() => (
-              <View>
-                <Text>No more cards</Text>
-              </View>
-            )}
-            yupStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
-            nopeStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
-            yupView={<MatchButton disabled name="heart" />}
-            noView={<MatchButton disabled name="close" />}
-            handleYup={this.handleYup}
-            handleNope={this.handleNope}
-            on
-          />
-        </Container>
+        <Query
+          query={GET_USERS}
+          variables={{
+            substring: ''
+          }}
+        >
+          {({ loading, data }) => {
+            if (loading) return <LoadingWrapper loading />
+            const userData = data.users.nodes
+            return (
+              <Container>
+                <SwipeCards
+                  ref={this.swipeCardRef}
+                  cards={userData}
+                  cardStyle={{ width: '87%' }}
+                  renderCard={cardData => (
+                    <UserCard
+                      navigation={this.props.navigation}
+                      cardData={cardData}
+                    />
+                  )}
+                  renderNoMoreCards={() => (
+                    <View>
+                      <Text>No more cards</Text>
+                    </View>
+                  )}
+                  yupStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
+                  nopeStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
+                  yupView={<MatchButton disabled name="heart" />}
+                  noView={<MatchButton disabled name="close" />}
+                  handleYup={this.handleYup}
+                  handleNope={this.handleNope}
+                  on
+                />
+              </Container>
+            )
+          }}
+        </Query>
         {/* eslint-disable no-underscore-dangle */}
         <ButtonContainer>
           <MatchButton
