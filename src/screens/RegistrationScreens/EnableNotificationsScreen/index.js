@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import NotificationGraphic from '../../../../assets/images/registrationFlow/NotificationGraphic.png'
+import * as pushNotifications from '../../../services/pushNotifications'
+
 import { imageStyle } from './styles'
 
 export default class EnableNotificationsScreen extends Component {
@@ -14,9 +16,12 @@ export default class EnableNotificationsScreen extends Component {
         imageStyle={imageStyle}
       >
         <PrimaryButton
+          onPress={() => {
+            pushNotifications.configure()
+            this.props.navigation.navigate('Swipe')
+          }}
           title="Allow Notifications"
           style={{ marginTop: 29 }}
-          onPress={() => this.props.navigation.navigate('Swipe')}
         />
       </RegistrationScreen>
     )
