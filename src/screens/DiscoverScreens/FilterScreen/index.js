@@ -4,7 +4,7 @@ import ScreenHeader from '../../../components/ScreenHeader'
 import FilterSliders from './components/FilterSliders'
 import FloatingButton from '../../../components/FloatingButton'
 import FilterButtonGroups from './components/FilterButtonGroups'
-import { inchesToString } from './unitConverters'
+import { inchesToString } from '../../../../unitConverters'
 import {
   distanceSliderInfo,
   ageSliderInfo,
