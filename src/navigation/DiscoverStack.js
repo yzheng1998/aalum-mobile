@@ -16,22 +16,19 @@ const DiscoverStack = createStackNavigator(
     Search: {
       screen: SearchScreen,
       navigationOptions: () => ({
-        header: null,
-        gesturesEnabled: false
+        header: null
       })
     },
     Filter: {
       screen: FilterScreen,
       navigationOptions: () => ({
-        header: null,
-        gesturesEnabled: false
+        header: null
       })
     },
     User: {
       screen: UserScreen,
       navigationOptions: () => ({
-        header: null,
-        gesturesEnabled: false
+        header: null
       })
     }
   },

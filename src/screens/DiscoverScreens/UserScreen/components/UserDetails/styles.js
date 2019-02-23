@@ -4,6 +4,7 @@ import { themeGet } from 'styled-system'
 export const Container = styled.View`
   border-top-width: 1px;
   border-top-color: ${themeGet('colors.whiteGrey')};
+  margin-bottom: 120px;
 `
 
 export const DetailsContainer = styled.View`

@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 import { themeGet } from 'styled-system'
+import { Dimensions } from 'react-native'
+
+const { height } = Dimensions.get('window')
 
 export const Container = styled.View`
   display: flex;
@@ -7,9 +10,9 @@ export const Container = styled.View`
   align-items: center;
   margin-left: 25px;
   margin-right: 25px;
-  margin-bottom: 37px;
+  margin-bottom: ${height * 0.045};
   padding-left: 15px;
-  height: 50px;
+  height: ${height * 0.061};
   background-color: white;
   box-shadow: 0px 6px 25px ${themeGet('colors.shadow')};
 `

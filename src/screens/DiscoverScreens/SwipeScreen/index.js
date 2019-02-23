@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Screen, Button, ButtonContainer } from './styles'
-import { AsyncStorage } from 'react-native'
+import { Screen, ButtonContainer } from './styles'
 import UserCard from './components/UserCard'
 import SearchButton from './components/SearchButton'
 import ScreenHeader from '../../../components/ScreenHeader'
@@ -11,15 +10,9 @@ const SAMPLE_URL =
   'https://cdn-images-1.medium.com/max/2000/0*bdhf1cch4Mjib3UL.jpg'
 
 export default class SwipeScreen extends Component {
-  logout = async () => {
-    AsyncStorage.clear()
-    this.props.navigation.navigate('SignIn')
-  }
-
   render() {
     return (
       <Screen>
-        <Button title="Logout" onPress={this.logout} />
         <ScreenHeader navigation={this.props.navigation} title="Discover">
           <FilterButton navigation={this.props.navigation} />
         </ScreenHeader>
