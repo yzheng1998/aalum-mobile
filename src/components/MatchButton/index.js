@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, CloseIcon, HeartIcon } from './styles'
+import { CloseIcon, HeartIcon, Button } from './styles'
 
-const MatchButton = ({ name }) => (
-  <Container>
+const MatchButton = ({ name, onPress, disabled }) => (
+  <Button onPress={onPress} disabled={disabled}>
     {name === 'heart' ? <HeartIcon name="heart" /> : <CloseIcon name="close" />}
-  </Container>
+  </Button>
 )
 
 export default MatchButton

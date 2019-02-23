@@ -12,7 +12,8 @@ export default class App extends Component {
   render() {
     YellowBox.ignoreWarnings([
       'Error: User cancelled image selection',
-      'Remote debugger'
+      'Remote debugger',
+      'Failed prop type:'
     ])
     return (
       <ApolloProvider client={client}>
