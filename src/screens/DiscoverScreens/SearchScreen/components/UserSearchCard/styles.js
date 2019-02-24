@@ -5,8 +5,8 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   height: 80px;
   width: 100%;
-  border-top-width: 1px;
-  border-top-color: ${themeGet('colors.whiteGrey')};
+  border-bottom-width: 1px;
+  border-bottom-color: ${themeGet('colors.whiteGrey')};
 `
 
 export const ContentContainer = styled.View`

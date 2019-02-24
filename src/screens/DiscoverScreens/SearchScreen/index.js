@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Screen, SearchContainer } from './styles'
+import { Screen, SearchContainer, SearchHeader } from './styles'
 import { SearchBar } from './components/SearchBar'
 import ScreenHeader from '../../../components/ScreenHeader'
 import UserSearchCard from './components/UserSearchCard'
@@ -19,12 +19,14 @@ export default class SearchScreen extends Component {
   render() {
     return (
       <Screen>
-        <ScreenHeader
-          navigation={this.props.navigation}
-          title="Search"
-          showBack
-        />
-        <SearchBar updateState={this.updateState} />
+        <SearchHeader>
+          <ScreenHeader
+            navigation={this.props.navigation}
+            title="Search"
+            showBack
+          />
+          <SearchBar updateState={this.updateState} />
+        </SearchHeader>
         <Query
           query={GET_USERS}
           variables={{
