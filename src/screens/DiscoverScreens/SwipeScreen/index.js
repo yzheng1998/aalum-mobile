@@ -44,6 +44,7 @@ export default class SwipeScreen extends Component {
             return (
               <Container>
                 <SwipeCards
+                  onClickHandler={() => {}}
                   ref={this.swipeCardRef}
                   cards={userData}
                   cardStyle={{ width: '87%' }}
