@@ -19,7 +19,8 @@ const theme = {
     darkShadow: 'rgba(0,0,0,0.1)',
     buttonShadow1: 'rgba(255, 255, 255, 0) ',
     buttonShadow2: 'rgba(249, 249, 249, 0.9)',
-    inactiveText: '#ADADAD'
+    inactiveText: '#ADADAD',
+    border: '#BDBDBD'
   },
   fonts: {
     heading: 'Montserrat-Bold',
