@@ -12,31 +12,40 @@ const UserSummary = ({
   school,
   degree,
   year,
-  profession
+  professions
 }) => {
   const rows = [
-    { key: 'distance', iconName: 'pin', content: `${distance} miles away` },
+    {
+      key: 'distance',
+      iconName: 'pin',
+      content: `${distance || 'Many'} mile${distance !== 1 ? 's' : ''} away`
+    },
     {
       key: 'education',
       iconName: 'school',
-      content: `${school}, ${degreeAbbrEnumToString(degree)} ${year}`
+      content: school
+        ? `${school}, ${degreeAbbrEnumToString(degree)} ${year}`
+        : ''
     },
     {
       key: 'profession',
       iconName: 'briefcase',
-      content: `${enumToString(profession)}`
+      content: professions && professions[0] ? enumToString(professions[0]) : ''
     }
   ]
 
   return (
     <Container>
       <NameText>{`${name}, ${age}`}</NameText>
-      {rows.map(row => (
-        <RowContainer key={row.key}>
-          <Icn name={row.iconName} fixedWidth />
-          <DetailsText>{row.content}</DetailsText>
-        </RowContainer>
-      ))}
+      {rows.map(
+        row =>
+          row.content !== '' && (
+            <RowContainer key={row.key}>
+              <Icn name={row.iconName} fixedWidth />
+              <DetailsText>{row.content}</DetailsText>
+            </RowContainer>
+          )
+      )}
     </Container>
   )
 }

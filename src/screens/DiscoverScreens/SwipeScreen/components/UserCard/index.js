@@ -7,7 +7,7 @@ const UserCard = ({ cardData, navigation }) => (
   <TouchableOpacity
     onPress={() => navigation.navigate('User', { id: cardData.id })}
   >
-    <UserCardPicture source={cardData.picture} />
+    <UserCardPicture source={cardData.profilePicture} />
     <UserCardBio {...cardData} />
   </TouchableOpacity>
 )

@@ -5,20 +5,21 @@ export const GET_USER = gql`
     user(id: $id) {
       id
       name
-      email
-      birthday
-      gender
-      ethnicity
-      photos {
-        id
-        imageUrl
-        rank
-      }
+      genders
+      ethnicities
+      # photos {
+      #   id
+      #   imageUrl
+      #   rank
+      # }
+      languages
+      profilePicture
       height
       age
       job
       bodyType
       interests
+      professions
       educations {
         class
         degree

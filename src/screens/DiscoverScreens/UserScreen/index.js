@@ -38,35 +38,41 @@ export default class UserScreen extends Component {
           if (loading) return <LoadingWrapper loading />
           const {
             name,
-            gender,
-            photos,
+            genders,
+            ethnicities,
+            profilePicture,
             height,
             educations,
-            ethnicity,
+            professions,
             languages,
             bodyType,
             interests,
             age,
-            job,
             distance
           } = data.user
           return (
             <Container>
               <Screen>
-                <UserPictureCarousel userPictures={photos || []} />
+                <UserPictureCarousel
+                  userPictures={profilePicture ? [profilePicture] : ''}
+                />
                 <UserSummary
                   name={name}
                   age={age}
-                  distance={distance}
-                  school={educations ? educations[0].school : null}
-                  degree={educations ? educations[0].degree : null}
-                  year={educations ? educations[0].year : null}
-                  profession={job}
+                  distance={distance || ''}
+                  school={
+                    educations && educations[0] ? educations[0].school : ''
+                  }
+                  degree={
+                    educations && educations[0] ? educations[0].degree : ''
+                  }
+                  year={educations && educations[0] ? educations[0].class : ''}
+                  professions={professions || []}
                 />
                 <UserBio info={SAMPLE_TEXT} />
                 <UserDetails
-                  gender={gender || []}
-                  ethnicity={ethnicity || []}
+                  gender={genders || []}
+                  ethnicity={ethnicities || []}
                   languages={languages || []}
                   height={inchesToString(height)}
                   bodyType={[bodyType]}

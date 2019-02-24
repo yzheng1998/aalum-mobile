@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native'
 const { height } = Dimensions.get('window')
 
 export const Screen = styled.View`
-  padding-top: ${height * 0.065};
+  padding-top: ${height * 0.07};
 `
 
 export const ButtonContainer = styled.View`

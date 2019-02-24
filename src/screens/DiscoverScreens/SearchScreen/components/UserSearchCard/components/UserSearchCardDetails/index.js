@@ -10,9 +10,12 @@ const UserSearchCardDetails = ({
   year
 }) => (
   <Container>
-    <NameText>{`${name}, ${age}`}</NameText>
-    <LocationText>{location}</LocationText>
-    <EducationText>{`${school}, ${degree} ${year}`}</EducationText>
+    <NameText>{`${name || ''}, ${age || ''}`}</NameText>
+    <LocationText>{location || ''}</LocationText>
+    <EducationText>
+      {`${school || ''}${school && (degree || year) ? ', ' : ''}${degree ||
+        ''}${degree && year ? ', ' : ''}${year || ''}`}
+    </EducationText>
   </Container>
 )
 

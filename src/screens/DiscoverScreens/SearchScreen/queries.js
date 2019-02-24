@@ -1,17 +1,13 @@
 import gql from 'graphql-tag'
 
 export const GET_USERS = gql`
-  query user($substring: String!) {
+  query users($substring: String!) {
     users(substring: $substring) {
       nodes {
         id
         name
         email
-        photos {
-          id
-          imageUrl
-          rank
-        }
+        profilePicture
         age
         educations {
           class
