@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Screen, SearchContainer, SearchHeader } from './styles'
-import { SearchBar } from './components/SearchBar'
+import SearchBar from './components/SearchBar'
 import ScreenHeader from '../../../components/ScreenHeader'
 import UserSearchCard from './components/UserSearchCard'
 import { Query } from 'react-apollo'

@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native'
 
 const { height } = Dimensions.get('window')
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   align-items: center;
