@@ -7,11 +7,11 @@ export const GET_USER = gql`
       name
       genders
       ethnicities
-      # photos {
-      #   id
-      #   imageUrl
-      #   rank
-      # }
+      photos {
+        id
+        imageUrl
+        rank
+      }
       languages
       profilePicture
       height
@@ -21,9 +21,9 @@ export const GET_USER = gql`
       interests
       professions
       educations {
-        class
-        degree
-        school
+        year
+        degreeType
+        schoolName
       }
     }
   }

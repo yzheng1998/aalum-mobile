@@ -40,7 +40,6 @@ export default class UserScreen extends Component {
             name,
             genders,
             ethnicities,
-            profilePicture,
             height,
             educations,
             professions,
@@ -48,25 +47,30 @@ export default class UserScreen extends Component {
             bodyType,
             interests,
             age,
-            distance
+            distance,
+            profilePicture,
+            photos
           } = data.user
+          const photoArr = photos.map(photo => photo.imageUrl)
           return (
             <Container>
               <Screen>
                 <UserPictureCarousel
-                  userPictures={profilePicture ? [profilePicture] : ''}
+                  userPictures={
+                    photos && photos[0] ? [profilePicture, ...photoArr] : ''
+                  }
                 />
                 <UserSummary
                   name={name}
                   age={age}
                   distance={distance || ''}
                   school={
-                    educations && educations[0] ? educations[0].school : ''
+                    educations && educations[0] ? educations[0].schoolName : ''
                   }
                   degree={
-                    educations && educations[0] ? educations[0].degree : ''
+                    educations && educations[0] ? educations[0].degreeType : ''
                   }
-                  year={educations && educations[0] ? educations[0].class : ''}
+                  year={educations && educations[0] ? educations[0].year : ''}
                   professions={professions || []}
                 />
                 <UserBio info={SAMPLE_TEXT} />

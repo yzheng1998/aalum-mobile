@@ -68,7 +68,7 @@ const degreeFullStringToEnumObj = {
 export const degreeFullList = Object.keys(degreeFullStringToEnumObj)
 
 const degreeAbbrStringToEnumObj = {
-  Current: 'CURRENT',
+  Student: 'CURRENT',
   'B.A.': 'BACHELORSART',
   'B.S.': 'BACHELORSSCIENCE',
   "Master's": 'MASTERS',
