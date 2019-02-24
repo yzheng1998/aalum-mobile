@@ -3,11 +3,14 @@ import { Container, Padding } from './styles'
 import FilterSliders from '../FilterSliders'
 import FilterButtonGroups from '../FilterButtonGroups'
 import FloatingButton from '../../../../../components/FloatingButton'
+import FilterMultiLists from '../FilterMultiLists'
 import { inchesToString } from '../../../../../../unitConverters'
 import {
   distanceSliderInfo,
   ageSliderInfo,
-  heightSliderInfo
+  heightSliderInfo,
+  languageListInfo,
+  professionListInfo
 } from '../../constants'
 
 export default class FilterContainer extends Component {
@@ -17,11 +20,13 @@ export default class FilterContainer extends Component {
     this.state = {
       distance: props.distance,
       age: props.age,
-      height: props.height
+      height: props.height,
+      languages: props.languages,
+      professions: props.professions
     }
   }
   render() {
-    const { distance, age, height } = this.state
+    const { distance, age, height, languages, professions } = this.state
     const sliders = [
       {
         ...distanceSliderInfo,
@@ -42,10 +47,24 @@ export default class FilterContainer extends Component {
         updateState: val => this.updateState({ height: val })
       }
     ]
+
+    const lists = [
+      {
+        ...languageListInfo,
+        onChange: val => this.updateState({ languages: val }),
+        selectedItems: languages
+      },
+      {
+        ...professionListInfo,
+        onChange: val => this.updateState({ professions: val }),
+        selectedItems: professions
+      }
+    ]
     return (
       <Container>
         <FilterSliders sliders={sliders} />
         <FilterButtonGroups />
+        <FilterMultiLists lists={lists} />
         <Padding />
         <FloatingButton title="Apply" />
       </Container>

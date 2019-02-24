@@ -1,68 +1,13 @@
 import React, { Component } from 'react'
-import { Screen, Container, Padding } from './styles'
+import { Screen, Container } from './styles'
 import ScreenHeader from '../../../components/ScreenHeader'
-import FilterSliders from './components/FilterSliders'
-import FloatingButton from '../../../components/FloatingButton'
-import FilterButtonGroups from './components/FilterButtonGroups'
-import { inchesToString } from '../../../../unitConverters'
-import FilterMultiLists from './components/FilterMultiLists'
-
-import {
-  distanceSliderInfo,
-  ageSliderInfo,
-  heightSliderInfo,
-  languageListInfo,
-  professionListInfo
-} from './constants'
+import LoadingWrapper from '../../../components/LoadingWrapper'
+import { Query } from 'react-apollo'
+import { GET_USER_FILTERS } from './queries'
+import FilterContainer from './components/FilterContainer'
 
 export default class FilterScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.updateState = this.setState.bind(this)
-    this.state = {
-      distance: [40],
-      age: [20, 26],
-      height: [30, 65],
-      languages: [],
-      professions: []
-    }
-  }
-
   render() {
-    const { distance, age, height, languages, professions } = this.state
-    const sliders = [
-      {
-        ...distanceSliderInfo,
-        values: distance,
-        formatter: x => x,
-        updateState: val => this.updateState({ distance: val })
-      },
-      {
-        ...ageSliderInfo,
-        values: age,
-        formatter: x => x,
-        updateState: val => this.updateState({ age: val })
-      },
-      {
-        ...heightSliderInfo,
-        values: height,
-        formatter: inchesToString,
-        updateState: val => this.updateState({ height: val })
-      }
-    ]
-
-    const lists = [
-      {
-        ...languageListInfo,
-        onChange: val => this.updateState({ languages: val }),
-        selectedItems: languages
-      },
-      {
-        ...professionListInfo,
-        onChange: val => this.updateState({ professions: val }),
-        selectedItems: professions
-      }
-    ]
     return (
       <Container>
         <Screen>
@@ -71,12 +16,29 @@ export default class FilterScreen extends Component {
             title="Filter"
             showBack
           />
-          <FilterSliders sliders={sliders} />
-          <FilterButtonGroups />
-          <FilterMultiLists lists={lists} />
-          <Padding />
+          <Query
+            query={GET_USER_FILTERS}
+            variables={{ id: '00f9008c-2a01-448e-8bc0-99d65ef07332' }}
+          >
+            {({ loading, data }) => {
+              if (loading) return <LoadingWrapper loading />
+              const {
+                distance,
+                ageMin,
+                ageMax,
+                heightMin,
+                heightMax
+              } = data.user.DiscoveryFilter
+              return (
+                <FilterContainer
+                  distance={[distance]}
+                  age={[ageMin, ageMax]}
+                  height={[heightMin, heightMax]}
+                />
+              )
+            }}
+          </Query>
         </Screen>
-        <FloatingButton title="Apply" />
       </Container>
     )
   }
