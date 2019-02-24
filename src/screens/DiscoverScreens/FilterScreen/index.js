@@ -5,11 +5,14 @@ import FilterSliders from './components/FilterSliders'
 import FloatingButton from '../../../components/FloatingButton'
 import FilterButtonGroups from './components/FilterButtonGroups'
 import { inchesToString } from '../../../../unitConverters'
-import FilterMultiList from './components/FilterMultiList'
+import FilterMultiLists from './components/FilterMultiLists'
+
 import {
   distanceSliderInfo,
   ageSliderInfo,
-  heightSliderInfo
+  heightSliderInfo,
+  languageListInfo,
+  professionListInfo
 } from './constants'
 
 export default class FilterScreen extends Component {
@@ -19,12 +22,14 @@ export default class FilterScreen extends Component {
     this.state = {
       distance: [40],
       age: [20, 26],
-      height: [30, 65]
+      height: [30, 65],
+      languages: [],
+      professions: []
     }
   }
 
   render() {
-    const { distance, age, height } = this.state
+    const { distance, age, height, languages, professions } = this.state
     const sliders = [
       {
         ...distanceSliderInfo,
@@ -45,6 +50,19 @@ export default class FilterScreen extends Component {
         updateState: val => this.updateState({ height: val })
       }
     ]
+
+    const lists = [
+      {
+        ...languageListInfo,
+        onChange: val => this.updateState({ languages: val }),
+        selectedItems: languages
+      },
+      {
+        ...professionListInfo,
+        onChange: val => this.updateState({ professions: val }),
+        selectedItems: professions
+      }
+    ]
     return (
       <Container>
         <Screen>
@@ -53,9 +71,9 @@ export default class FilterScreen extends Component {
             title="Filter"
             showBack
           />
-          <FilterMultiList />
           <FilterSliders sliders={sliders} />
           <FilterButtonGroups />
+          <FilterMultiLists lists={lists} />
           <Padding />
         </Screen>
         <FloatingButton title="Apply" />

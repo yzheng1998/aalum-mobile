@@ -1,14 +1,14 @@
 import styled from 'styled-components'
+import theme from '../../../../../../../../../../theme'
 
 export const Container = styled.View`
   flex: 1;
-  margin-left: 16px;
-  margin-right: 23px;
 `
 
 export const SubContainer = styled.View``
 
 export const searchInputStyle = {
-  height: 50,
-  fontSize: 18
+  height: 48,
+  fontSize: 18,
+  fontFamily: theme.fonts.title
 }

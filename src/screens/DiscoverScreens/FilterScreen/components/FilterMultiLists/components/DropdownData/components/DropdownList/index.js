@@ -1,39 +1,32 @@
 import React, { Component } from 'react'
 import MultiSelect from 'react-native-multiple-select'
 import { Container, SubContainer, searchInputStyle } from './styles'
-import { languageList, stringToEnum } from '../../../../../../enumMappings'
-import theme from '../../../../../../theme'
+import theme from '../../../../../../../../../../theme'
 
-class FilterMultiList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { selectedItems: [] }
-    this.multiSelectRef = React.createRef()
-  }
-
+class DropdownList extends Component {
   render() {
-    const { selectedItems } = this.state
-    const { bodyText } = theme.fonts
+    const { selectedItems, items, onChange, text } = this.props
+    const { bodyText, title } = theme.fonts
     const { charcoal, gradientLeft, inactiveText } = theme.colors
-    const items = languageList.map(l => ({ id: stringToEnum(l), name: l }))
+
     return (
       <Container>
         <SubContainer>
-          {this.multiSelectRef.current &&
-            this.multiSelectRef.current.getSelectedItemsExt(selectedItems)}
+          {this.multiSelect &&
+            this.multiSelect.getSelectedItemsExt(selectedItems)}
         </SubContainer>
         <MultiSelect
           uniqueKey="id"
-          ref={this.multiSelectRef}
-          items={items}
-          onSelectedItemsChange={s => {
-            this.setState({ selectedItems: s })
+          ref={r => {
+            this.multiSelect = r
           }}
+          items={items}
+          onSelectedItemsChange={onChange}
           selectedItems={selectedItems}
-          selectText="Search Languages..."
-          searchInputPlaceholderText="Search Languages..."
-          altFontFamily={bodyText}
-          fontFamily={bodyText}
+          selectText={text}
+          searchInputPlaceholderText={text}
+          altFontFamily={title}
+          fontFamily={title}
           itemFontFamily={bodyText}
           itemTextColor={charcoal}
           selectedItemFontFamily={bodyText}
@@ -53,4 +46,4 @@ class FilterMultiList extends Component {
   }
 }
 
-export default FilterMultiList
+export default DropdownList
