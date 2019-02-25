@@ -64,10 +64,10 @@ export default class UserScreen extends Component {
                   name={name}
                   age={age}
                   distance={distance || ''}
-                  school={
+                  schoolName={
                     educations && educations[0] ? educations[0].schoolName : ''
                   }
-                  degree={
+                  degreeType={
                     educations && educations[0] ? educations[0].degreeType : ''
                   }
                   year={educations && educations[0] ? educations[0].year : ''}
