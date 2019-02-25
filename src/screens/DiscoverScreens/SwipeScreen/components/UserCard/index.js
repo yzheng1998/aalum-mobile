@@ -5,6 +5,7 @@ import UserCardBio from './components/UserCardBio'
 
 const UserCard = ({ cardData, navigation }) => (
   <TouchableOpacity
+    activeOpacity={0.5}
     onPress={() => navigation.navigate('User', { id: cardData.id })}
   >
     <UserCardPicture source={cardData.profilePicture} />
