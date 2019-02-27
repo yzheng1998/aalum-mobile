@@ -6,7 +6,10 @@ D stands for Dash
 H stands for Hyphen
 A stands for Apostrophe
 S stands for Slash
+<<<<<<< HEAD
 8 stands for Amperstand
+=======
+>>>>>>> 6d883b4... Func(Enum) -- change enum system to be more easily convertible
 */
 
 export const stringToEnum = str =>
@@ -359,6 +362,12 @@ export const languageList = [
   'Yoruba',
   'Zulu'
 ]
+<<<<<<< HEAD
+
+export const languageEnumList = stringListToEnumList(languageList)
+
+export const bodyTypeList = ['Slender', 'Athletic', 'Average', 'Full-figured']
+=======
 
 export const languageEnumList = stringListToEnumList(languageList)
 
@@ -388,6 +397,40 @@ export const degreeList = [
 export const degreeEnumList = stringListToEnumList(degreeList)
 
 const degreeAbbrStringToEnumObj = {
+  Student: 'CURRENT',
+  'B.A.': 'BACHELORART',
+  'B.S.': 'BACHELORSCIENCE',
+  "Master's": 'MASTERS',
+  Doctorate: 'DOCTORATE',
+  "Associate's": 'ASSOCIATES'
+}
+>>>>>>> 6d883b4... Func(Enum) -- change enum system to be more easily convertible
+
+export const bodyTypeEnumList = stringListToEnumList(bodyTypeList)
+
+export const interestList = [
+  'boating',
+  'skiing',
+  'computers',
+  'sports',
+  'gardening'
+]
+
+<<<<<<< HEAD
+export const interestEnumList = stringListToEnumList(interestList)
+
+export const degreeList = [
+  'Current College Student',
+  'Bachelor of Arts Degree',
+  'Bachelor of Science',
+  "Master's Degree",
+  'Doctorate',
+  "Associate's Degree"
+]
+
+export const degreeEnumList = stringListToEnumList(degreeList)
+
+const degreeAbbrStringToEnumObj = {
   Student: 'CURRENT_COLLEGE_STUDENT',
   'B.A.': 'BACHELOR_OF_ARTS_DEGREE',
   'B.S.': 'BACHELOR_OF_SCIENCE',
@@ -400,6 +443,8 @@ const degreeAbbrEnumToStringObj = _.invert(degreeAbbrStringToEnumObj)
 
 export const degreeAbbrList = Object.keys(degreeAbbrStringToEnumObj)
 
+=======
+>>>>>>> 6d883b4... Func(Enum) -- change enum system to be more easily convertible
 // special converters for degree abbreviations due to duplicate keys
 export const degreeAbbrEnumToString = enm => degreeAbbrEnumToStringObj[enm]
 
