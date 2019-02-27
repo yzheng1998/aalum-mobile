@@ -18,11 +18,11 @@ export default class FilterContainer extends Component {
     super(props)
     this.updateState = this.setState.bind(this)
     this.state = {
-      distance: props.distance,
-      age: props.age,
-      height: props.height,
-      languages: props.languages,
-      professions: props.professions
+      distance: props.distance || [6],
+      age: props.age || [24, 30],
+      height: props.height || [64, 76],
+      languages: props.languages || [],
+      professions: props.professions || []
     }
   }
   render() {
