@@ -4,7 +4,7 @@ import { enumToString } from '../../../../../../../../enumMappings'
 
 const UserCardBio = ({ name, age, distance, educations }) => {
   const { schoolName, degreeType, year } = educations[0] || {}
-  const degreeTypeString = enumToString(degreeType)
+  const degreeTypeString = enumToString(degreeType || '')
   return (
     <Container>
       <Title>{`${name || ''}, ${age || ''}`}</Title>
