@@ -6,6 +6,7 @@ D stands for Dash
 H stands for Hyphen
 A stands for Apostrophe
 S stands for Slash
+8 stands for Amperstand
 */
 
 export const stringToEnum = str =>
@@ -387,12 +388,12 @@ export const degreeList = [
 export const degreeEnumList = stringListToEnumList(degreeList)
 
 const degreeAbbrStringToEnumObj = {
-  Student: 'CURRENT',
-  'B.A.': 'BACHELORART',
-  'B.S.': 'BACHELORSCIENCE',
-  "Master's": 'MASTERS',
+  Student: 'CURRENT_COLLEGE_STUDENT',
+  'B.A.': 'BACHELOR_OF_ARTS_DEGREE',
+  'B.S.': 'BACHELOR_OF_SCIENCE',
+  "Master's": 'MASTER_A_S_DEGREE',
   Doctorate: 'DOCTORATE',
-  "Associate's": 'ASSOCIATES'
+  "Associate's": 'ASSOCIATE_A_S_DEGREE'
 }
 
 const degreeAbbrEnumToStringObj = _.invert(degreeAbbrStringToEnumObj)
