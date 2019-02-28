@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Container, Padding } from './styles'
+import { Container, Padding, Screen } from './styles'
 import FilterSliders from '../FilterSliders'
 import FilterButtonGroups from '../FilterButtonGroups'
+import ScreenHeader from '../../../../../components/ScreenHeader'
 import FloatingButton from '../../../../../components/FloatingButton'
 import FilterMultiLists from '../FilterMultiLists'
 import { inchesToString } from '../../../../../../unitConverters'
@@ -12,6 +13,9 @@ import {
   languageListInfo,
   professionListInfo
 } from '../../constants'
+import { APPLY_FILTERS } from '../../mutations'
+import { Mutation } from 'react-apollo'
+import { Alert } from 'react-native'
 
 export default class FilterContainer extends Component {
   constructor(props) {
@@ -62,11 +66,57 @@ export default class FilterContainer extends Component {
     ]
     return (
       <Container>
-        <FilterSliders sliders={sliders} />
-        <FilterButtonGroups />
-        <FilterMultiLists lists={lists} />
-        <Padding />
-        <FloatingButton title="Apply" />
+        <Screen>
+          <ScreenHeader
+            navigation={this.props.navigation}
+            title="Filter"
+            showBack
+          />
+          <FilterSliders sliders={sliders} />
+          <FilterButtonGroups />
+          <FilterMultiLists lists={lists} />
+          <Padding />
+        </Screen>
+
+        <Mutation
+          mutation={APPLY_FILTERS}
+          onCompleted={() => {
+            this.props.navigation.goBack()
+          }}
+          onError={error => {
+            if (error) {
+              Alert.alert('Encountered server error')
+            }
+          }}
+        >
+          {applyFilters => (
+            <FloatingButton
+              title="Apply"
+              onPress={() => {
+                const variables = {
+                  input: {
+                    distance,
+                    ageRange: {
+                      minimum: age[0],
+                      maximum: age[1]
+                    },
+                    height: {
+                      minimum: height[0],
+                      maximum: height[1]
+                    },
+                    genders: [],
+                    bodyTypes: [],
+                    ethnicities: [],
+                    educations: [],
+                    languages,
+                    professions
+                  }
+                }
+                applyFilters({ variables })
+              }}
+            />
+          )}
+        </Mutation>
       </Container>
     )
   }
