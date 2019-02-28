@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Screen, ButtonContainer, Container } from './styles'
-import { AsyncStorage, View, Text } from 'react-native'
+import { AsyncStorage } from 'react-native'
 import SwipeCards from 'react-native-swipe-cards'
 import UserCard from './components/UserCard'
 import SearchButton from './components/SearchButton'
 import ScreenHeader from '../../../components/ScreenHeader'
 import FilterButton from './components/FilterButton'
+import EmptyState from './components/EmptyState'
 import MatchButton from '../../../components/MatchButton'
 import { Query } from 'react-apollo'
 import { GET_USERS } from './queries'
@@ -54,11 +55,7 @@ export default class SwipeScreen extends Component {
                       cardData={cardData}
                     />
                   )}
-                  renderNoMoreCards={() => (
-                    <View>
-                      <Text>No more cards</Text>
-                    </View>
-                  )}
+                  renderNoMoreCards={() => <EmptyState />}
                   yupStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
                   nopeStyle={{ borderColor: 'rgba(0,0,0,0)', outline: 'none' }}
                   yupView={<MatchButton disabled name="heart" />}
