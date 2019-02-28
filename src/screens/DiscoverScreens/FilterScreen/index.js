@@ -20,13 +20,21 @@ export default class FilterScreen extends Component {
               ageMin,
               ageMax,
               heightMin,
-              heightMax
+              heightMax,
+              ethnicities,
+              languages,
+              professions,
+              genders
             } = data.user.DiscoveryFilter
             return (
               <FilterContainer
                 distance={[distance]}
                 age={[ageMin, ageMax]}
                 height={[heightMin, heightMax]}
+                ethnicities={ethnicities}
+                languages={languages}
+                professions={professions}
+                genders={genders}
                 navigation={this.props.navigation}
               />
             )

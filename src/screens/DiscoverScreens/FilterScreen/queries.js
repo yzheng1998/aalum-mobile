@@ -11,6 +11,10 @@ export const GET_USER_FILTERS = gql`
         ageMax
         heightMin
         heightMax
+        ethnicities
+        languages
+        professions
+        genders
       }
     }
   }
