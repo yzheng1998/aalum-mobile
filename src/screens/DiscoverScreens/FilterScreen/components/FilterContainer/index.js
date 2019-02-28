@@ -25,12 +25,20 @@ export default class FilterContainer extends Component {
       distance: props.distance || [6],
       age: props.age || [24, 30],
       height: props.height || [64, 76],
+      genders: props.genders || [],
       languages: props.languages || [],
       professions: props.professions || []
     }
   }
   render() {
-    const { distance, age, height, languages, professions } = this.state
+    const {
+      distance,
+      age,
+      height,
+      genders,
+      languages,
+      professions
+    } = this.state
     const sliders = [
       {
         ...distanceSliderInfo,
