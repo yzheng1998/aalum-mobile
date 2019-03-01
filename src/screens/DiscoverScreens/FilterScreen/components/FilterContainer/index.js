@@ -27,7 +27,9 @@ export default class FilterContainer extends Component {
       height: props.height || [64, 76],
       genders: props.genders || [],
       languages: props.languages || [],
-      professions: props.professions || []
+      professions: props.professions || [],
+      ethnicities: props.ethnicities || [],
+      bodyTypes: props.bodyTypes || []
     }
   }
   render() {
@@ -37,7 +39,9 @@ export default class FilterContainer extends Component {
       height,
       genders,
       languages,
-      professions
+      professions,
+      ethnicities,
+      bodyTypes
     } = this.state
     const sliders = [
       {
@@ -81,7 +85,11 @@ export default class FilterContainer extends Component {
             showBack
           />
           <FilterSliders sliders={sliders} />
-          <FilterButtonGroups />
+          <FilterButtonGroups
+            genderSelection={genders}
+            ethnicitySelection={ethnicities}
+            bodyTypeSelection={bodyTypes}
+          />
           <FilterMultiLists lists={lists} />
           <Padding />
         </Screen>
