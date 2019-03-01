@@ -1,3 +1,13 @@
 {
-  "presets": ["module:metro-react-native-babel-preset"]
+  "env": {
+    "test": {
+      "presets": ["react-native"]
+    },
+    "production": {
+      "presets": ["module:metro-react-native-babel-preset"]
+    },
+    "development": {
+      "presets": ["module:metro-react-native-babel-preset"]
+    }
+  }
 }
