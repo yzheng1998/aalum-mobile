@@ -39,6 +39,8 @@ export const RoundContainer = styled.View`
   background-color: ${themeGet('colors.white')};
 `
 
+RoundContainer.displayName = 'RoundContainer'
+
 export const Icon = styled.View`
   align-items: center;
   justify-content: center;
