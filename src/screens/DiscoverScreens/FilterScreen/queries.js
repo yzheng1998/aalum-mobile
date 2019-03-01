@@ -15,6 +15,7 @@ export const GET_USER_FILTERS = gql`
         languages
         professions
         genders
+        bodyTypes
       }
     }
   }

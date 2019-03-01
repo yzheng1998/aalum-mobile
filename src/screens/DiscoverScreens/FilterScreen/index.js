@@ -11,7 +11,7 @@ export default class FilterScreen extends Component {
       <Container>
         <Query
           query={GET_USER_FILTERS}
-          variables={{ id: '001cbc88-c5d5-4caa-92ff-431d76a03976' }}
+          variables={{ id: '4ac51abe-1cfb-4730-b399-b51cd0e13ff4' }}
         >
           {({ loading, data }) => {
             if (loading) return <LoadingWrapper loading />
@@ -24,7 +24,8 @@ export default class FilterScreen extends Component {
               ethnicities,
               languages,
               professions,
-              genders
+              genders,
+              bodyTypes
             } = data.user.DiscoveryFilter
             return (
               <FilterContainer
@@ -35,6 +36,7 @@ export default class FilterScreen extends Component {
                 languages={languages}
                 professions={professions}
                 genders={genders}
+                bodyTypes={bodyTypes}
                 navigation={this.props.navigation}
               />
             )
