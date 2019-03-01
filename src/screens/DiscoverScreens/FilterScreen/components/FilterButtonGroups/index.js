@@ -8,22 +8,12 @@ import {
 } from '../../../../../../enumMappings'
 
 export default class FilterButtonGroups extends Component {
-  constructor(props) {
-    super(props)
-    this.updateState = this.setState.bind(this)
-    this.state = {
-      genderSelection: props.genderSelection || [],
-      bodyTypeSelection: props.bodyTypeSelection || [],
-      ethnicitySelection: props.ethnicitySelection || []
-    }
-  }
-
   render() {
     const {
       genderSelection,
       bodyTypeSelection,
       ethnicitySelection
-    } = this.state
+    } = this.props
     return (
       <Container>
         <ToggleButtonGroup
@@ -32,7 +22,7 @@ export default class FilterButtonGroups extends Component {
           optionsArray={genderList}
           selectionArray={genderSelection}
           updateState={selection =>
-            this.updateState({ genderSelection: selection })
+            this.props.updateState({ genders: selection })
           }
         />
         <ToggleButtonGroup
@@ -41,7 +31,7 @@ export default class FilterButtonGroups extends Component {
           optionsArray={bodyTypeList}
           selectionArray={bodyTypeSelection}
           updateState={selection =>
-            this.updateState({ bodyTypeSelection: selection })
+            this.props.updateState({ bodyTypes: selection })
           }
         />
         <ToggleButtonGroup
@@ -50,7 +40,7 @@ export default class FilterButtonGroups extends Component {
           optionsArray={ethnicityList}
           selectionArray={ethnicitySelection}
           updateState={selection =>
-            this.updateState({ ethnicitySelection: selection })
+            this.props.updateState({ ethnicities: selection })
           }
         />
       </Container>
