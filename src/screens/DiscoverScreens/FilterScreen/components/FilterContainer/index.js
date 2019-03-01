@@ -89,6 +89,7 @@ export default class FilterContainer extends Component {
             genderSelection={genders}
             ethnicitySelection={ethnicities}
             bodyTypeSelection={bodyTypes}
+            updateState={this.updateState}
           />
           <FilterMultiLists lists={lists} />
           <Padding />
@@ -97,6 +98,7 @@ export default class FilterContainer extends Component {
         <Mutation
           mutation={APPLY_FILTERS}
           onCompleted={() => {
+            this.props.refetch()
             this.props.navigation.goBack()
           }}
           onError={error => {
@@ -120,12 +122,12 @@ export default class FilterContainer extends Component {
                       minimum: height[0],
                       maximum: height[1]
                     },
-                    genders: [],
-                    bodyTypes: [],
-                    ethnicities: [],
-                    educations: [],
+                    genders,
+                    bodyTypes,
+                    ethnicities,
                     languages,
-                    professions
+                    professions,
+                    educations: []
                   }
                 }
                 applyFilters({ variables })

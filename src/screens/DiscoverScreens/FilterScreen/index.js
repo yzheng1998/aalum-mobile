@@ -11,9 +11,9 @@ export default class FilterScreen extends Component {
       <Container>
         <Query
           query={GET_USER_FILTERS}
-          variables={{ id: '4ac51abe-1cfb-4730-b399-b51cd0e13ff4' }}
+          variables={{ id: 'd10c1731-8c5f-4dd4-8534-8447f8997295' }}
         >
-          {({ loading, data }) => {
+          {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
             const {
               distance,
@@ -38,6 +38,7 @@ export default class FilterScreen extends Component {
                 genders={genders}
                 bodyTypes={bodyTypes}
                 navigation={this.props.navigation}
+                refetch={refetch}
               />
             )
           }}

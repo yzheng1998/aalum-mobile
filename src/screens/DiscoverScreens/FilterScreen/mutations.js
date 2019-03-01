@@ -10,6 +10,11 @@ export const APPLY_FILTERS = gql`
         ageMax
         heightMin
         heightMax
+        genders
+        languages
+        ethnicities
+        professions
+        bodyTypes
       }
     }
   }
