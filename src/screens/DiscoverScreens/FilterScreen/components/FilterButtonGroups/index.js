@@ -13,8 +13,8 @@ export default class FilterButtonGroups extends Component {
     this.updateState = this.setState.bind(this)
     this.state = {
       genderSelection: props.genderSelection || [],
-      bodyTypeSelection: [],
-      ethnicitySelection: []
+      bodyTypeSelection: props.bodyTypeSelection || [],
+      ethnicitySelection: props.ethnicitySelection || []
     }
   }
 
