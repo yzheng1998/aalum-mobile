@@ -17,8 +17,9 @@ export default class EnableNotificationsScreen extends Component {
       >
         <PrimaryButton
           onPress={() => {
-            pushNotifications.configure()
-            this.props.navigation.navigate('Swipe')
+            pushNotifications.configure(() =>
+              this.props.navigation.navigate('Swipe')
+            )
           }}
           title="Allow Notifications"
           style={{ marginTop: 29 }}

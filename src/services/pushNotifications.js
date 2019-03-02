@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 
 import config from '../../config'
 
-const configure = () => {
+const configure = callback => {
   PushNotification.configure({
     onRegister(token) {
       client
@@ -27,6 +27,9 @@ const configure = () => {
               }
             }
           `
+        })
+        .then(() => {
+          if (callback) callback()
         })
         .catch(() => {
           Alert.alert(
