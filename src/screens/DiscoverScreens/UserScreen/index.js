@@ -26,7 +26,7 @@ import { Alert } from 'react-native'
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
 
-const DEFAULT_ID = '01890092-5243-4e00-bd56-b97753aef289'
+const DEFAULT_ID = '332e48b5-65a4-450f-a84c-0a0cf05d4297'
 
 export default class UserScreen extends Component {
   render() {
@@ -57,7 +57,7 @@ export default class UserScreen extends Component {
               <Screen>
                 <UserPictureCarousel
                   userPictures={
-                    photos && photos[0] ? [profilePicture, ...photoArr] : ''
+                    photos && photos[0] ? [profilePicture, ...photoArr] : []
                   }
                 />
                 <UserSummary
@@ -105,7 +105,7 @@ export default class UserScreen extends Component {
                       destructiveButtonIndex={1}
                       onPress={index => {
                         const variables = {
-                          reportedUserId: id
+                          reportedUserId: id || DEFAULT_ID
                         }
                         if (index === 0) {
                           reportUser({ variables })
