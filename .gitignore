@@ -58,8 +58,5 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
-# Snapshots
-__snapshots__/
-
 # Coverage report
 coverage/
