@@ -20,6 +20,9 @@ export const stringToEnum = str =>
     .replace(new RegExp(' ', 'g'), '_')
 
 export const enumToString = enm => {
+  if (!enm) {
+    return ''
+  }
   const toTitleCase = str =>
     str
       .toLowerCase()
