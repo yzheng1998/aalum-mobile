@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import ActionSheet from 'react-native-actionsheet'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import UserSummary from './components/UserSummary'
 import UserDetails from './components/UserDetails'
 import UserBio from './components/UserBio'
 import MatchButtons from './components/MatchButtons'
 import BackButton from '../../../components/BackButton'
+import ActionMenu from './components/ActionMenu'
 import {
   Screen,
   Container,
@@ -19,9 +19,7 @@ import Icon from '../../../components/Icon'
 import theme from '../../../../theme'
 import { inchesToString } from '../../../../unitConverters'
 import { GET_USER } from './queries'
-import { Query, Mutation } from 'react-apollo'
-import { REPORT_USER } from './mutations'
-import { Alert } from 'react-native'
+import { Query } from 'react-apollo'
 
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
@@ -29,6 +27,16 @@ const SAMPLE_TEXT =
 const DEFAULT_ID = '332e48b5-65a4-450f-a84c-0a0cf05d4297'
 
 export default class UserScreen extends Component {
+  constructor(props) {
+    super(props)
+
+    this.setActionsheet = this.setActionsheet.bind(this)
+  }
+
+  setActionsheet(input) {
+    this.actionsheet = input
+  }
+
   render() {
     const id = this.props.navigation.getParam('id')
     const isMatched = true
@@ -82,40 +90,12 @@ export default class UserScreen extends Component {
                   bodyType={[bodyType]}
                   interests={interests || []}
                 />
-                <Mutation
-                  mutation={REPORT_USER}
-                  onCompleted={reportData => {
-                    if (reportData.reportUser) {
-                      Alert.alert('User reported')
-                    }
-                  }}
-                  onError={error => {
-                    if (error) {
-                      Alert.alert('Encountered server error')
-                    }
-                  }}
-                >
-                  {reportUser => (
-                    <ActionSheet
-                      ref={o => {
-                        this.ActionSheet = o
-                      }}
-                      options={['Report', 'Unmatch', 'Cancel']}
-                      cancelButtonIndex={2}
-                      destructiveButtonIndex={1}
-                      onPress={index => {
-                        const variables = {
-                          reportedUserId: id || DEFAULT_ID
-                        }
-                        if (index === 0) {
-                          reportUser({ variables })
-                        }
-                      }}
-                    />
-                  )}
-                </Mutation>
+                <ActionMenu
+                  id={id || DEFAULT_ID}
+                  setActionsheet={this.setActionsheet}
+                />
               </Screen>
-              <OptionsButtonContainer onPress={() => this.ActionSheet.show()}>
+              <OptionsButtonContainer onPress={() => this.actionsheet.show()}>
                 <MaterialIcon name="dots-vertical" color="white" size={37} />
               </OptionsButtonContainer>
               <BackButtonContainer>
