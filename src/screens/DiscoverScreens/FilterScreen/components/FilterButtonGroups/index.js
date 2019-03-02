@@ -4,7 +4,8 @@ import ToggleButtonGroup from '../../../../../components/ToggleButtonGroup'
 import {
   genderList,
   bodyTypeList,
-  ethnicityList
+  ethnicityList,
+  degreeList
 } from '../../../../../../enumMappings'
 
 export default class FilterButtonGroups extends Component {
@@ -12,7 +13,8 @@ export default class FilterButtonGroups extends Component {
     const {
       genderSelection,
       bodyTypeSelection,
-      ethnicitySelection
+      ethnicitySelection,
+      educationSelection
     } = this.props
     return (
       <Container>
@@ -41,6 +43,15 @@ export default class FilterButtonGroups extends Component {
           selectionArray={ethnicitySelection}
           updateState={selection =>
             this.props.updateState({ ethnicities: selection })
+          }
+        />
+        <ToggleButtonGroup
+          isFilter
+          title="EDUCATION"
+          optionsArray={degreeList}
+          selectionArray={educationSelection}
+          updateState={selection =>
+            this.props.updateState({ educations: selection })
           }
         />
       </Container>

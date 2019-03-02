@@ -26,6 +26,7 @@ export default class FilterContainer extends Component {
       age: props.age || [24, 30],
       height: props.height || [64, 76],
       genders: props.genders || [],
+      educations: props.educations || [],
       languages: props.languages || [],
       professions: props.professions || [],
       ethnicities: props.ethnicities || [],
@@ -38,6 +39,7 @@ export default class FilterContainer extends Component {
       age,
       height,
       genders,
+      educations,
       languages,
       professions,
       ethnicities,
@@ -89,6 +91,7 @@ export default class FilterContainer extends Component {
             genderSelection={genders}
             ethnicitySelection={ethnicities}
             bodyTypeSelection={bodyTypes}
+            educationSelection={educations}
             updateState={this.updateState}
           />
           <FilterMultiLists lists={lists} />
@@ -125,9 +128,9 @@ export default class FilterContainer extends Component {
                     genders,
                     bodyTypes,
                     ethnicities,
+                    educations,
                     languages,
-                    professions,
-                    educations: []
+                    professions
                   }
                 }
                 applyFilters({ variables })

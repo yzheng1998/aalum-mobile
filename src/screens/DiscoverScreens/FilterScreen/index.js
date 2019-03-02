@@ -11,7 +11,7 @@ export default class FilterScreen extends Component {
       <Container>
         <Query
           query={GET_USER_FILTERS}
-          variables={{ id: 'd10c1731-8c5f-4dd4-8534-8447f8997295' }}
+          variables={{ id: '875bacbf-797a-4791-9c87-9badd2024c79' }}
         >
           {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
@@ -22,6 +22,7 @@ export default class FilterScreen extends Component {
               heightMin,
               heightMax,
               ethnicities,
+              educations,
               languages,
               professions,
               genders,
@@ -33,6 +34,7 @@ export default class FilterScreen extends Component {
                 age={[ageMin, ageMax]}
                 height={[heightMin, heightMax]}
                 ethnicities={ethnicities}
+                educations={educations}
                 languages={languages}
                 professions={professions}
                 genders={genders}
