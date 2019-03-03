@@ -7,6 +7,7 @@ import RegistrationScreen from '../../../../../components/RegistrationScreen'
 import PrimaryInput from '../../../../../components/PrimaryInput'
 import Icon from '../../../../../components/Icon'
 import TextButton from '../../../../../components/TextButton'
+import { setPosition } from '../../../../../../AppUtilities/geolocation'
 
 export default class SignIn extends Component {
   state = {
@@ -22,7 +23,7 @@ export default class SignIn extends Component {
     }
     await AsyncStorage.setItem('userId', user.id)
     await AsyncStorage.setItem('token', token)
-    this.props.navigation.navigate('Swipe')
+    setPosition(() => this.props.navigation.navigate('Swipe'))
   }
 
   render() {

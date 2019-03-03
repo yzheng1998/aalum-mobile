@@ -3,6 +3,7 @@ import RegistrationScreen from '../../../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import LocationGraphic from '../../../../assets/images/registrationFlow/LocationGraphic.png'
 import { imageStyle } from './styles'
+import { setPosition } from '../../../../AppUtilities/geolocation'
 
 class EnableLocationScreen extends Component {
   render() {
@@ -15,7 +16,9 @@ class EnableLocationScreen extends Component {
       >
         <PrimaryButton
           title="Allow Location"
-          onPress={() => this.props.navigation.navigate('Notifications')}
+          onPress={() => {
+            setPosition(() => this.props.navigation.navigate('Notifications'))
+          }}
           style={{ marginTop: 29 }}
         />
       </RegistrationScreen>

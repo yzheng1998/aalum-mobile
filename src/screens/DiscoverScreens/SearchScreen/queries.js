@@ -10,9 +10,9 @@ export const GET_USERS = gql`
         profilePicture
         age
         educations {
-          class
-          degree
-          school
+          year
+          degreeType
+          schoolName
         }
       }
     }

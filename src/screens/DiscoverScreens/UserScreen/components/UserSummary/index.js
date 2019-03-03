@@ -9,11 +9,12 @@ const UserSummary = ({
   name,
   age,
   distance,
-  school,
-  degree,
+  schoolName,
+  degreeType,
   year,
   professions
 }) => {
+  const degreeTypeString = degreeAbbrEnumToString(degreeType)
   const rows = [
     {
       key: 'distance',
@@ -23,9 +24,10 @@ const UserSummary = ({
     {
       key: 'education',
       iconName: 'school',
-      content: school
-        ? `${school}, ${degreeAbbrEnumToString(degree)} ${year}`
-        : ''
+      content: `${schoolName || ''}${
+        schoolName && (degreeTypeString || year) ? ', ' : ''
+      }${degreeTypeString || ''}${degreeTypeString && year ? ', ' : ''}${year ||
+        ''}`
     },
     {
       key: 'profession',

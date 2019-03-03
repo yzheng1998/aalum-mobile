@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+    "test": "jest --verbose",
+    "test:update": "jest --verbose -u",
+    "test:coverage": "jest --verbose --coverage",
     "lint": "eslint \"src/**/*.js\"",
     "ios": "react-native run-ios"
   },
@@ -21,12 +23,16 @@
     "babel-eslint": "^10.0.1",
     "blob-to-buffer": "^1.2.8",
     "buffer": "^5.2.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "enzyme-react-16-adapter-setup": "^0.1.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
+    "jest-enzyme": "^7.0.1",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "prettier": "^1.15.2",
@@ -40,6 +46,8 @@
     "react-native-image-crop-picker": "^0.21.3",
     "react-native-linear-gradient": "^2.5.2",
     "react-native-push-notification": "^3.1.2",
+    "react-native-modal": "^7.0.2",
+    "react-native-multiple-select": "https://github.com/hsadev/react-native-multiple-select",
     "react-native-svg": "^8.0.8",
     "react-native-swipe-cards": "https://github.com/SuttonKyle/react-native-tinder-swipe-cards",
     "react-native-swiper": "^1.5.14",
@@ -48,6 +56,7 @@
     "react-navigation": "^3.0.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
+    "redux-mock-store": "^1.5.3",
     "rn-fetch-blob": "^0.10.13",
     "styled-components": "^4.1.1",
     "styled-system": "^3.1.11",
@@ -64,7 +73,15 @@
     "react-test-renderer": "16.6.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/__tests__/setup/preprocessor.js"
+    },
+    "moduleNameMapper": {
+      "styled-components": "<rootDir>/node_modules/styled-components/native/dist/styled-components.native.cjs.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setup-tests.js",
+    "testRegex": "\\.test\\.js$"
   },
   "rnpm": {
     "assets": [

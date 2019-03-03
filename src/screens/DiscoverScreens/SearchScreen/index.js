@@ -6,6 +6,7 @@ import UserSearchCard from './components/UserSearchCard'
 import { Query } from 'react-apollo'
 import { GET_USERS } from './queries'
 import LoadingWrapper from '../../../components/LoadingWrapper'
+import { degreeAbbrEnumToString } from '../../../../enumMappings'
 
 export default class SearchScreen extends Component {
   constructor(props) {
@@ -48,12 +49,12 @@ export default class SearchScreen extends Component {
                     location={user.location}
                     school={
                       user.educations && user.educations[0]
-                        ? user.educations[0].school
+                        ? user.educations[0].schoolName
                         : ''
                     }
                     degree={
                       user.educations && user.educations[0]
-                        ? user.educations[0].degree
+                        ? degreeAbbrEnumToString(user.educations[0].degreeType)
                         : ''
                     }
                     year={

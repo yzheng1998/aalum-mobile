@@ -6,6 +6,7 @@ export const Container = styled.View`
   margin-left: 25px;
   margin-right: 25px;
   padding-left: 15px;
+  padding-right: 15px;
   box-shadow: 0px 6px 25px ${themeGet('colors.shadow')};
   background-color: white;
 `

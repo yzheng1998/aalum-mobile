@@ -1,59 +1,50 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container } from './styles'
 import ToggleButtonGroup from '../../../../../components/ToggleButtonGroup'
 import {
   genderList,
   bodyTypeList,
-  ethnicityList
+  ethnicityList,
+  degreeList
 } from '../../../../../../enumMappings'
 
-export default class FilterButtonGroups extends Component {
-  constructor(props) {
-    super(props)
-    this.updateState = this.setState.bind(this)
-    this.state = {
-      genderSelection: [],
-      bodyTypeSelection: [],
-      ethnicitySelection: []
-    }
-  }
+const FilterButtonGroups = ({
+  genderSelection,
+  bodyTypeSelection,
+  ethnicitySelection,
+  educationSelection,
+  updateState
+}) => (
+  <Container>
+    <ToggleButtonGroup
+      isFilter
+      title="GENDER"
+      optionsArray={genderList}
+      selectionArray={genderSelection}
+      updateState={selection => updateState({ genders: selection })}
+    />
+    <ToggleButtonGroup
+      isFilter
+      title="BODY TYPE"
+      optionsArray={bodyTypeList}
+      selectionArray={bodyTypeSelection}
+      updateState={selection => updateState({ bodyTypes: selection })}
+    />
+    <ToggleButtonGroup
+      isFilter
+      title="ETHNICITY"
+      optionsArray={ethnicityList}
+      selectionArray={ethnicitySelection}
+      updateState={selection => updateState({ ethnicities: selection })}
+    />
+    <ToggleButtonGroup
+      isFilter
+      title="EDUCATION"
+      optionsArray={degreeList}
+      selectionArray={educationSelection}
+      updateState={selection => updateState({ educations: selection })}
+    />
+  </Container>
+)
 
-  render() {
-    const {
-      genderSelection,
-      bodyTypeSelection,
-      ethnicitySelection
-    } = this.state
-    return (
-      <Container>
-        <ToggleButtonGroup
-          isFilter
-          title="GENDER"
-          optionsArray={genderList}
-          selectionArray={genderSelection}
-          updateState={selection =>
-            this.updateState({ genderSelection: selection })
-          }
-        />
-        <ToggleButtonGroup
-          isFilter
-          title="BODY TYPE"
-          optionsArray={bodyTypeList}
-          selectionArray={bodyTypeSelection}
-          updateState={selection =>
-            this.updateState({ bodyTypeSelection: selection })
-          }
-        />
-        <ToggleButtonGroup
-          isFilter
-          title="ETHNICITY"
-          optionsArray={ethnicityList}
-          selectionArray={ethnicitySelection}
-          updateState={selection =>
-            this.updateState({ ethnicitySelection: selection })
-          }
-        />
-      </Container>
-    )
-  }
-}
+export default FilterButtonGroups

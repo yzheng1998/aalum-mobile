@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import ActionSheet from 'react-native-actionsheet'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import UserSummary from './components/UserSummary'
 import UserDetails from './components/UserDetails'
 import UserBio from './components/UserBio'
 import MatchButtons from './components/MatchButtons'
 import BackButton from '../../../components/BackButton'
+import ActionMenu from './components/ActionMenu'
 import {
   Screen,
   Container,
@@ -19,28 +19,32 @@ import Icon from '../../../components/Icon'
 import theme from '../../../../theme'
 import { inchesToString } from '../../../../unitConverters'
 import { GET_USER } from './queries'
-import { Query, Mutation } from 'react-apollo'
-import { REPORT_USER } from './mutations'
-import { Alert } from 'react-native'
+import { Query } from 'react-apollo'
 
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
 
-const DEFAULT_ID = '01890092-5243-4e00-bd56-b97753aef289'
-
 export default class UserScreen extends Component {
+  constructor(props) {
+    super(props)
+    this.setActionsheet = this.setActionsheet.bind(this)
+  }
+
+  setActionsheet = input => {
+    this.actionsheet = input
+  }
+
   render() {
     const id = this.props.navigation.getParam('id')
     const isMatched = true
     return (
-      <Query query={GET_USER} variables={{ id: id || DEFAULT_ID }}>
+      <Query query={GET_USER} variables={{ id }}>
         {({ loading, data }) => {
           if (loading) return <LoadingWrapper loading />
           const {
             name,
             genders,
             ethnicities,
-            profilePicture,
             height,
             educations,
             professions,
@@ -48,25 +52,30 @@ export default class UserScreen extends Component {
             bodyType,
             interests,
             age,
-            distance
+            distance,
+            profilePicture,
+            photos
           } = data.user
+          const photoArr = photos.map(photo => photo.imageUrl)
           return (
             <Container>
               <Screen>
                 <UserPictureCarousel
-                  userPictures={profilePicture ? [profilePicture] : ''}
+                  userPictures={
+                    photos && photos[0] ? [profilePicture, ...photoArr] : []
+                  }
                 />
                 <UserSummary
                   name={name}
                   age={age}
                   distance={distance || ''}
-                  school={
-                    educations && educations[0] ? educations[0].school : ''
+                  schoolName={
+                    educations && educations[0] ? educations[0].schoolName : ''
                   }
-                  degree={
-                    educations && educations[0] ? educations[0].degree : ''
+                  degreeType={
+                    educations && educations[0] ? educations[0].degreeType : ''
                   }
-                  year={educations && educations[0] ? educations[0].class : ''}
+                  year={educations && educations[0] ? educations[0].year : ''}
                   professions={professions || []}
                 />
                 <UserBio info={SAMPLE_TEXT} />
@@ -78,40 +87,9 @@ export default class UserScreen extends Component {
                   bodyType={[bodyType]}
                   interests={interests || []}
                 />
-                <Mutation
-                  mutation={REPORT_USER}
-                  onCompleted={reportData => {
-                    if (reportData.reportUser) {
-                      Alert.alert('User reported')
-                    }
-                  }}
-                  onError={error => {
-                    if (error) {
-                      Alert.alert('Encountered server error')
-                    }
-                  }}
-                >
-                  {reportUser => (
-                    <ActionSheet
-                      ref={o => {
-                        this.ActionSheet = o
-                      }}
-                      options={['Report', 'Unmatch', 'Cancel']}
-                      cancelButtonIndex={2}
-                      destructiveButtonIndex={1}
-                      onPress={index => {
-                        const variables = {
-                          reportedUserId: id
-                        }
-                        if (index === 0) {
-                          reportUser({ variables })
-                        }
-                      }}
-                    />
-                  )}
-                </Mutation>
+                <ActionMenu id={id} setActionsheet={this.setActionsheet} />
               </Screen>
-              <OptionsButtonContainer onPress={() => this.ActionSheet.show()}>
+              <OptionsButtonContainer onPress={() => this.actionsheet.show()}>
                 <MaterialIcon name="dots-vertical" color="white" size={37} />
               </OptionsButtonContainer>
               <BackButtonContainer>

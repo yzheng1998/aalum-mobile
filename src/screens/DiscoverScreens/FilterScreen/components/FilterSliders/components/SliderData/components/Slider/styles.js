@@ -9,5 +9,5 @@ export const trackStyle = {
 }
 
 export const selectedStyle = {
-  backgroundColor: theme.colors.gradientRight
+  backgroundColor: theme.colors.gradientLeft
 }
