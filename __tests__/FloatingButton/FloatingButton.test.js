@@ -9,13 +9,7 @@ describe('FloatingButton', () => {
     const wrapper = mountWithTheme(<FloatingButton />)
     expect(wrapper).toMatchSnapshot()
 
-    wrapper.setProps({ title: 'title' })
-    expect(wrapper).toMatchSnapshot()
-
-    wrapper.setProps({ disabled: true })
-    expect(wrapper).toMatchSnapshot()
-
-    wrapper.setProps({ disabled: false })
+    wrapper.setProps({ title: 'title', disabled: true })
     expect(wrapper).toMatchSnapshot()
   })
 
