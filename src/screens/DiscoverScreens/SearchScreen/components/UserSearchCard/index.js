@@ -1,8 +1,11 @@
 import React from 'react'
+import { TouchableOpacity } from 'react-native'
 import { Container, ContentContainer, HeartContainer } from './styles'
 import Heart from '../../../../../components/Heart'
 import UserSearchCardPicture from './components/UserSearchCardPicture'
 import UserSearchCardDetails from './components/UserSearchCardDetails'
+import { SEND_MATCH_RESPONSE } from './mutations'
+import { Mutation } from 'react-apollo'
 
 const UserSearchCard = ({
   id,
@@ -13,8 +16,9 @@ const UserSearchCard = ({
   school,
   degree,
   year,
-  isInterested,
-  navigation
+  swipedRight,
+  navigation,
+  refetch
 }) => (
   <Container onPress={() => navigation.navigate('User', { id })}>
     <ContentContainer>
@@ -28,7 +32,18 @@ const UserSearchCard = ({
         year={year}
       />
       <HeartContainer>
-        <Heart active={isInterested} width="28px" height="24.25px" />
+        <Mutation mutation={SEND_MATCH_RESPONSE} onCompleted={() => refetch()}>
+          {sendMatchResponse => {
+            const variables = { recipient: id, swipedRight: !swipedRight }
+            return (
+              <TouchableOpacity
+                onPress={() => sendMatchResponse({ variables })}
+              >
+                <Heart active={swipedRight} width="28px" height="24.25px" />
+              </TouchableOpacity>
+            )
+          }}
+        </Mutation>
       </HeartContainer>
     </ContentContainer>
   </Container>
