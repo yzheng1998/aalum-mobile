@@ -33,10 +33,9 @@ export default class UserScreen extends Component {
 
   render() {
     const id = this.props.navigation.getParam('id')
-    const isMatched = true
     return (
-      <Query query={GET_USER} variables={{ id }}>
-        {({ loading, data }) => {
+      <Query query={GET_USER} variables={{ id: id || DEFAULT_ID }}>
+        {({ loading, data, refetch }) => {
           if (loading) return <LoadingWrapper loading />
           const {
             name,
@@ -52,7 +51,8 @@ export default class UserScreen extends Component {
             bio,
             distance,
             profilePicture,
-            photos
+            photos,
+            isConnected
           } = data.user
           const photoArr = photos.map(photo => photo.imageUrl)
           return (
@@ -97,7 +97,7 @@ export default class UserScreen extends Component {
                   onPress={() => this.props.navigation.goBack()}
                 />
               </BackButtonContainer>
-              {isMatched ? (
+              {isConnected ? (
                 <FloatingButton title="Message">
                   <Icon
                     name="mail"
@@ -105,7 +105,11 @@ export default class UserScreen extends Component {
                   />
                 </FloatingButton>
               ) : (
-                <MatchButtons />
+                <MatchButtons
+                  recipient={id}
+                  refetch={refetch}
+                  navigation={this.props.navigation}
+                />
               )}
             </Container>
           )

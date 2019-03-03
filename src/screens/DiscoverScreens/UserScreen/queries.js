@@ -26,6 +26,7 @@ export const GET_USER = gql`
         degreeType
         schoolName
       }
+      isConnected
     }
   }
 `
