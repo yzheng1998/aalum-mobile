@@ -24,16 +24,13 @@ import { Query } from 'react-apollo'
 const SAMPLE_TEXT =
   'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
 
-const DEFAULT_ID = '332e48b5-65a4-450f-a84c-0a0cf05d4297'
-
 export default class UserScreen extends Component {
   constructor(props) {
     super(props)
-
     this.setActionsheet = this.setActionsheet.bind(this)
   }
 
-  setActionsheet(input) {
+  setActionsheet = input => {
     this.actionsheet = input
   }
 
@@ -41,7 +38,7 @@ export default class UserScreen extends Component {
     const id = this.props.navigation.getParam('id')
     const isMatched = true
     return (
-      <Query query={GET_USER} variables={{ id: id || DEFAULT_ID }}>
+      <Query query={GET_USER} variables={{ id }}>
         {({ loading, data }) => {
           if (loading) return <LoadingWrapper loading />
           const {
@@ -90,10 +87,7 @@ export default class UserScreen extends Component {
                   bodyType={[bodyType]}
                   interests={interests || []}
                 />
-                <ActionMenu
-                  id={id || DEFAULT_ID}
-                  setActionsheet={this.setActionsheet}
-                />
+                <ActionMenu id={id} setActionsheet={this.setActionsheet} />
               </Screen>
               <OptionsButtonContainer onPress={() => this.actionsheet.show()}>
                 <MaterialIcon name="dots-vertical" color="white" size={37} />

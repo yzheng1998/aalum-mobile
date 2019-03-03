@@ -23,7 +23,7 @@ export default class SignIn extends Component {
     }
     await AsyncStorage.setItem('userId', user.id)
     await AsyncStorage.setItem('token', token)
-    setPosition(this.props.navigation.navigate('Swipe'))
+    setPosition(() => this.props.navigation.navigate('Swipe'))
   }
 
   render() {

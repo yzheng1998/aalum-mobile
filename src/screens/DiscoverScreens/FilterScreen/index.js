@@ -11,7 +11,7 @@ export default class FilterScreen extends Component {
       <Container>
         <Query
           query={GET_USER_FILTERS}
-          variables={{ id: '875bacbf-797a-4791-9c87-9badd2024c79' }}
+          variables={{ id: '6b978731-e35d-42d4-8572-6254602ac9da' }}
         >
           {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
