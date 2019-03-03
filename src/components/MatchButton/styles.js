@@ -25,3 +25,4 @@ export const Button = styled.TouchableOpacity`
   box-shadow: 0px 6px 25px ${themeGet('colors.shadow')};
   background-color: white;
 `
+Button.displayName = 'Button'
