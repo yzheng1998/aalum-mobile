@@ -11,6 +11,7 @@ export const Button = styled.TouchableOpacity`
   margin-top: 5px;
   margin-bottom: 5px;
 `
+Button.displayName = 'Button'
 
 export const ButtonText = styled.Text`
   font-family: ${theme.fonts.title};
