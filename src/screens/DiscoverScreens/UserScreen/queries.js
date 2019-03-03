@@ -5,6 +5,7 @@ export const GET_USER = gql`
     user(id: $id) {
       id
       name
+      bio
       genders
       ethnicities
       photos {
