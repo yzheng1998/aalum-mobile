@@ -4,6 +4,7 @@ import theme from '../../../theme'
 export const Button = styled.TouchableOpacity`
   align-self: center;
 `
+Button.displayName = 'Button'
 
 export const Text = styled.Text`
   color: ${theme.colors.darkGrey};
