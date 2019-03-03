@@ -44,8 +44,12 @@ describe('FloatingButton', () => {
     const onPressMock = jest.fn()
     const wrapper = shallow(<FloatingButton onPress={onPressMock} disabled />)
     const button = wrapper.find('Button')
-    button.simulate('press')
 
+    expect(button.props().disabled).toBe(true)
+
+    if (!button.props().disabled) {
+      button.simulate('press')
+    }
     expect(onPressMock).toHaveBeenCalledTimes(0)
   })
 })
