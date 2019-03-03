@@ -4,7 +4,7 @@ import { Pic } from './styles'
 const UserSearchCardPicture = ({ profilePicture }) => (
   <Pic
     source={{
-      uri: profilePicture
+      uri: profilePicture || ''
     }}
   />
 )

@@ -4,14 +4,14 @@ import { Container, NameText, LocationText, EducationText } from './styles'
 const UserSearchCardDetails = ({
   name,
   age,
-  location,
+  locationName,
   school,
   degree,
   year
 }) => (
   <Container>
     <NameText>{`${name || ''}, ${age || ''}`}</NameText>
-    <LocationText>{location || ''}</LocationText>
+    <LocationText>{locationName || ''}</LocationText>
     <EducationText>
       {`${school || ''}${school && (degree || year) ? ', ' : ''}${degree ||
         ''}${degree && year ? ', ' : ''}${year || ''}`}

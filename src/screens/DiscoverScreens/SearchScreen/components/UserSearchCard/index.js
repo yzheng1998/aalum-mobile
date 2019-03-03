@@ -9,7 +9,7 @@ const UserSearchCard = ({
   profilePicture,
   name,
   age,
-  location,
+  locationName,
   school,
   degree,
   year,
@@ -22,7 +22,7 @@ const UserSearchCard = ({
       <UserSearchCardDetails
         name={name}
         age={age}
-        location={location}
+        locationName={locationName}
         school={school}
         degree={degree}
         year={year}

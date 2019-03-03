@@ -43,10 +43,10 @@ export default class SearchScreen extends Component {
                   <UserSearchCard
                     id={user.id}
                     key={user.id}
-                    profilePicture={user.profilePicture || ''}
+                    profilePicture={user.profilePicture}
                     name={user.name}
                     age={user.age}
-                    location={user.location}
+                    locationName={user.locationName}
                     school={
                       user.educations && user.educations[0]
                         ? user.educations[0].schoolName
