@@ -24,11 +24,7 @@ export const enumToString = enm => {
     return ''
   }
   const toTitleCase = str =>
-    str
-      .toLowerCase()
-      .split(' ')
-      .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-      .join(' ')
+    str.toLowerCase().replace(/(?:^|[\s-/])\w/g, match => match.toUpperCase())
   return toTitleCase(
     enm
       .replace(new RegExp('_H_', 'g'), '-')

@@ -21,9 +21,6 @@ import { inchesToString } from '../../../../unitConverters'
 import { GET_USER } from './queries'
 import { Query } from 'react-apollo'
 
-const SAMPLE_TEXT =
-  'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
-
 export default class UserScreen extends Component {
   constructor(props) {
     super(props)
@@ -52,6 +49,7 @@ export default class UserScreen extends Component {
             bodyType,
             interests,
             age,
+            bio,
             distance,
             profilePicture,
             photos
@@ -78,7 +76,7 @@ export default class UserScreen extends Component {
                   year={educations && educations[0] ? educations[0].year : ''}
                   professions={professions || []}
                 />
-                <UserBio info={SAMPLE_TEXT} />
+                <UserBio info={bio} />
                 <UserDetails
                   gender={genders || []}
                   ethnicity={ethnicities || []}
