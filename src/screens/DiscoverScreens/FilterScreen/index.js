@@ -9,10 +9,7 @@ export default class FilterScreen extends Component {
   render() {
     return (
       <Container>
-        <Query
-          query={GET_USER_FILTERS}
-          variables={{ id: '6b978731-e35d-42d4-8572-6254602ac9da' }}
-        >
+        <Query query={GET_USER_FILTERS}>
           {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
             const {
@@ -27,14 +24,18 @@ export default class FilterScreen extends Component {
               professions,
               genders,
               bodyTypes
-            } = data.user.DiscoveryFilter
+            } = data.viewer.DiscoveryFilter || {}
+            const degreeTypes =
+              educations && educations[0]
+                ? educations.map(education => education.degreeType)
+                : []
             return (
               <FilterContainer
-                distance={[distance]}
-                age={[ageMin, ageMax]}
-                height={[heightMin, heightMax]}
+                distance={distance ? [distance] : null}
+                age={ageMin && ageMax ? [ageMin, ageMax] : null}
+                height={heightMin && heightMax ? [heightMin, heightMax] : null}
                 ethnicities={ethnicities}
-                educations={educations}
+                educations={degreeTypes}
                 languages={languages}
                 professions={professions}
                 genders={genders}

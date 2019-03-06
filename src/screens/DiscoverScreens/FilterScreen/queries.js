@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const GET_USER_FILTERS = gql`
-  query user($id: ID!) {
-    user(id: $id) {
+  query viewer {
+    viewer {
       id
       name
       DiscoveryFilter {
@@ -13,6 +13,9 @@ export const GET_USER_FILTERS = gql`
         heightMax
         ethnicities
         languages
+        educations {
+          degreeType
+        }
         professions
         genders
         bodyTypes

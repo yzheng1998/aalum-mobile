@@ -61,8 +61,10 @@ export const ethnicityList = [
   'Hispanic/Latino',
   'East Asian',
   'South Asian',
+  'Southeast Asian',
   'American Indian/Alaska Native',
-  'Native Hawaiian/Other Pacific Islander'
+  'Native Hawaiian/Other Pacific Islander',
+  'Middle Eastern'
 ]
 
 export const ethnicityEnumList = stringListToEnumList(ethnicityList)
