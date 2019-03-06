@@ -12,6 +12,9 @@ export const APPLY_FILTERS = gql`
         heightMax
         genders
         languages
+        educations {
+          degreeType
+        }
         ethnicities
         professions
         bodyTypes
