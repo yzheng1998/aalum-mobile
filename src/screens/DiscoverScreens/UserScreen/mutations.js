@@ -20,3 +20,9 @@ export const UNMATCH_USER = gql`
     }
   }
 `
+
+export const BLOCK_USER = gql`
+  mutation blockUser($blockedUserId: ID!) {
+    blockUser(blockedUserId: $blockedUserId)
+  }
+`

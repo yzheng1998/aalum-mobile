@@ -6,6 +6,7 @@ import UserBio from './components/UserBio'
 import MatchButtons from './components/MatchButtons'
 import BackButton from '../../../components/BackButton'
 import ActionMenu from './components/ActionMenu'
+import ActionMenuBlock from './components/ActionMenuBlock'
 import {
   Screen,
   Container,
@@ -88,7 +89,14 @@ export default class UserScreen extends Component {
                   bodyType={[bodyType]}
                   interests={interests || []}
                 />
-                <ActionMenu id={id} setActionsheet={this.setActionsheet} />
+                {isConnected ? (
+                  <ActionMenu id={id} setActionsheet={this.setActionsheet} />
+                ) : (
+                  <ActionMenuBlock
+                    id={id}
+                    setActionsheet={this.setActionsheet}
+                  />
+                )}
               </Screen>
               <OptionsButtonContainer onPress={() => this.actionsheet.show()}>
                 <MaterialIcon name="dots-vertical" color="white" size={37} />

@@ -30,7 +30,7 @@ export default class MatchButtons extends Component {
                 mutation={SEND_MATCH_RESPONSE}
                 onCompleted={() => {
                   refetch()
-                  searchRefetch()
+                  if (searchRefetch) searchRefetch()
                   navigation.goBack()
                 }}
               >
@@ -49,7 +49,7 @@ export default class MatchButtons extends Component {
                 mutation={SEND_MATCH_RESPONSE}
                 onCompleted={() => {
                   refetch()
-                  searchRefetch()
+                  if (searchRefetch) searchRefetch()
                   navigation.goBack()
                 }}
               >
