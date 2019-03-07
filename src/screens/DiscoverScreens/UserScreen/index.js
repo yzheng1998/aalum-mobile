@@ -34,7 +34,7 @@ export default class UserScreen extends Component {
   render() {
     const id = this.props.navigation.getParam('id')
     return (
-      <Query query={GET_USER} variables={{ id: id || DEFAULT_ID }}>
+      <Query query={GET_USER} variables={{ id }}>
         {({ loading, data, refetch }) => {
           if (loading) return <LoadingWrapper loading />
           const {
@@ -54,13 +54,15 @@ export default class UserScreen extends Component {
             photos,
             isConnected
           } = data.user
-          const photoArr = photos.map(photo => photo.imageUrl)
+          const photoArr = photos ? photos.map(photo => photo.imageUrl) : []
           return (
             <Container>
               <Screen>
                 <UserPictureCarousel
                   userPictures={
-                    photos && photos[0] ? [profilePicture, ...photoArr] : []
+                    (photos && photos[0]) || profilePicture
+                      ? [profilePicture, ...photoArr]
+                      : []
                   }
                 />
                 <UserSummary
