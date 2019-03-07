@@ -1,0 +1,346 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar renders correctly 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "colors": Object {
+        "black": "#4F4F4F",
+        "border": "#BDBDBD",
+        "buttonShadow1": "rgba(255, 255, 255, 0) ",
+        "buttonShadow2": "rgba(249, 249, 249, 0.9)",
+        "charcoal": "#333333",
+        "darkGrey": "#8F8F8F",
+        "darkShadow": "rgba(0,0,0,0.1)",
+        "darkerGrey": "#828282",
+        "error": "#DA2752",
+        "gradientLeft": "#DA2752",
+        "gradientRight": "#E935F8",
+        "green": "#219653",
+        "grey": "#A8A8A8",
+        "inactiveText": "#ADADAD",
+        "lightGrey": "#A0A0A0",
+        "lightShadow": "rgba(0,0,0,0.16)",
+        "offWhite": "#F9F9F9",
+        "pureBlack": "#000000",
+        "shadow": "rgba(0, 0, 0, 0.15)",
+        "white": "#FFFFFF",
+        "whiteGrey": "#E0E0E0",
+      },
+      "fonts": Object {
+        "bodyText": "Avenir-Medium",
+        "heading": "Montserrat-Bold",
+        "title": "Avenir-Heavy",
+      },
+    }
+  }
+>
+  <ProgressBar>
+    <Styled(View)>
+      <StyledNativeComponent
+        forwardedClass={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "displayName": "Styled(View)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+  background-color: ",
+                [Function],
+                ";
+  height: 4px;
+",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+            Symbol(Symbol.hasInstance): [Function],
+          }
+        }
+        forwardedRef={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#A8A8A8",
+                "height": 4,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#A8A8A8",
+                  "height": 4,
+                },
+              ]
+            }
+          >
+            <LinearGradient
+              colors={
+                Array [
+                  "#DA2752",
+                  "#E935F8",
+                ]
+              }
+              end={
+                Object {
+                  "x": 1,
+                  "y": 0,
+                }
+              }
+              start={
+                Object {
+                  "x": 0,
+                  "y": 0,
+                }
+              }
+              style={
+                Object {
+                  "height": 4,
+                  "width": undefined,
+                }
+              }
+            >
+              <_class
+                colors={
+                  Array [
+                    4292486994,
+                    4293473784,
+                  ]
+                }
+                endPoint={
+                  Object {
+                    "x": 1,
+                    "y": 0,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  Object {
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                style={
+                  Object {
+                    "height": 4,
+                    "width": undefined,
+                  }
+                }
+              >
+                <BVLinearGradient
+                  colors={
+                    Array [
+                      4292486994,
+                      4293473784,
+                    ]
+                  }
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 4,
+                      "width": undefined,
+                    }
+                  }
+                />
+              </_class>
+            </LinearGradient>
+          </View>
+        </View>
+      </StyledNativeComponent>
+    </Styled(View)>
+  </ProgressBar>
+</ThemeProvider>
+`;
+
+exports[`ProgressBar renders correctly 2`] = `
+<ThemeProvider
+  progress={0.89}
+  theme={
+    Object {
+      "colors": Object {
+        "black": "#4F4F4F",
+        "border": "#BDBDBD",
+        "buttonShadow1": "rgba(255, 255, 255, 0) ",
+        "buttonShadow2": "rgba(249, 249, 249, 0.9)",
+        "charcoal": "#333333",
+        "darkGrey": "#8F8F8F",
+        "darkShadow": "rgba(0,0,0,0.1)",
+        "darkerGrey": "#828282",
+        "error": "#DA2752",
+        "gradientLeft": "#DA2752",
+        "gradientRight": "#E935F8",
+        "green": "#219653",
+        "grey": "#A8A8A8",
+        "inactiveText": "#ADADAD",
+        "lightGrey": "#A0A0A0",
+        "lightShadow": "rgba(0,0,0,0.16)",
+        "offWhite": "#F9F9F9",
+        "pureBlack": "#000000",
+        "shadow": "rgba(0, 0, 0, 0.15)",
+        "white": "#FFFFFF",
+        "whiteGrey": "#E0E0E0",
+      },
+      "fonts": Object {
+        "bodyText": "Avenir-Medium",
+        "heading": "Montserrat-Bold",
+        "title": "Avenir-Heavy",
+      },
+    }
+  }
+>
+  <ProgressBar>
+    <Styled(View)>
+      <StyledNativeComponent
+        forwardedClass={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "displayName": "Styled(View)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+  background-color: ",
+                [Function],
+                ";
+  height: 4px;
+",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+            Symbol(Symbol.hasInstance): [Function],
+          }
+        }
+        forwardedRef={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#A8A8A8",
+                "height": 4,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#A8A8A8",
+                  "height": 4,
+                },
+              ]
+            }
+          >
+            <LinearGradient
+              colors={
+                Array [
+                  "#DA2752",
+                  "#E935F8",
+                ]
+              }
+              end={
+                Object {
+                  "x": 1,
+                  "y": 0,
+                }
+              }
+              start={
+                Object {
+                  "x": 0,
+                  "y": 0,
+                }
+              }
+              style={
+                Object {
+                  "height": 4,
+                  "width": undefined,
+                }
+              }
+            >
+              <_class
+                colors={
+                  Array [
+                    4292486994,
+                    4293473784,
+                  ]
+                }
+                endPoint={
+                  Object {
+                    "x": 1,
+                    "y": 0,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  Object {
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                style={
+                  Object {
+                    "height": 4,
+                    "width": undefined,
+                  }
+                }
+              >
+                <BVLinearGradient
+                  colors={
+                    Array [
+                      4292486994,
+                      4293473784,
+                    ]
+                  }
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 4,
+                      "width": undefined,
+                    }
+                  }
+                />
+              </_class>
+            </LinearGradient>
+          </View>
+        </View>
+      </StyledNativeComponent>
+    </Styled(View)>
+  </ProgressBar>
+</ThemeProvider>
+`;

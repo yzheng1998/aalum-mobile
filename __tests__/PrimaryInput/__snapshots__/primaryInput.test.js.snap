@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrimaryInput renders correctly 1`] = `
+<Styled(TouchableOpacity)
+  activeOpacity={1}
+  onPress={[Function]}
+>
+  <RoundContainer>
+    <Styled(TextInput)
+      autoCapitalize="none"
+      autoCorrect={false}
+    />
+  </RoundContainer>
+  <Styled(Text) />
+</Styled(TouchableOpacity)>
+`;
+
+exports[`PrimaryInput renders correctly 2`] = `
+<Styled(TouchableOpacity)
+  activeOpacity={1}
+  onPress={[Function]}
+>
+  <Styled(Text)>
+    title
+  </Styled(Text)>
+  <RoundContainer>
+    <Styled(TextInput)
+      autoCapitalize="none"
+      autoCorrect={false}
+    />
+  </RoundContainer>
+  <Styled(Text) />
+</Styled(TouchableOpacity)>
+`;
+
+exports[`PrimaryInput renders correctly 3`] = `
+<Styled(TouchableOpacity)
+  activeOpacity={1}
+  onPress={[Function]}
+>
+  <Styled(Text)
+    error="error"
+  >
+    title
+  </Styled(Text)>
+  <RoundContainer
+    error="error"
+  >
+    <Styled(TextInput)
+      autoCapitalize="none"
+      autoCorrect={false}
+    />
+  </RoundContainer>
+  <Styled(Text)>
+    error
+  </Styled(Text)>
+</Styled(TouchableOpacity)>
+`;
+
+exports[`PrimaryInput renders correctly 4`] = `
+<Styled(TouchableOpacity)
+  activeOpacity={1}
+  onPress={[Function]}
+>
+  <Styled(Text)
+    error="error"
+  >
+    title
+  </Styled(Text)>
+  <RoundContainer
+    error="error"
+  >
+    <Styled(TextInput)
+      autoCapitalize="none"
+      autoCorrect={false}
+      icon="icon"
+    />
+    <Styled(View)>
+      icon
+    </Styled(View)>
+  </RoundContainer>
+  <Styled(Text)>
+    error
+  </Styled(Text)>
+</Styled(TouchableOpacity)>
+`;

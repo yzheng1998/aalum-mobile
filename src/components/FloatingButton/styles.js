@@ -22,6 +22,7 @@ export const Button = styled.TouchableOpacity`
   height: 60px;
   box-shadow: 0px 6px 25px ${theme.colors.shadow};
 `
+Button.displayName = 'Button'
 
 export const ButtonText = styled.Text`
   font-family: ${theme.fonts.title};

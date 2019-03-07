@@ -8,6 +8,7 @@ export const DoneButton = styled.TouchableOpacity`
   align-items: center;
   background-color: ${themeGet('colors.white')};
 `
+DoneButton.displayName = 'doneButton'
 
 export const DoneButtonText = styled.Text`
   font-size: 16px;
