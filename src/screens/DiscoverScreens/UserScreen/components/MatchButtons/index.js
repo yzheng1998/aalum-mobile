@@ -8,10 +8,13 @@ import {
   ButtonContainer
 } from './styles'
 import theme from '../../../../../../theme'
+import { Mutation } from 'react-apollo'
+import { SEND_MATCH_RESPONSE } from './mutations'
 
 export default class MatchButtons extends Component {
   render() {
     const { buttonShadow1, buttonShadow2, offWhite } = theme.colors
+    const { recipient, refetch, navigation } = this.props
     return (
       <Container>
         <LinearGradient
@@ -23,8 +26,41 @@ export default class MatchButtons extends Component {
         >
           <InnerContainer>
             <ButtonContainer>
-              <MatchButton name="close" />
-              <MatchButton name="heart" />
+              <Mutation
+                mutation={SEND_MATCH_RESPONSE}
+                onCompleted={() => {
+                  refetch()
+                  navigation.goBack()
+                }}
+              >
+                {sendMatchResponse => {
+                  const variables = { recipient, swipedRight: false }
+                  return (
+                    <MatchButton
+                      name="close"
+                      onPress={() => sendMatchResponse({ variables })}
+                    />
+                  )
+                }}
+              </Mutation>
+
+              <Mutation
+                mutation={SEND_MATCH_RESPONSE}
+                onCompleted={() => {
+                  refetch()
+                  navigation.goBack()
+                }}
+              >
+                {sendMatchResponse => {
+                  const variables = { recipient, swipedRight: true }
+                  return (
+                    <MatchButton
+                      name="heart"
+                      onPress={() => sendMatchResponse({ variables })}
+                    />
+                  )
+                }}
+              </Mutation>
             </ButtonContainer>
           </InnerContainer>
         </LinearGradient>

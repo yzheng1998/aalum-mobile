@@ -34,7 +34,7 @@ export default class SearchScreen extends Component {
             substring: this.state.text
           }}
         >
-          {({ loading, data }) => {
+          {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
             const userData = data.users.nodes
             return (
@@ -63,7 +63,11 @@ export default class SearchScreen extends Component {
                         : ''
                     }
                     isInterested={user.isConnected}
+                    swipedRight={
+                      user.swipeStatus === ('SWIPE_RIGHT' || 'MATCH')
+                    }
                     navigation={this.props.navigation}
+                    refetch={refetch}
                   />
                 ))}
               </SearchContainer>

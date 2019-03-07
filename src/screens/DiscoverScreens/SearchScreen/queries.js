@@ -15,6 +15,7 @@ export const GET_USERS = gql`
           degreeType
           schoolName
         }
+        swipeStatus
       }
     }
   }
