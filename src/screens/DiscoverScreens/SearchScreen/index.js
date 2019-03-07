@@ -62,7 +62,6 @@ export default class SearchScreen extends Component {
                         ? user.educations[0].year
                         : ''
                     }
-                    isInterested={user.isConnected}
                     swipedRight={
                       user.swipeStatus === ('SWIPE_RIGHT' || 'MATCH')
                     }

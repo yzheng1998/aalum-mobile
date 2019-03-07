@@ -14,7 +14,7 @@ import { SEND_MATCH_RESPONSE } from './mutations'
 export default class MatchButtons extends Component {
   render() {
     const { buttonShadow1, buttonShadow2, offWhite } = theme.colors
-    const { recipient, refetch, navigation } = this.props
+    const { recipient, refetch, navigation, searchRefetch } = this.props
     return (
       <Container>
         <LinearGradient
@@ -30,6 +30,7 @@ export default class MatchButtons extends Component {
                 mutation={SEND_MATCH_RESPONSE}
                 onCompleted={() => {
                   refetch()
+                  searchRefetch()
                   navigation.goBack()
                 }}
               >
@@ -48,6 +49,7 @@ export default class MatchButtons extends Component {
                 mutation={SEND_MATCH_RESPONSE}
                 onCompleted={() => {
                   refetch()
+                  searchRefetch()
                   navigation.goBack()
                 }}
               >

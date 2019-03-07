@@ -20,7 +20,9 @@ const UserSearchCard = ({
   navigation,
   refetch
 }) => (
-  <Container onPress={() => navigation.navigate('User', { id })}>
+  <Container
+    onPress={() => navigation.navigate('User', { id, searchRefetch: refetch })}
+  >
     <ContentContainer>
       <UserSearchCardPicture profilePicture={profilePicture} />
       <UserSearchCardDetails

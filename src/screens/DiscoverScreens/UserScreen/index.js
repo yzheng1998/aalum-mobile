@@ -33,6 +33,7 @@ export default class UserScreen extends Component {
 
   render() {
     const id = this.props.navigation.getParam('id')
+    const searchRefetch = this.props.navigation.getParam('searchRefetch')
     return (
       <Query query={GET_USER} variables={{ id }}>
         {({ loading, data, refetch }) => {
@@ -110,6 +111,7 @@ export default class UserScreen extends Component {
                 <MatchButtons
                   recipient={id}
                   refetch={refetch}
+                  searchRefetch={searchRefetch}
                   navigation={this.props.navigation}
                 />
               )}
