@@ -80,12 +80,12 @@ export default class UserScreen extends Component {
                   year={educations && educations[0] ? educations[0].year : ''}
                   professions={professions || []}
                 />
-                <UserBio info={bio} />
+                {bio && <UserBio info={bio} />}
                 <UserDetails
                   gender={genders || []}
                   ethnicity={ethnicities || []}
                   languages={languages || []}
-                  height={inchesToString(height)}
+                  height={height ? inchesToString(height) : ''}
                   bodyType={[bodyType]}
                   interests={interests || []}
                 />
