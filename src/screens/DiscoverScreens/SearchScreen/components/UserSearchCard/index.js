@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, Alert } from 'react-native'
 import { Container, ContentContainer, HeartContainer } from './styles'
 import Heart from '../../../../../components/Heart'
 import UserSearchCardPicture from './components/UserSearchCardPicture'
@@ -34,7 +34,15 @@ const UserSearchCard = ({
         year={year}
       />
       <HeartContainer>
-        <Mutation mutation={SEND_MATCH_RESPONSE} onCompleted={() => refetch()}>
+        <Mutation
+          mutation={SEND_MATCH_RESPONSE}
+          onCompleted={() => refetch()}
+          onError={error => {
+            if (error) {
+              Alert.alert('Encountered server error')
+            }
+          }}
+        >
           {sendMatchResponse => {
             const variables = { recipient: id, swipedRight: !swipedRight }
             return (

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import MatchButton from '../../../../../components/MatchButton'
 import {
@@ -32,6 +33,11 @@ export default class MatchButtons extends Component {
                   refetch()
                   if (searchRefetch) searchRefetch()
                   navigation.goBack()
+                }}
+                onError={error => {
+                  if (error) {
+                    Alert.alert('Encountered server error')
+                  }
                 }}
               >
                 {sendMatchResponse => {

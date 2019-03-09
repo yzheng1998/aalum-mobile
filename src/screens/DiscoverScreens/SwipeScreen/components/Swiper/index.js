@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import { Container } from './styles'
 import SwipeCards from 'react-native-swipe-cards'
 
@@ -26,7 +27,14 @@ export default class Swiper extends Component {
     const { userData } = this.props
     return (
       <Container>
-        <Mutation mutation={SEND_MATCH_RESPONSE}>
+        <Mutation
+          mutation={SEND_MATCH_RESPONSE}
+          onError={error => {
+            if (error) {
+              Alert.alert('Encountered server error')
+            }
+          }}
+        >
           {sendMatchResponse => (
             <SwipeCards
               onClickHandler={() => {}}
@@ -45,11 +53,17 @@ export default class Swiper extends Component {
               yupView={<MatchButton disabled name="heart" />}
               noView={<MatchButton disabled name="close" />}
               handleYup={cardData => {
-                const variables = { recipient: cardData.id, swipedRight: true }
+                const variables = {
+                  recipient: cardData ? cardData.id : '',
+                  swipedRight: true
+                }
                 sendMatchResponse({ variables })
               }}
               handleNope={cardData => {
-                const variables = { recipient: cardData.id, swipedRight: false }
+                const variables = {
+                  recipient: cardData ? cardData.id : '',
+                  swipedRight: false
+                }
                 sendMatchResponse({ variables })
               }}
             />
