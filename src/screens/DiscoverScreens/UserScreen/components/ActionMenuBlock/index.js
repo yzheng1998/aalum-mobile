@@ -11,8 +11,10 @@ export default class ActionMenuBlock extends Component {
       <Mutation
         mutation={REPORT_USER}
         onCompleted={reportData => {
-          if (reportData.reportUser) {
-            Alert.alert('User reported')
+          if (reportData.reportUser.success) {
+            Alert.alert('You reported this user.', '', [
+              { text: 'OK', onPress: () => this.props.navigation.goBack() }
+            ])
           }
         }}
         onError={error => {
@@ -25,13 +27,15 @@ export default class ActionMenuBlock extends Component {
           <Mutation
             mutation={BLOCK_USER}
             onCompleted={blockResponse => {
-              if (blockResponse) {
-                Alert.alert('You blocked this user.')
+              if (blockResponse.blockUser.success) {
+                Alert.alert('You blocked this user.', '', [
+                  { text: 'OK', onPress: () => this.props.navigation.goBack() }
+                ])
               }
             }}
             onError={error => {
               if (error) {
-                Alert.alert('Encountered server error. Please try again.')
+                Alert.alert('Encountered server error.')
               }
             }}
           >

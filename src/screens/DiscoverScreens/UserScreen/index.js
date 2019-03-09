@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import UserSummary from './components/UserSummary'
 import UserDetails from './components/UserDetails'
@@ -36,7 +37,16 @@ export default class UserScreen extends Component {
     const id = this.props.navigation.getParam('id')
     const searchRefetch = this.props.navigation.getParam('searchRefetch')
     return (
-      <Query query={GET_USER} variables={{ id }}>
+      <Query
+        query={GET_USER}
+        variables={{ id }}
+        onError={error => {
+          if (error) {
+            Alert.alert('Encountered server error')
+            this.props.navigation.goBack()
+          }
+        }}
+      >
         {({ loading, data, refetch }) => {
           if (loading) return <LoadingWrapper loading />
           const {
@@ -55,7 +65,7 @@ export default class UserScreen extends Component {
             profilePicture,
             photos,
             isConnected
-          } = data.user
+          } = data ? data.user : {}
           const photoArr = photos ? photos.map(photo => photo.imageUrl) : []
           return (
             <Container>
@@ -68,8 +78,8 @@ export default class UserScreen extends Component {
                   }
                 />
                 <UserSummary
-                  name={name}
-                  age={age}
+                  name={name || ''}
+                  age={age || ''}
                   distance={distance || ''}
                   schoolName={
                     educations && educations[0] ? educations[0].schoolName : ''
@@ -90,9 +100,14 @@ export default class UserScreen extends Component {
                   interests={interests || []}
                 />
                 {isConnected ? (
-                  <ActionMenu id={id} setActionsheet={this.setActionsheet} />
+                  <ActionMenu
+                    navigation={this.props.navigation}
+                    id={id}
+                    setActionsheet={this.setActionsheet}
+                  />
                 ) : (
                   <ActionMenuBlock
+                    navigation={this.props.navigation}
                     id={id}
                     setActionsheet={this.setActionsheet}
                   />

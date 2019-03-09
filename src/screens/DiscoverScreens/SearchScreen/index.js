@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import { Screen, SearchContainer, SearchHeader } from './styles'
 import SearchBar from './components/SearchBar'
 import ScreenHeader from '../../../components/ScreenHeader'
@@ -33,10 +34,16 @@ export default class SearchScreen extends Component {
           variables={{
             substring: this.state.text
           }}
+          onError={error => {
+            if (error) {
+              Alert.alert('Encountered server error')
+              this.props.navigation.goBack()
+            }
+          }}
         >
           {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
-            const userData = data.users.nodes
+            const userData = data ? data.users.nodes : []
             return (
               <SearchContainer>
                 {userData.map(user => (

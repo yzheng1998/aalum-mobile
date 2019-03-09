@@ -11,8 +11,10 @@ export default class ActionMenu extends Component {
       <Mutation
         mutation={REPORT_USER}
         onCompleted={reportData => {
-          if (reportData.reportUser) {
-            Alert.alert('User reported')
+          if (reportData.reportUser.success) {
+            Alert.alert('You reported this user.', '', [
+              { text: 'OK', onPress: () => this.props.navigation.goBack() }
+            ])
           }
         }}
         onError={error => {
@@ -26,7 +28,9 @@ export default class ActionMenu extends Component {
             mutation={UNMATCH_USER}
             onCompleted={unmatchData => {
               if (unmatchData.sendMatchResponse.success) {
-                Alert.alert('You unmatched with this user')
+                Alert.alert('You unmatched with this user', '', [
+                  { text: 'OK', onPress: () => this.props.navigation.goBack() }
+                ])
               }
             }}
             onError={error => {
