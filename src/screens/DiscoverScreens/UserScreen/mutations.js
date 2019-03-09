@@ -3,10 +3,10 @@ import gql from 'graphql-tag'
 export const REPORT_USER = gql`
   mutation reportUser($reportedUserId: ID!) {
     reportUser(reportedUserId: $reportedUserId) {
-      id
-      email
-      name
-      isConnected
+      success
+      error {
+        message
+      }
     }
   }
 `
@@ -23,6 +23,11 @@ export const UNMATCH_USER = gql`
 
 export const BLOCK_USER = gql`
   mutation blockUser($blockedUserId: ID!) {
-    blockUser(blockedUserId: $blockedUserId)
+    blockUser(blockedUserId: $blockedUserId) {
+      success
+      error {
+        message
+      }
+    }
   }
 `
