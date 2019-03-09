@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Screen, ButtonContainer } from './styles'
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage, Alert } from 'react-native'
 import Swiper from './components/Swiper'
 import SearchButton from './components/SearchButton'
 import ScreenHeader from '../../../components/ScreenHeader'
@@ -28,10 +28,15 @@ export default class SwipeScreen extends Component {
           variables={{
             substring: 'Stanford'
           }}
+          onError={error => {
+            if (error) {
+              Alert.alert('Encountered server error')
+            }
+          }}
         >
           {({ loading, data }) => {
             if (loading) return <LoadingWrapper loading />
-            const userData = data.users.nodes
+            const userData = data ? data.users.nodes : []
             return (
               <Swiper
                 ref={component => {

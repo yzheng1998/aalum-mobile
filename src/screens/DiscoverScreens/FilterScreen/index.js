@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import { Container } from './styles'
 import LoadingWrapper from '../../../components/LoadingWrapper'
 import { Query } from 'react-apollo'
@@ -9,7 +10,15 @@ export default class FilterScreen extends Component {
   render() {
     return (
       <Container>
-        <Query query={GET_USER_FILTERS}>
+        <Query
+          query={GET_USER_FILTERS}
+          onError={error => {
+            if (error) {
+              Alert.alert('Encountered server error')
+              this.props.navigation.goBack()
+            }
+          }}
+        >
           {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
             const {
@@ -24,7 +33,7 @@ export default class FilterScreen extends Component {
               professions,
               genders,
               bodyTypes
-            } = data.viewer.DiscoveryFilter || {}
+            } = data ? data.viewer.DiscoveryFilter : {}
             const degreeTypes =
               educations && educations[0]
                 ? educations.map(education => education.degreeType)
