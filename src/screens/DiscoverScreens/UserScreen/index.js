@@ -36,6 +36,7 @@ export default class UserScreen extends Component {
   render() {
     const id = this.props.navigation.getParam('id')
     const searchRefetch = this.props.navigation.getParam('searchRefetch')
+    const discoveryRefetch = this.props.navigation.getParam('discoveryRefetch')
     return (
       <Query
         query={GET_USER}
@@ -67,6 +68,7 @@ export default class UserScreen extends Component {
             isConnected
           } = data ? data.user : {}
           const photoArr = photos ? photos.map(photo => photo.imageUrl) : []
+          console.log(data)
           return (
             <Container>
               <Screen>
@@ -90,7 +92,7 @@ export default class UserScreen extends Component {
                   year={educations && educations[0] ? educations[0].year : ''}
                   professions={professions || []}
                 />
-                {bio && <UserBio info={bio} />}
+                {!!bio && <UserBio info={bio || ''} />}
                 <UserDetails
                   gender={genders || []}
                   ethnicity={ethnicities || []}
@@ -104,12 +106,16 @@ export default class UserScreen extends Component {
                     navigation={this.props.navigation}
                     id={id}
                     setActionsheet={this.setActionsheet}
+                    searchRefetch={searchRefetch}
+                    discoveryRefetch={discoveryRefetch}
                   />
                 ) : (
                   <ActionMenuBlock
                     navigation={this.props.navigation}
                     id={id}
                     setActionsheet={this.setActionsheet}
+                    searchRefetch={searchRefetch}
+                    discoveryRefetch={discoveryRefetch}
                   />
                 )}
               </Screen>
@@ -135,6 +141,7 @@ export default class UserScreen extends Component {
                   recipient={id}
                   refetch={refetch}
                   searchRefetch={searchRefetch}
+                  discoveryRefetch={discoveryRefetch}
                   navigation={this.props.navigation}
                 />
               )}

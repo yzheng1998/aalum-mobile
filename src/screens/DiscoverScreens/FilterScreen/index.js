@@ -8,6 +8,7 @@ import FilterContainer from './components/FilterContainer'
 
 export default class FilterScreen extends Component {
   render() {
+    const discoveryRefetch = this.props.navigation.getParam('discoveryRefetch')
     return (
       <Container>
         <Query
@@ -50,7 +51,8 @@ export default class FilterScreen extends Component {
                 genders={genders}
                 bodyTypes={bodyTypes}
                 navigation={this.props.navigation}
-                refetch={refetch}
+                filterRefetch={refetch}
+                discoveryRefetch={discoveryRefetch}
               />
             )
           }}

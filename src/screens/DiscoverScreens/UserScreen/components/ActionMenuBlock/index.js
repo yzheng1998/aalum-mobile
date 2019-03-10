@@ -6,14 +6,21 @@ import { REPORT_USER, BLOCK_USER } from '../../mutations'
 
 export default class ActionMenuBlock extends Component {
   render() {
-    const { id, setActionsheet } = this.props
+    const { id, setActionsheet, searchRefetch, discoveryRefetch } = this.props
     return (
       <Mutation
         mutation={REPORT_USER}
         onCompleted={reportData => {
           if (reportData.reportUser.success) {
             Alert.alert('You reported this user.', '', [
-              { text: 'OK', onPress: () => this.props.navigation.goBack() }
+              {
+                text: 'OK',
+                onPress: () => {
+                  if (searchRefetch) searchRefetch()
+                  if (discoveryRefetch) discoveryRefetch()
+                  this.props.navigation.goBack()
+                }
+              }
             ])
           }
         }}
@@ -29,7 +36,14 @@ export default class ActionMenuBlock extends Component {
             onCompleted={blockResponse => {
               if (blockResponse.blockUser.success) {
                 Alert.alert('You blocked this user.', '', [
-                  { text: 'OK', onPress: () => this.props.navigation.goBack() }
+                  {
+                    text: 'OK',
+                    onPress: () => {
+                      if (searchRefetch) searchRefetch()
+                      if (discoveryRefetch) discoveryRefetch()
+                      this.props.navigation.goBack()
+                    }
+                  }
                 ])
               }
             }}

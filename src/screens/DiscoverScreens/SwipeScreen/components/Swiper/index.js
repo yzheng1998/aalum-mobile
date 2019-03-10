@@ -24,7 +24,7 @@ export default class Swiper extends Component {
   }
 
   render() {
-    const { userData } = this.props
+    const { userData, discoveryRefetch } = this.props
     return (
       <Container>
         <Mutation
@@ -45,6 +45,7 @@ export default class Swiper extends Component {
                 <UserCard
                   navigation={this.props.navigation}
                   cardData={cardData}
+                  discoveryRefetch={discoveryRefetch}
                 />
               )}
               renderNoMoreCards={() => <EmptyState />}
