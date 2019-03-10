@@ -44,6 +44,7 @@ export default class SearchScreen extends Component {
           {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
             const userData = data ? data.users.nodes : []
+            console.log(userData)
             return (
               <SearchContainer>
                 {userData.map(user => (
@@ -70,7 +71,8 @@ export default class SearchScreen extends Component {
                         : ''
                     }
                     swipedRight={
-                      user.swipeStatus === ('SWIPE_RIGHT' || 'MATCH')
+                      user.swipeStatus === 'SWIPE_RIGHT' ||
+                      user.swipeStatus === 'MATCH'
                     }
                     navigation={this.props.navigation}
                     refetch={refetch}
