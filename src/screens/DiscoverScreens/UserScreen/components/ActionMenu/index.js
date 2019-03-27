@@ -6,13 +6,22 @@ import { REPORT_USER, UNMATCH_USER } from '../../mutations'
 
 export default class ActionMenu extends Component {
   render() {
-    const { id, setActionsheet } = this.props
+    const { id, setActionsheet, searchRefetch, discoveryRefetch } = this.props
     return (
       <Mutation
         mutation={REPORT_USER}
         onCompleted={reportData => {
-          if (reportData.reportUser) {
-            Alert.alert('User reported')
+          if (reportData.reportUser.success) {
+            Alert.alert('You reported this user.', '', [
+              {
+                text: 'OK',
+                onPress: () => {
+                  if (searchRefetch) searchRefetch()
+                  if (discoveryRefetch) discoveryRefetch()
+                  this.props.navigation.goBack()
+                }
+              }
+            ])
           }
         }}
         onError={error => {
@@ -26,7 +35,16 @@ export default class ActionMenu extends Component {
             mutation={UNMATCH_USER}
             onCompleted={unmatchData => {
               if (unmatchData.sendMatchResponse.success) {
-                Alert.alert('You unmatched with this user')
+                Alert.alert('You unmatched with this user', '', [
+                  {
+                    text: 'OK',
+                    onPress: () => {
+                      if (searchRefetch) searchRefetch()
+                      if (discoveryRefetch) discoveryRefetch()
+                      this.props.navigation.goBack()
+                    }
+                  }
+                ])
               }
             }}
             onError={error => {

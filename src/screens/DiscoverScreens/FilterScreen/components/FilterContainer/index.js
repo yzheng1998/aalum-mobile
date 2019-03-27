@@ -78,6 +78,7 @@ export default class FilterContainer extends Component {
         selectedItems: professions
       }
     ]
+    const { filterRefetch, discoveryRefetch } = this.props
     return (
       <Container>
         <Screen>
@@ -101,7 +102,8 @@ export default class FilterContainer extends Component {
         <Mutation
           mutation={APPLY_FILTERS}
           onCompleted={() => {
-            this.props.refetch()
+            if (filterRefetch) filterRefetch()
+            if (discoveryRefetch) discoveryRefetch()
             this.props.navigation.goBack()
           }}
           onError={error => {

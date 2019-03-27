@@ -3,7 +3,8 @@ import { Container, Title, DistanceText, EducationTitle } from './styles'
 import { enumToString } from '../../../../../../../../enumMappings'
 
 const UserCardBio = ({ name, age, distance, educations }) => {
-  const { schoolName, degreeType, year } = educations[0] || {}
+  const { schoolName, degreeType, year } =
+    educations && educations[0] ? educations[0] : {}
   const degreeTypeString = enumToString(degreeType || '')
   return (
     <Container>

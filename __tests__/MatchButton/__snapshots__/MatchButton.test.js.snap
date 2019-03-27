@@ -1,0 +1,609 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MatchButton renders correctly 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "colors": Object {
+        "black": "#4F4F4F",
+        "border": "#BDBDBD",
+        "buttonShadow1": "rgba(255, 255, 255, 0) ",
+        "buttonShadow2": "rgba(249, 249, 249, 0.9)",
+        "charcoal": "#333333",
+        "darkGrey": "#8F8F8F",
+        "darkShadow": "rgba(0,0,0,0.1)",
+        "darkerGrey": "#828282",
+        "error": "#DA2752",
+        "gradientLeft": "#DA2752",
+        "gradientRight": "#E935F8",
+        "green": "#219653",
+        "grey": "#A8A8A8",
+        "inactiveText": "#ADADAD",
+        "lightGrey": "#A0A0A0",
+        "lightShadow": "rgba(0,0,0,0.16)",
+        "offWhite": "#F9F9F9",
+        "pureBlack": "#000000",
+        "shadow": "rgba(0, 0, 0, 0.15)",
+        "white": "#FFFFFF",
+        "whiteGrey": "#E0E0E0",
+      },
+      "fonts": Object {
+        "bodyText": "Avenir-Medium",
+        "heading": "Montserrat-Bold",
+        "title": "Avenir-Heavy",
+      },
+    }
+  }
+>
+  <MatchButton
+    name="heart"
+  >
+    <Button>
+      <StyledNativeComponent
+        forwardedClass={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "displayName": "Button",
+            "getDefaultProps": [Function],
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+  width: 61px;
+  height: 61px;
+  border-radius: 30.5px;
+  justify-content: center;
+  box-shadow: 0px 6px 25px ",
+                [Function],
+                ";
+  background-color: white;
+",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+            Symbol(Symbol.hasInstance): [Function],
+          }
+        }
+        forwardedRef={null}
+      >
+        <TouchableOpacity
+          activeOpacity={0.2}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "borderRadius": 30.5,
+                "height": 61,
+                "justifyContent": "center",
+                "shadowColor": "rgba(0, 0, 0, 0.15)",
+                "shadowOffset": Object {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 1,
+                "shadowRadius": 25,
+                "width": 61,
+              },
+            ]
+          }
+        >
+          <AnimatedComponent
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Array [
+                  Object {
+                    "backgroundColor": "white",
+                    "borderRadius": 30.5,
+                    "height": 61,
+                    "justifyContent": "center",
+                    "shadowColor": "rgba(0, 0, 0, 0.15)",
+                    "shadowOffset": Object {
+                      "height": 6,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 1,
+                    "shadowRadius": 25,
+                    "width": 61,
+                  },
+                ],
+                Object {
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "borderRadius": 30.5,
+                  "height": 61,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "shadowColor": "rgba(0, 0, 0, 0.15)",
+                  "shadowOffset": Object {
+                    "height": 6,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 1,
+                  "shadowRadius": 25,
+                  "width": 61,
+                }
+              }
+            >
+              <View
+                accessible={true}
+                isTVSelectable={true}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "white",
+                    "borderRadius": 30.5,
+                    "height": 61,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "shadowColor": "rgba(0, 0, 0, 0.15)",
+                    "shadowOffset": Object {
+                      "height": 6,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 1,
+                    "shadowRadius": 25,
+                    "width": 61,
+                  }
+                }
+              >
+                <Styled(_default)
+                  name="heart"
+                >
+                  <StyledNativeComponent
+                    forwardedClass={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "displayName": "Styled(_default)",
+                        "inlineStyle": InlineStyle {
+                          "rules": Array [
+                            "
+  font-size: 30px;
+  color: ",
+                            [Function],
+                            ";
+  margin-left: 18px;
+  margin-top: 5px;
+",
+                          ],
+                        },
+                        "render": [Function],
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                        Symbol(Symbol.hasInstance): [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                    name="heart"
+                  >
+                    <_default
+                      name="heart"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#DA2752",
+                            "fontSize": 30,
+                            "marginLeft": 18,
+                            "marginTop": 5,
+                          },
+                        ]
+                      }
+                    >
+                      <Icon
+                        allowFontScaling={false}
+                        name="ios-heart"
+                        size={12}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#DA2752",
+                              "fontSize": 30,
+                              "marginLeft": 18,
+                              "marginTop": 5,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          allowFontScaling={false}
+                          style={
+                            Array [
+                              Object {
+                                "color": undefined,
+                                "fontSize": 12,
+                              },
+                              Array [
+                                Object {
+                                  "color": "#DA2752",
+                                  "fontSize": 30,
+                                  "marginLeft": 18,
+                                  "marginTop": 5,
+                                },
+                              ],
+                              Object {
+                                "fontFamily": "Ionicons",
+                                "fontStyle": "normal",
+                                "fontWeight": "normal",
+                              },
+                              Object {},
+                            ]
+                          }
+                        >
+                          <Text
+                            allowFontScaling={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": undefined,
+                                  "fontSize": 12,
+                                },
+                                Array [
+                                  Object {
+                                    "color": "#DA2752",
+                                    "fontSize": 30,
+                                    "marginLeft": 18,
+                                    "marginTop": 5,
+                                  },
+                                ],
+                                Object {
+                                  "fontFamily": "Ionicons",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                Object {},
+                              ]
+                            }
+                          >
+                            
+                          </Text>
+                        </Text>
+                      </Icon>
+                    </_default>
+                  </StyledNativeComponent>
+                </Styled(_default)>
+              </View>
+            </View>
+          </AnimatedComponent>
+        </TouchableOpacity>
+      </StyledNativeComponent>
+    </Button>
+  </MatchButton>
+</ThemeProvider>
+`;
+
+exports[`MatchButton renders correctly 2`] = `
+<ThemeProvider
+  disabled={true}
+  name="close"
+  theme={
+    Object {
+      "colors": Object {
+        "black": "#4F4F4F",
+        "border": "#BDBDBD",
+        "buttonShadow1": "rgba(255, 255, 255, 0) ",
+        "buttonShadow2": "rgba(249, 249, 249, 0.9)",
+        "charcoal": "#333333",
+        "darkGrey": "#8F8F8F",
+        "darkShadow": "rgba(0,0,0,0.1)",
+        "darkerGrey": "#828282",
+        "error": "#DA2752",
+        "gradientLeft": "#DA2752",
+        "gradientRight": "#E935F8",
+        "green": "#219653",
+        "grey": "#A8A8A8",
+        "inactiveText": "#ADADAD",
+        "lightGrey": "#A0A0A0",
+        "lightShadow": "rgba(0,0,0,0.16)",
+        "offWhite": "#F9F9F9",
+        "pureBlack": "#000000",
+        "shadow": "rgba(0, 0, 0, 0.15)",
+        "white": "#FFFFFF",
+        "whiteGrey": "#E0E0E0",
+      },
+      "fonts": Object {
+        "bodyText": "Avenir-Medium",
+        "heading": "Montserrat-Bold",
+        "title": "Avenir-Heavy",
+      },
+    }
+  }
+>
+  <MatchButton
+    name="heart"
+  >
+    <Button>
+      <StyledNativeComponent
+        forwardedClass={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "displayName": "Button",
+            "getDefaultProps": [Function],
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+  width: 61px;
+  height: 61px;
+  border-radius: 30.5px;
+  justify-content: center;
+  box-shadow: 0px 6px 25px ",
+                [Function],
+                ";
+  background-color: white;
+",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+            Symbol(Symbol.hasInstance): [Function],
+          }
+        }
+        forwardedRef={null}
+      >
+        <TouchableOpacity
+          activeOpacity={0.2}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "borderRadius": 30.5,
+                "height": 61,
+                "justifyContent": "center",
+                "shadowColor": "rgba(0, 0, 0, 0.15)",
+                "shadowOffset": Object {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 1,
+                "shadowRadius": 25,
+                "width": 61,
+              },
+            ]
+          }
+        >
+          <AnimatedComponent
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Array [
+                  Object {
+                    "backgroundColor": "white",
+                    "borderRadius": 30.5,
+                    "height": 61,
+                    "justifyContent": "center",
+                    "shadowColor": "rgba(0, 0, 0, 0.15)",
+                    "shadowOffset": Object {
+                      "height": 6,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 1,
+                    "shadowRadius": 25,
+                    "width": 61,
+                  },
+                ],
+                Object {
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "borderRadius": 30.5,
+                  "height": 61,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "shadowColor": "rgba(0, 0, 0, 0.15)",
+                  "shadowOffset": Object {
+                    "height": 6,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 1,
+                  "shadowRadius": 25,
+                  "width": 61,
+                }
+              }
+            >
+              <View
+                accessible={true}
+                isTVSelectable={true}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "white",
+                    "borderRadius": 30.5,
+                    "height": 61,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "shadowColor": "rgba(0, 0, 0, 0.15)",
+                    "shadowOffset": Object {
+                      "height": 6,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 1,
+                    "shadowRadius": 25,
+                    "width": 61,
+                  }
+                }
+              >
+                <Styled(_default)
+                  name="heart"
+                >
+                  <StyledNativeComponent
+                    forwardedClass={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "displayName": "Styled(_default)",
+                        "inlineStyle": InlineStyle {
+                          "rules": Array [
+                            "
+  font-size: 30px;
+  color: ",
+                            [Function],
+                            ";
+  margin-left: 18px;
+  margin-top: 5px;
+",
+                          ],
+                        },
+                        "render": [Function],
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                        Symbol(Symbol.hasInstance): [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                    name="heart"
+                  >
+                    <_default
+                      name="heart"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#DA2752",
+                            "fontSize": 30,
+                            "marginLeft": 18,
+                            "marginTop": 5,
+                          },
+                        ]
+                      }
+                    >
+                      <Icon
+                        allowFontScaling={false}
+                        name="ios-heart"
+                        size={12}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#DA2752",
+                              "fontSize": 30,
+                              "marginLeft": 18,
+                              "marginTop": 5,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          allowFontScaling={false}
+                          style={
+                            Array [
+                              Object {
+                                "color": undefined,
+                                "fontSize": 12,
+                              },
+                              Array [
+                                Object {
+                                  "color": "#DA2752",
+                                  "fontSize": 30,
+                                  "marginLeft": 18,
+                                  "marginTop": 5,
+                                },
+                              ],
+                              Object {
+                                "fontFamily": "Ionicons",
+                                "fontStyle": "normal",
+                                "fontWeight": "normal",
+                              },
+                              Object {},
+                            ]
+                          }
+                        >
+                          <Text
+                            allowFontScaling={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": undefined,
+                                  "fontSize": 12,
+                                },
+                                Array [
+                                  Object {
+                                    "color": "#DA2752",
+                                    "fontSize": 30,
+                                    "marginLeft": 18,
+                                    "marginTop": 5,
+                                  },
+                                ],
+                                Object {
+                                  "fontFamily": "Ionicons",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                Object {},
+                              ]
+                            }
+                          >
+                            
+                          </Text>
+                        </Text>
+                      </Icon>
+                    </_default>
+                  </StyledNativeComponent>
+                </Styled(_default)>
+              </View>
+            </View>
+          </AnimatedComponent>
+        </TouchableOpacity>
+      </StyledNativeComponent>
+    </Button>
+  </MatchButton>
+</ThemeProvider>
+`;

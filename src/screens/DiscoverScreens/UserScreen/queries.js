@@ -5,6 +5,7 @@ export const GET_USER = gql`
     user(id: $id) {
       id
       name
+      bio
       genders
       ethnicities
       photos {
@@ -14,6 +15,7 @@ export const GET_USER = gql`
       }
       languages
       profilePicture
+      distance
       height
       age
       job
@@ -25,6 +27,7 @@ export const GET_USER = gql`
         degreeType
         schoolName
       }
+      isConnected
     }
   }
 `

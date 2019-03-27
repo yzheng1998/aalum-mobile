@@ -9,6 +9,7 @@ export const Button = styled.TouchableOpacity`
   margin-bottom: 30px;
   box-shadow: 0px 6px 15px ${theme.colors.shadow};
 `
+Button.displayName = 'Button'
 
 export const ButtonText = styled.Text`
   font-family: ${theme.fonts.title};

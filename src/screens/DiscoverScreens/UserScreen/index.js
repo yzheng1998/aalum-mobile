@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import UserSummary from './components/UserSummary'
 import UserDetails from './components/UserDetails'
@@ -6,6 +7,7 @@ import UserBio from './components/UserBio'
 import MatchButtons from './components/MatchButtons'
 import BackButton from '../../../components/BackButton'
 import ActionMenu from './components/ActionMenu'
+import ActionMenuBlock from './components/ActionMenuBlock'
 import {
   Screen,
   Container,
@@ -21,9 +23,6 @@ import { inchesToString } from '../../../../unitConverters'
 import { GET_USER } from './queries'
 import { Query } from 'react-apollo'
 
-const SAMPLE_TEXT =
-  'People say I’m...out of this world--but I’m just a small-town Kansas boy looking for love.'
-
 export default class UserScreen extends Component {
   constructor(props) {
     super(props)
@@ -36,10 +35,20 @@ export default class UserScreen extends Component {
 
   render() {
     const id = this.props.navigation.getParam('id')
-    const isMatched = true
+    const searchRefetch = this.props.navigation.getParam('searchRefetch')
+    const discoveryRefetch = this.props.navigation.getParam('discoveryRefetch')
     return (
-      <Query query={GET_USER} variables={{ id }}>
-        {({ loading, data }) => {
+      <Query
+        query={GET_USER}
+        variables={{ id }}
+        onError={error => {
+          if (error) {
+            Alert.alert('Encountered server error')
+            this.props.navigation.goBack()
+          }
+        }}
+      >
+        {({ loading, data, refetch }) => {
           if (loading) return <LoadingWrapper loading />
           const {
             name,
@@ -52,22 +61,27 @@ export default class UserScreen extends Component {
             bodyType,
             interests,
             age,
+            bio,
             distance,
             profilePicture,
-            photos
-          } = data.user
-          const photoArr = photos.map(photo => photo.imageUrl)
+            photos,
+            isConnected
+          } = data ? data.user : {}
+          const photoArr = photos ? photos.map(photo => photo.imageUrl) : []
+          console.log(data)
           return (
             <Container>
               <Screen>
                 <UserPictureCarousel
                   userPictures={
-                    photos && photos[0] ? [profilePicture, ...photoArr] : []
+                    (photos && photos[0]) || profilePicture
+                      ? [profilePicture, ...photoArr]
+                      : []
                   }
                 />
                 <UserSummary
-                  name={name}
-                  age={age}
+                  name={name || ''}
+                  age={age || ''}
                   distance={distance || ''}
                   schoolName={
                     educations && educations[0] ? educations[0].schoolName : ''
@@ -78,16 +92,32 @@ export default class UserScreen extends Component {
                   year={educations && educations[0] ? educations[0].year : ''}
                   professions={professions || []}
                 />
-                <UserBio info={SAMPLE_TEXT} />
+                {!!bio && <UserBio info={bio || ''} />}
                 <UserDetails
                   gender={genders || []}
                   ethnicity={ethnicities || []}
                   languages={languages || []}
-                  height={inchesToString(height)}
+                  height={height ? inchesToString(height) : ''}
                   bodyType={[bodyType]}
                   interests={interests || []}
                 />
-                <ActionMenu id={id} setActionsheet={this.setActionsheet} />
+                {isConnected ? (
+                  <ActionMenu
+                    navigation={this.props.navigation}
+                    id={id}
+                    setActionsheet={this.setActionsheet}
+                    searchRefetch={searchRefetch}
+                    discoveryRefetch={discoveryRefetch}
+                  />
+                ) : (
+                  <ActionMenuBlock
+                    navigation={this.props.navigation}
+                    id={id}
+                    setActionsheet={this.setActionsheet}
+                    searchRefetch={searchRefetch}
+                    discoveryRefetch={discoveryRefetch}
+                  />
+                )}
               </Screen>
               <OptionsButtonContainer onPress={() => this.actionsheet.show()}>
                 <MaterialIcon name="dots-vertical" color="white" size={37} />
@@ -99,7 +129,7 @@ export default class UserScreen extends Component {
                   onPress={() => this.props.navigation.goBack()}
                 />
               </BackButtonContainer>
-              {isMatched ? (
+              {isConnected ? (
                 <FloatingButton title="Message">
                   <Icon
                     name="mail"
@@ -107,7 +137,13 @@ export default class UserScreen extends Component {
                   />
                 </FloatingButton>
               ) : (
-                <MatchButtons />
+                <MatchButtons
+                  recipient={id}
+                  refetch={refetch}
+                  searchRefetch={searchRefetch}
+                  discoveryRefetch={discoveryRefetch}
+                  navigation={this.props.navigation}
+                />
               )}
             </Container>
           )

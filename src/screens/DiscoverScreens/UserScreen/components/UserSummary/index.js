@@ -38,7 +38,7 @@ const UserSummary = ({
 
   return (
     <Container>
-      <NameText>{`${name}, ${age}`}</NameText>
+      <NameText>{`${name || ''}${name && age && `, `}${age}`}</NameText>
       {rows.map(
         row =>
           row.content !== '' && (

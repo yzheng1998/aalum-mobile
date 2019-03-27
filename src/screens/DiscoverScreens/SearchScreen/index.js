@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import { Screen, SearchContainer, SearchHeader } from './styles'
 import SearchBar from './components/SearchBar'
 import ScreenHeader from '../../../components/ScreenHeader'
@@ -33,20 +34,27 @@ export default class SearchScreen extends Component {
           variables={{
             substring: this.state.text
           }}
+          onError={error => {
+            if (error) {
+              Alert.alert('Encountered server error')
+              this.props.navigation.goBack()
+            }
+          }}
         >
-          {({ loading, data }) => {
+          {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
-            const userData = data.users.nodes
+            const userData = data ? data.users.nodes : []
+            console.log(userData)
             return (
               <SearchContainer>
                 {userData.map(user => (
                   <UserSearchCard
                     id={user.id}
                     key={user.id}
-                    profilePicture={user.profilePicture || ''}
+                    profilePicture={user.profilePicture}
                     name={user.name}
                     age={user.age}
-                    location={user.location}
+                    locationName={user.locationName}
                     school={
                       user.educations && user.educations[0]
                         ? user.educations[0].schoolName
@@ -62,8 +70,12 @@ export default class SearchScreen extends Component {
                         ? user.educations[0].year
                         : ''
                     }
-                    isInterested={user.isConnected}
+                    swipedRight={
+                      user.swipeStatus === 'SWIPE_RIGHT' ||
+                      user.swipeStatus === 'MATCH'
+                    }
                     navigation={this.props.navigation}
+                    refetch={refetch}
                   />
                 ))}
               </SearchContainer>

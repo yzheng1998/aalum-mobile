@@ -9,11 +9,13 @@ export const GET_USERS = gql`
         email
         profilePicture
         age
+        locationName
         educations {
           year
           degreeType
           schoolName
         }
+        swipeStatus
       }
     }
   }

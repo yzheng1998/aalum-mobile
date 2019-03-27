@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleButtonGroup renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      isSelected={true}
+      key=""
+      title=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`ToggleButtonGroup renders correctly 2`] = `
+<Styled(View)>
+  <Styled(Text)>
+    title
+  </Styled(Text)>
+  <Styled(View)
+    isFilter={true}
+  >
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Woman"
+      title="Woman"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Man"
+      title="Man"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Agender"
+      title="Agender"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Trans Woman"
+      title="Trans Woman"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Trans Man"
+      title="Trans Man"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Nonbinary"
+      title="Nonbinary"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Genderqueer"
+      title="Genderqueer"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Genderfluid"
+      title="Genderfluid"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Transfeminine"
+      title="Transfeminine"
+    />
+    <ToggleButton
+      addOrRemoveValue={[Function]}
+      disabled={false}
+      isSelected={true}
+      key="Transmasculine"
+      title="Transmasculine"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

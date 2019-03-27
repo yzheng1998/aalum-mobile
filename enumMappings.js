@@ -24,11 +24,7 @@ export const enumToString = enm => {
     return ''
   }
   const toTitleCase = str =>
-    str
-      .toLowerCase()
-      .split(' ')
-      .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-      .join(' ')
+    str.toLowerCase().replace(/(?:^|[\s-/])\w/g, match => match.toUpperCase())
   return toTitleCase(
     enm
       .replace(new RegExp('_H_', 'g'), '-')
@@ -65,8 +61,10 @@ export const ethnicityList = [
   'Hispanic/Latino',
   'East Asian',
   'South Asian',
+  'Southeast Asian',
   'American Indian/Alaska Native',
-  'Native Hawaiian/Other Pacific Islander'
+  'Native Hawaiian/Other Pacific Islander',
+  'Middle Eastern'
 ]
 
 export const ethnicityEnumList = stringListToEnumList(ethnicityList)
