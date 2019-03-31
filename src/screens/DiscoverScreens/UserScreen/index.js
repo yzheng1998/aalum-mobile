@@ -68,7 +68,6 @@ export default class UserScreen extends Component {
             isConnected
           } = data ? data.user : {}
           const photoArr = photos ? photos.map(photo => photo.imageUrl) : []
-          console.log(data)
           return (
             <Container>
               <Screen>

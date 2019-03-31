@@ -44,7 +44,6 @@ export default class SearchScreen extends Component {
           {({ loading, data, refetch }) => {
             if (loading) return <LoadingWrapper loading />
             const userData = data ? data.users.nodes : []
-            console.log(userData)
             return (
               <SearchContainer>
                 {userData.map(user => (
