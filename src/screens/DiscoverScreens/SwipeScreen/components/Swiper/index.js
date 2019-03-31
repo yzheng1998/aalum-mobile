@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import { Container } from './styles'
 import SwipeCards from 'react-native-swipe-cards'
-
+import { NavigationEvents } from 'react-navigation'
 import UserCard from '../UserCard'
 import EmptyState from '../EmptyState'
 import MatchButton from '../../../../../components/MatchButton'
@@ -27,6 +27,10 @@ export default class Swiper extends Component {
     const { userData, discoveryRefetch } = this.props
     return (
       <Container>
+        {/* We reset the state of the SwipeCards to make sure the data is always properly loaded */}
+        <NavigationEvents
+          onWillFocus={() => this.swipeCardRef.current._resetState()}
+        />
         <Mutation
           mutation={SEND_MATCH_RESPONSE}
           onError={error => {
