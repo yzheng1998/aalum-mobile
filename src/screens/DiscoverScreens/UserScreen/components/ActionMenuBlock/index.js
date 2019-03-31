@@ -34,6 +34,9 @@ export default class ActionMenuBlock extends Component {
           <Mutation
             mutation={BLOCK_USER}
             onCompleted={blockResponse => {
+              if (blockResponse.blockuser.error) {
+                Alert.alert(blockResponse.blockuser.error.message)
+              }
               if (blockResponse.blockUser.success) {
                 Alert.alert('You blocked this user.', '', [
                   {
