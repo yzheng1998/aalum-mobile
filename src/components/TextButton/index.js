@@ -1,13 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Button, Text } from './styles'
 
-export default class TextButton extends Component {
-  render() {
-    const { text, ...rest } = this.props
-    return (
-      <Button {...rest}>
-        <Text>{text}</Text>
-      </Button>
-    )
-  }
-}
+const TextButton = ({ text, ...rest }) => (
+  <Button {...rest}>
+    <Text>{text}</Text>
+  </Button>
+)
+
+export default TextButton
