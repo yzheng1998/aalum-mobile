@@ -107,6 +107,7 @@ export default class UserScreen extends Component {
                     setActionsheet={this.setActionsheet}
                     searchRefetch={searchRefetch}
                     discoveryRefetch={discoveryRefetch}
+                    userRefetch={refetch}
                   />
                 ) : (
                   <ActionMenuBlock
@@ -142,6 +143,7 @@ export default class UserScreen extends Component {
                   searchRefetch={searchRefetch}
                   discoveryRefetch={discoveryRefetch}
                   navigation={this.props.navigation}
+                  isConnected={isConnected}
                 />
               )}
             </Container>

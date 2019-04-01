@@ -6,7 +6,13 @@ import { REPORT_USER, UNMATCH_USER } from '../../mutations'
 
 export default class ActionMenu extends Component {
   render() {
-    const { id, setActionsheet, searchRefetch, discoveryRefetch } = this.props
+    const {
+      id,
+      setActionsheet,
+      searchRefetch,
+      discoveryRefetch,
+      userRefetch
+    } = this.props
     return (
       <Mutation
         mutation={REPORT_USER}
@@ -34,6 +40,7 @@ export default class ActionMenu extends Component {
           <Mutation
             mutation={UNMATCH_USER}
             onCompleted={unmatchData => {
+              userRefetch()
               if (unmatchData.sendMatchResponse.success) {
                 Alert.alert('You unmatched with this user', '', [
                   {

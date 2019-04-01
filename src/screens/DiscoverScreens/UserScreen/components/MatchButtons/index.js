@@ -64,7 +64,6 @@ export default class MatchButtons extends Component {
                   refetch()
                   if (searchRefetch) searchRefetch()
                   if (discoveryRefetch) discoveryRefetch()
-                  navigation.goBack()
                 }}
               >
                 {sendMatchResponse => {
