@@ -4,7 +4,7 @@ import { addInfo } from '../../../redux/actions'
 import RegistrationScreen from '../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import ToggleButtonGroup from '../../../components/ToggleButtonGroup'
-import { genderList } from '../../../../enumMappings'
+import { genderEnumList, genderList } from '../../../../enumMappings'
 import { ToggleContainer, Toggle, ToggleText } from './styles'
 import theme from '../../../../theme'
 
@@ -28,7 +28,7 @@ class SeekingGenderScreen extends Component {
   render() {
     const { connectsWithSelection } = this.state
     const enabled = connectsWithSelection.length > 0
-    const allSelected = connectsWithSelection.length === genderList.length
+    const allSelected = connectsWithSelection.length === genderEnumList.length
     return (
       <RegistrationScreen
         showBack
@@ -55,7 +55,7 @@ class SeekingGenderScreen extends Component {
             value={allSelected}
             onValueChange={isOn =>
               this.setState({
-                connectsWithSelection: isOn ? genderList : []
+                connectsWithSelection: isOn ? genderEnumList : []
               })
             }
           />
