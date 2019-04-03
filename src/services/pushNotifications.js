@@ -28,7 +28,7 @@ const configure = callback => {
             }
           `
         })
-        .then(res => {
+        .then(() => {
           if (callback) callback()
         })
         .catch(() => {
