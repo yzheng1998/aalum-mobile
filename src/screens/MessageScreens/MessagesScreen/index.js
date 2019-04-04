@@ -1,17 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Screen } from './styles'
 import ScreenHeader from '../../../components/ScreenHeader'
 
-export default class MessagesScreen extends Component {
-  render() {
-    return (
-      <Screen>
-        <ScreenHeader
-          navigation={this.props.navigation}
-          title="Messages"
-          showBack
-        />
-      </Screen>
-    )
-  }
-}
+const MessagesScreen = ({ navigation }) => (
+  <Screen>
+    <ScreenHeader navigation={navigation} title="Messages" showBack />
+  </Screen>
+)
+
+export default MessagesScreen
