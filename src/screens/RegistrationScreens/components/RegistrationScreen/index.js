@@ -1,11 +1,11 @@
 import React from 'react'
 import { SafeAreaView, Screen, Image, BackButtonContainer } from './styles'
-import BackButton from '../BackButton'
+import BackButton from '../../../../components/BackButton'
 import { StatusBar } from 'react-native'
-import { Title } from '../Title'
-import { Subtitle } from '../Subtitle'
-import ProgressBar from '../ProgressBar'
-import theme from '../../../theme'
+import { Title } from '../../../../components/Title'
+import { Subtitle } from '../../../../components/Subtitle'
+import ProgressBar from '../../../../components/ProgressBar'
+import theme from '../../../../../theme'
 
 const RegistrationScreen = ({
   showBack,

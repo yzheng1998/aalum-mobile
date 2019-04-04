@@ -1,5 +1,5 @@
 import React from 'react'
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import NotificationGraphic from '../../../../assets/images/registrationFlow/NotificationGraphic.png'
 import * as pushNotifications from '../../../services/pushNotifications'

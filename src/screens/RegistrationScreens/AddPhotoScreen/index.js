@@ -3,7 +3,7 @@ import { Alert, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux'
 import { addInfo } from '../../../redux/actions'
 import { Mutation } from 'react-apollo'
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import _ from 'lodash'
 
