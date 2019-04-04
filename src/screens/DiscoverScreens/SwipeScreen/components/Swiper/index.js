@@ -27,7 +27,10 @@ export default class Swiper extends Component {
     const { userData, discoveryRefetch } = this.props
     return (
       <Container>
-        {/* We reset the state of the SwipeCards to make sure the data is always properly loaded */}
+        {/* We have a bug with the swipecards package where occasionally on navigating to the screen, */}
+        {/* (most notably after expanding filter options after a previously empty stack) */}
+        {/* the first card fails to load.  We solve this problem by forcing a reload */}
+        {/* each time we navigate to the screen. */}
         <NavigationEvents
           onWillFocus={() => this.swipeCardRef.current._resetState()}
         />
