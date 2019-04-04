@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Container, Padding, Screen } from './styles'
+import { Container, Padding } from './styles'
 import FilterSliders from '../FilterSliders'
 import FilterButtonGroups from '../FilterButtonGroups'
+import ScrollScreen from '../../../../../components/ScrollScreen'
 import ScreenHeader from '../../../../../components/ScreenHeader'
 import FloatingButton from '../../../../../components/FloatingButton'
 import FilterMultiLists from '../FilterMultiLists'
@@ -81,7 +82,7 @@ export default class FilterContainer extends Component {
     const { filterRefetch, discoveryRefetch } = this.props
     return (
       <Container>
-        <Screen>
+        <ScrollScreen>
           <ScreenHeader
             navigation={this.props.navigation}
             title="Filter"
@@ -97,7 +98,7 @@ export default class FilterContainer extends Component {
           />
           <FilterMultiLists lists={lists} />
           <Padding />
-        </Screen>
+        </ScrollScreen>
 
         <Mutation
           mutation={APPLY_FILTERS}
