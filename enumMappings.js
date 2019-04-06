@@ -33,7 +33,7 @@ export const enumToString = enm => {
       .replace(new RegExp('_A_', 'g'), "'")
       .replace(new RegExp('_S_', 'g'), '/')
       .replace(new RegExp('_', 'g'), ' ')
-  )
+  ).replace(' Of ', ' of ')
 }
 
 export const stringListToEnumList = list => list.map(str => stringToEnum(str))
