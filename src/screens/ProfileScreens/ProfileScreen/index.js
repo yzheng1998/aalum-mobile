@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { AsyncStorage } from 'react-native'
-import { Screen, Button } from './styles'
+import { Button } from './styles'
+import Screen from '../../../components/Screen'
 import ScreenHeader from '../../../components/ScreenHeader'
 
 export default class ProfileScreen extends Component {

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-native'
-import { Screen, SearchContainer, SearchHeader } from './styles'
+import { SearchContainer, SearchHeader } from './styles'
 import SearchBar from './components/SearchBar'
 import ScreenHeader from '../../../components/ScreenHeader'
 import UserSearchCard from './components/UserSearchCard'
 import { Query } from 'react-apollo'
 import { GET_USERS } from './queries'
+import Screen from '../../../components/Screen'
 import LoadingWrapper from '../../../components/LoadingWrapper'
 import { degreeAbbrEnumToString } from '../../../../enumMappings'
 

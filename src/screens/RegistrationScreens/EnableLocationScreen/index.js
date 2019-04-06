@@ -1,5 +1,5 @@
 import React from 'react'
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import LocationGraphic from '../../../../assets/images/registrationFlow/LocationGraphic.png'
 import { imageStyle } from './styles'

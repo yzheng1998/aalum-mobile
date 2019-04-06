@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addInfo } from '../../../redux/actions'
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import ToggleButtonGroup from '../../../components/ToggleButtonGroup'
 import { genderList } from '../../../../enumMappings'

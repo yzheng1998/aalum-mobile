@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo'
 import { Alert, AsyncStorage } from 'react-native'
 
 import { RESET_PASSWORD } from './graphql'
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PasswordInput from '../../../components/PasswordInput'
 import constraints from './constraints'

@@ -14,7 +14,7 @@ import Logo from '../../../../assets/images/registrationFlow/Logo.png'
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 
 export default class SignInScreen extends Component {
   state = {

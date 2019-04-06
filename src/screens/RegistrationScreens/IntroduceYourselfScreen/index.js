@@ -4,7 +4,7 @@ import { Screen, ContentContainer } from './styles'
 import moment from 'moment'
 import { connect } from 'react-redux'
 
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 import PrimaryButton from '../../../components/PrimaryButton'
 import PrimaryInput from '../../../components/PrimaryInput'
 import { addInfo } from '../../../redux/actions'

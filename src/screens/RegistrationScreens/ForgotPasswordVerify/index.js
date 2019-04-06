@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-native'
-import RegistrationScreen from '../../../components/RegistrationScreen'
+import RegistrationScreen from '../components/RegistrationScreen'
 import { InputContainer, CodeText } from './styles'
 import PrimaryButton from '../../../components/PrimaryButton'
 import VerificationInput from './components/VerificationInput'

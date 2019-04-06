@@ -1,5 +1,5 @@
 import React from 'react'
-import { Screen } from './styles'
+import Screen from '../../../components/Screen'
 import ScreenHeader from '../../../components/ScreenHeader'
 
 const NotificationsScreen = ({ navigation }) => (
