@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import { Container } from './styles'
 import SwipeCards from 'react-native-swipe-cards'
-
+import { NavigationEvents } from 'react-navigation'
 import UserCard from '../UserCard'
 import EmptyState from '../EmptyState'
 import MatchButton from '../../../../../components/MatchButton'
@@ -27,6 +27,13 @@ export default class Swiper extends Component {
     const { userData, discoveryRefetch } = this.props
     return (
       <Container>
+        {/* We have a bug with the swipecards package where occasionally on navigating to the screen, */}
+        {/* (most notably after expanding filter options after a previously empty stack) */}
+        {/* the first card fails to load.  We solve this problem by forcing a reload */}
+        {/* each time we navigate to the screen. */}
+        <NavigationEvents
+          onWillFocus={() => this.swipeCardRef.current._resetState()}
+        />
         <Mutation
           mutation={SEND_MATCH_RESPONSE}
           onError={error => {
