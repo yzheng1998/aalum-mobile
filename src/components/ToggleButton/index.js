@@ -1,17 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Button, ButtonText } from './styles'
 
-export default class ToggleButton extends Component {
-  render() {
-    const { title, addOrRemoveValue, isSelected, disabled } = this.props
-    return (
-      <Button
-        disabled={disabled}
-        onPress={() => addOrRemoveValue(title)}
-        isSelected={isSelected}
-      >
-        <ButtonText isSelected={isSelected}>{title}</ButtonText>
-      </Button>
-    )
-  }
-}
+const ToggleButton = ({ title, addOrRemoveValue, isSelected, disabled }) => (
+  <Button
+    disabled={disabled}
+    onPress={() => addOrRemoveValue(title)}
+    isSelected={isSelected}
+  >
+    <ButtonText isSelected={isSelected}>{title}</ButtonText>
+  </Button>
+)
+
+export default ToggleButton
