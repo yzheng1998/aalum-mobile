@@ -7,6 +7,28 @@ H stands for Hyphen
 A stands for Apostrophe
 S stands for Slash
 8 stands for Amperstand
+
+
+The way the stringToEnum and enumToString functions were 
+implemented, was automized so that we have universal standardized
+enums, and we don't have to hard-code every enum. The way we did that
+was we would take the string, capitalize it, then replace 
+special characters with symbols as above. 
+
+Then, if we wanted to convert enums to strings, we would
+replace these symbols with their character equivalent, then
+take it to Title Case. This worked well for almost everything,
+but some cases, such as abbreviations, would still be converted
+to Title Case, so e.g. OBGYN would actually be converted
+to Obgyn, which is wrong, so we added some hard-coded
+special case "replaces" to accommodate that.
+
+
+We sometimes had to add spaces around these special cases 
+or hyphens or stuff to make sure that if "Coo" for example
+was present in aother word, such as "Coordinator", it wouldn't
+also be converted to "COOrdinator"
+
 */
 
 export const stringToEnum = str =>
@@ -33,12 +55,20 @@ export const enumToString = enm => {
       .replace(new RegExp('_A_', 'g'), "'")
       .replace(new RegExp('_S_', 'g'), '/')
       .replace(new RegExp('_', 'g'), ' ')
-  ).replace(' Of ', ' of ')
+  )
+    .replace(' Of ', ' of ')
+    .replace('R&d ', 'R&D ')
+    .replace(' Cto', ' CTO')
+    .replace('- Coo', '- COO')
+    .replace(' Cmo', ' CMO')
+    .replace(' Cfo', ' CFO')
+    .replace(' Ceo', ' CEO')
+    .replace(' Obgyn', ' OBGYN')
+    .replace('/Mis', '/MIS')
+    .replace('It ', 'IT ')
 }
 
-export const stringListToEnumList = list => list.map(str => stringToEnum(str))
-
-export const enumListToStringList = list => list.map(enm => enumToString(enm))
+const stringListToEnumList = list => list.map(str => stringToEnum(str))
 
 export const genderList = [
   'Woman',
@@ -368,11 +398,11 @@ export const bodyTypeList = ['Slender', 'Athletic', 'Average', 'Full-figured']
 export const bodyTypeEnumList = stringListToEnumList(bodyTypeList)
 
 export const interestList = [
-  'boating',
-  'skiing',
-  'computers',
-  'sports',
-  'gardening'
+  'Boating',
+  'Skiing',
+  'Computers',
+  'Sports',
+  'Gardening'
 ]
 
 export const interestEnumList = stringListToEnumList(interestList)
