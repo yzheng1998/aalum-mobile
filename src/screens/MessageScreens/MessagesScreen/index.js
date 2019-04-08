@@ -21,16 +21,14 @@ export default class MessagesScreen extends Component {
     ]
   }
 
-  renderTabBar = props => {
-    return (
-      <TabBar
-        {...props}
-        renderLabel={this.renderLabel}
-        renderIndicator={this.renderIndicator}
-        style={{ backgroundColor: 'transparent' }}
-      />
-    )
-  }
+  renderTabBar = props => (
+    <TabBar
+      {...props}
+      renderLabel={this.renderLabel}
+      renderIndicator={this.renderIndicator}
+      style={{ backgroundColor: 'transparent' }}
+    />
+  )
 
   renderIcon = (route, focused) => {
     switch (route.key) {
