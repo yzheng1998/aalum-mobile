@@ -1,11 +1,6 @@
-import styled from 'styled-components'
-import { Dimensions } from 'react-native'
+import React from 'react'
+import { Wrapper } from './styles'
 
-const { height } = Dimensions.get('window')
-
-const Screen = styled.View`
-  flex: 1;
-  padding-top: ${height * 0.065};
-`
+const Screen = props => <Wrapper {...props} />
 
 export default Screen
