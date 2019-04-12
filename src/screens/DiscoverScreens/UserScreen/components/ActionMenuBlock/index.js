@@ -37,8 +37,8 @@ const ActionMenuBlock = ({
       <Mutation
         mutation={BLOCK_USER}
         onCompleted={blockResponse => {
-          if (blockResponse.blockuser.error) {
-            Alert.alert(blockResponse.blockuser.error.message)
+          if (blockResponse.blockUser.error) {
+            Alert.alert(blockResponse.blockUser.error.message)
           }
           if (blockResponse.blockUser.success) {
             Alert.alert('You blocked this user.', '', [
