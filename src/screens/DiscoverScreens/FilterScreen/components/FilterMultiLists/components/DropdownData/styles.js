@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { themeGet } from 'styled-system'
+import { Heading } from '../../../../../../../components/Heading'
 
 export const Container = styled.View`
   flex: 1;
@@ -8,9 +8,6 @@ export const Container = styled.View`
   margin-top: 41px;
 `
 
-export const Title = styled.Text`
-  font-size: 16px;
-  font-family: ${themeGet('fonts.heading')};
-  color: ${themeGet('colors.charcoal')};
+export const Title = styled(Heading)`
   margin-bottom: 15px;
 `
