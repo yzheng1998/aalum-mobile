@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Dimensions, Keyboard } from 'react-native'
-import { Screen } from './styles'
+import Screen from '../../../components/Screen'
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view'
 import ScreenHeader from '../../../components/ScreenHeader'
 import ConnectionsActiveIcon from '../../../../assets/icons/ConnectionsRed.png'
