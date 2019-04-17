@@ -11,11 +11,6 @@ export const RowContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `
-export const Title = styled.Text`
-  font-size: 16px;
-  font-family: ${themeGet('fonts.heading')};
-  color: ${themeGet('colors.charcoal')};
-`
 
 export const CurrentValueText = styled.Text`
   font-size: 16px;

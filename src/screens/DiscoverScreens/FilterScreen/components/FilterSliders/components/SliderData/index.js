@@ -1,9 +1,9 @@
 import React from 'react'
 import Slider from './components/Slider'
+import Heading from '../../../../../../../components/Heading'
 import {
   Container,
   RowContainer,
-  Title,
   CurrentValueText,
   BoundaryText
 } from './styles'
@@ -22,7 +22,7 @@ const SliderData = ({
 }) => (
   <Container>
     <RowContainer>
-      <Title>{title}</Title>
+      <Heading>{title}</Heading>
       <CurrentValueText>
         {values[1]
           ? `${formatter(values[0])} - ${formatter(values[1])} ${suffix}`

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { ButtonGroupContainer, Container, Title } from './styles'
+import { ButtonGroupContainer, Container } from './styles'
 import ToggleButton from '../ToggleButton'
+import Heading from '../Heading'
 import _ from 'lodash'
 import { stringToEnum } from '../../../enumMappings'
 
@@ -30,7 +31,7 @@ export default class ToggleButtonGroup extends Component {
     } = this.props
     return (
       <Container>
-        {title && <Title>{title}</Title>}
+        {title && <Heading>{title}</Heading>}
         <ButtonGroupContainer isFilter={isFilter}>
           {optionsArray.map(option => {
             const isSelected = selectionArray.includes(stringToEnum(option))

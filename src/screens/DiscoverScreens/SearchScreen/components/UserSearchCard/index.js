@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, Alert } from 'react-native'
 import { Container, ContentContainer, HeartContainer } from './styles'
 import Heart from '../../../../../components/Heart'
-import UserSearchCardPicture from './components/UserSearchCardPicture'
+import UserCicle from '../../../../../components/UserCircle'
 import UserSearchCardDetails from './components/UserSearchCardDetails'
 import { SEND_MATCH_RESPONSE } from './mutations'
 import { Mutation } from 'react-apollo'
@@ -24,7 +24,7 @@ const UserSearchCard = ({
     onPress={() => navigation.navigate('User', { id, searchRefetch: refetch })}
   >
     <ContentContainer>
-      <UserSearchCardPicture profilePicture={profilePicture} />
+      <UserCicle profilePicture={profilePicture} diameter={50} />
       <UserSearchCardDetails
         name={name}
         age={age}
