@@ -1,6 +1,6 @@
 # AAlum Mobile App
 
-<img src="assets/images/DisplayPic.png" width="400">
+<img src="assets/images/DisplayPic.png" width="300">
 
 A dating app that is exclusive for college students and college alumni.
 
