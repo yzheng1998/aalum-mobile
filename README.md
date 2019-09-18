@@ -52,7 +52,7 @@ npm run test:update
 npm run test:coverage
 ```
 
-### Figma
+### Designs
 
 https://www.figma.com/file/bvJwaT2B7N37d3Rs7NVUHUfO/Wireframes?node-id=221%3A0
 
